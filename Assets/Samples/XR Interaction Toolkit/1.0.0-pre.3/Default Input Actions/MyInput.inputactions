@@ -1,0 +1,33 @@
+{
+    "name": "MyInput",
+    "maps": [
+        {
+            "name": "New action map",
+            "id": "47050526-ec4d-4a49-8b31-af9422f7c689",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "dab17e81-d321-41c3-a1d3-4b3cc4b77b1b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b1010cef-b243-4211-8848-35e6276e63bc",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
