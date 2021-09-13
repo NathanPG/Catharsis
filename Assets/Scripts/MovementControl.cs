@@ -68,7 +68,7 @@ public class MovementControl : MonoBehaviour
         testHeight = head.transform.localPosition.y;
         PositionController();
         CheckWall();
-        if (playerController.canMove && !isWallRunning && isGrounded)
+        if (playerController.canMove && !isWallRunning )
         {
             CheckMovement();
         }
@@ -175,7 +175,10 @@ public class MovementControl : MonoBehaviour
         
         if (rigidbody.velocity.magnitude <= maxWallSpeed)
         {
-            rigidbody.AddForce(cameraTransform.forward * wallRunForce * Time.deltaTime); 
+            //rigidbody.AddForce(cameraTransform.forward * wallRunForce * Time.deltaTime);
+
+            rigidbody.AddForce(cameraTransform.transform.TransformDirection(Vector3.forward) * wallRunForce * Time.deltaTime);
+            
         }
         if (isWallRight)
         {
