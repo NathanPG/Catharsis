@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class KillZone : MonoBehaviour
 {
-    public Transform playerTransform;
-    public Vector3 spawnPoint = new Vector3(6.8499999f, 0, -2.04999995f);
+    public Transform playerStartTransform;
+    private Vector3 spawnPoint;
+
+    private void Start()
+    {
+        spawnPoint = playerStartTransform.position;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        //Debug.Log(other.tag);
+        if (other.CompareTag("Player"))
         {
-            playerTransform.position = spawnPoint;
+            GameManager.Instance.playerObject.GetComponent<MovementControl>().ToggleGravity(true);
+            playerStartTransform.position = spawnPoint;
         }
     }
 }

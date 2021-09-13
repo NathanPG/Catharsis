@@ -4,27 +4,29 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class MovementControl : LocomotionProvider
+public class MovementControl : MonoBehaviour
 {
-    public ContinuousMoveProviderBase continuousMoveProvider;
     public Transform cameraTransform;
-    private Rigidbody rigidbody;
-    private CapsuleCollider capsuleCollider;
+    public Transform rigTransform;
+    private PlayerController playerController;
 
+    private Rigidbody rigidbody = null;
+    private CapsuleCollider capsuleCollider = null;
     private CharacterController characterController = null;
     private GameObject head = null;
 
-    private InputDevice leftHand;
-    private InputDevice rightHand;
+    //Movement
+    //private float moveSpeed;
+    public float maxMoveSpeed;
+    private bool snapPressed = false;
 
     //Jump
-    public bool isGrounded = true;
+    [HideInInspector] public bool isGrounded = true;
     public float jumpForce;
     public float jumpCD;
     private bool jumpPressed = false;
-    //private bool canJump = true;
-    private Vector3 characterCenter;
-    bool ForceCleared = true;
+    //private Vector3 characterCenter;
+    private Vector3 worldCharacterCenter;
 
     //Grapple
     public Grapple grappleController;
@@ -33,123 +35,54 @@ public class MovementControl : LocomotionProvider
 
     //Wall Running
     public LayerMask whatIsWall;
-    public float wallRunForce, maxWallSpeed;
-    public bool isWallRight, isWallLeft;
+    [HideInInspector] public float wallRunForce, maxWallSpeed;
+    [HideInInspector] public bool isWallRight, isWallLeft;
     public bool isWallRunning;
+
+    //TESTING
+    public float testHeight;
+
+    //Sliding
+    private bool dashPressed = false;
+    public float dashForce;
 
     private void Awake()
     {
+        playerController = GetComponent<PlayerController>();
         characterController = GetComponent<CharacterController>();
         head = GetComponent<XRRig>().cameraGameObject;
-        var inputDevices = new List<UnityEngine.XR.InputDevice>();
-        UnityEngine.XR.InputDevices.GetDevices(inputDevices);
+        rigidbody = GetComponent<Rigidbody>();
+        capsuleCollider = GetComponent<CapsuleCollider>();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         isWallRunning = false;
-        rigidbody = GetComponent<Rigidbody>();
-        capsuleCollider = GetComponent<CapsuleCollider>();
+        
         PositionController();
     }
 
     // Update is called once per frame
     void Update()
     {
+        testHeight = head.transform.localPosition.y;
         PositionController();
-
-        if((leftHand.isValid && rightHand.isValid) == false)
-        {
-            BindDevice();
-            return;
-        }
-        CheckJump();
         CheckWall();
+        if (playerController.canMove && !isWallRunning && isGrounded)
+        {
+            CheckMovement();
+        }
+        CheckSnapTurn();
+        CheckJump();
+        CheckDash();
         CheckWallRun();
         CheckGrapple();
     }
 
-    void CheckWallRun()
+    IEnumerator ResetJump()
     {
-        if (isWallRight)
-        {
-            if (leftHand.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 axisValue))
-            {
-                if (leftHand.TryGetFeatureValue(CommonUsages.primary2DAxisTouch, out bool value))
-                {
-                    if (value)
-                    {
-                        //RIGHT
-                        if (axisValue.x > 0)
-                        {
-                            StartWallRun();
-                        }
-                    }
-                }
-            }
-        }
-        if (isWallLeft)
-        {   
-            if (leftHand.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 axisValue1))
-            {
-                if(leftHand.TryGetFeatureValue(CommonUsages.primary2DAxisTouch, out bool value1))
-
-                    if (value1)
-                    {
-                        //LEFT
-                        if (axisValue1.x < 0)
-                        {
-                            StartWallRun();
-                        }
-                    }
-            }
-        }
-    }
-
-    void StartWallRun()
-    {
-        rigidbody.useGravity = false;
-        isWallRunning = true;
-        continuousMoveProvider.useGravity = false;
-
-        if (rigidbody.velocity.magnitude <= maxWallSpeed)
-        {
-            rigidbody.AddForce(cameraTransform.forward * wallRunForce * Time.deltaTime); 
-        }
-        if (isWallRight)
-        {
-            rigidbody.AddForce(cameraTransform.right * wallRunForce / 5 * Time.deltaTime);
-        }
-        else
-        {
-            rigidbody.AddForce(-cameraTransform.right * wallRunForce / 5 * Time.deltaTime);
-        }
-    }
-
-    void StopWallRun()
-    {
-
-        //rigidbody.useGravity = true;
-
-        isWallRunning = false;
-        continuousMoveProvider.useGravity = true;
-    }
-
-    void CheckWall()
-    {
-        isWallRight = Physics.Raycast(new Vector3(transform.position.x + characterCenter.x, transform.position.y + characterCenter.y, transform.position.z + characterCenter.z)
-            , cameraTransform.right, 1f, whatIsWall);
-
-        //Debug.DrawRay(new Vector3(transform.position.x + characterCenter.x, transform.position.y + characterCenter.y, transform.position.z + characterCenter.z), cameraTransform.right, Color.green, 1f);
-
-        isWallLeft = Physics.Raycast(new Vector3(transform.position.x + characterCenter.x, transform.position.y + characterCenter.y, transform.position.z + characterCenter.z)
-            , -cameraTransform.right, 1f, whatIsWall);
-
-        //Debug.DrawRay(new Vector3(transform.position.x + characterCenter.x, transform.position.y + characterCenter.y, transform.position.z + characterCenter.z), -cameraTransform.right, Color.green, 1f);
-
-        if (!isWallLeft && !isWallRight) StopWallRun();
-
+        yield return new WaitForSeconds(0.3f);
+        playerController.canJump = true;
     }
 
     /// <summary>
@@ -172,8 +105,117 @@ public class MovementControl : LocomotionProvider
 
         characterController.center = newCenter;
         capsuleCollider.center = newCenter;
-        characterCenter = newCenter;
+
+        worldCharacterCenter.x = head.transform.position.x;
+        worldCharacterCenter.z = head.transform.position.z;
+        worldCharacterCenter.y = transform.position.y + newCenter.y;
     }
+
+    void CheckWall()
+    {
+        isWallRight = Physics.Raycast(new Vector3(worldCharacterCenter.x, worldCharacterCenter.y, worldCharacterCenter.z)
+            , cameraTransform.right, 1f, whatIsWall);
+
+        Debug.DrawRay(new Vector3(worldCharacterCenter.x, worldCharacterCenter.y, worldCharacterCenter.z), cameraTransform.right, Color.green, 1f);
+
+        isWallLeft = Physics.Raycast(new Vector3(worldCharacterCenter.x, worldCharacterCenter.y, worldCharacterCenter.z)
+            , -cameraTransform.right, 1f, whatIsWall);
+
+        Debug.DrawRay(new Vector3(worldCharacterCenter.x, worldCharacterCenter.y, worldCharacterCenter.z), -cameraTransform.right, Color.green, 1f);
+    }
+
+    void CheckWallRun()
+    {
+        //START WALL RUN
+        if (isWallRight)
+        {
+            if (playerController.leftHand.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 axisValue) &&
+                playerController.leftHand.TryGetFeatureValue(CommonUsages.primary2DAxisTouch, out bool value))
+            {
+                if (value && axisValue.x > 0)
+                {
+                    //RIGHT
+                    StartWallRun();
+                }
+            }
+        }
+        else if (isWallLeft)
+        {
+            if (playerController.leftHand.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 axisValue1) &&
+                playerController.leftHand.TryGetFeatureValue(CommonUsages.primary2DAxisTouch, out bool value1))
+            {
+                if (value1 && axisValue1.x < 0)
+                {
+                    //LEFT
+                    StartWallRun();
+                }
+            }
+        }
+
+        //STOP WALL RUN
+        if (!isWallLeft && !isWallRight && isWallRunning)
+        {
+            StopWallRun();
+        }
+
+        else if (playerController.leftHand.TryGetFeatureValue(CommonUsages.primary2DAxisTouch, out bool value2))
+        {
+            if (isWallRunning && value2 == false)
+            {
+                StopWallRun();
+            }
+        }
+    }
+
+    void StartWallRun()
+    {
+        rigidbody.useGravity = false;
+        isWallRunning = true;
+        playerController.canMove = false;
+        
+        if (rigidbody.velocity.magnitude <= maxWallSpeed)
+        {
+            rigidbody.AddForce(cameraTransform.forward * wallRunForce * Time.deltaTime); 
+        }
+        if (isWallRight)
+        {
+            rigidbody.AddForce(cameraTransform.right * wallRunForce / 5 * Time.deltaTime);
+        }
+        else if (isWallLeft)
+        {
+            rigidbody.AddForce(-cameraTransform.right * wallRunForce / 5 * Time.deltaTime);
+        }
+        else
+        {
+            Debug.LogError("什么猫猫，WALL不在左也不在右，你在搞锤子？");
+        }
+    }
+
+    void StopWallRun()
+    {
+        rigidbody.useGravity = true;
+        playerController.canMove = true;
+        isWallRunning = false;
+    }
+
+    void CheckMovement()
+    {
+        Vector2 primary2dValue;
+        InputFeatureUsage<Vector2> primary2DVector = CommonUsages.primary2DAxis;
+        if (playerController.leftHand.TryGetFeatureValue(primary2DVector, out primary2dValue) && primary2dValue != Vector2.zero)
+        {
+            var xAxis = primary2dValue.x * maxMoveSpeed * Time.deltaTime;
+            var zAxis = primary2dValue.y * maxMoveSpeed * Time.deltaTime;
+            //Horizontal movement
+            if ((!isWallRight && xAxis > 0) || (!isWallLeft && xAxis < 0))
+            {
+                transform.position += cameraTransform.transform.TransformDirection(Vector3.right) * xAxis;
+            }
+            transform.position += cameraTransform.transform.TransformDirection(Vector3.forward) * zAxis;
+        }
+    }
+
+    
 
     /*
     IEnumerator ResetJump(float cd)
@@ -189,48 +231,30 @@ public class MovementControl : LocomotionProvider
     /// </summary>
     void CheckJump()
     {
-        isGrounded = Physics.Raycast(new Vector3(transform.position.x + characterCenter.x, transform.position.y + 0.1f , transform.position.z + characterCenter.z)
+        isGrounded = Physics.Raycast(new Vector3(worldCharacterCenter.x, transform.position.y + 0.1f , worldCharacterCenter.z)
             , Vector3.down,1f);
-        //Debug.DrawRay(new Vector3(transform.position.x + characterCenter.x, transform.position.y + 0.1f, transform.position.z + characterCenter.z)
-        //    , Vector3.down, Color.red, 1f);
+        Debug.DrawRay(new Vector3(worldCharacterCenter.x, transform.position.y + 0.1f, worldCharacterCenter.z), Vector3.down, Color.red, 1f);
 
-        //IN AIR
-        if (!isGrounded && !isWallRunning)
-        {
-            rigidbody.useGravity = true;
-            return;
-        }
-        //Landed
-        else
-        {
-            if (isGrounded)
-            {
-                //Right after Landing
-                if (!ForceCleared)
-                {
-                    Debug.Log("Clear Force");
-                    ForceCleared = true;
-                    rigidbody.velocity = Vector3.zero;
-                    rigidbody.angularVelocity = Vector3.zero;
-                }
-                rigidbody.useGravity = false;
-            }  
-        }
+        if (!playerController.canJump) return;
 
-        
         //Normal Jump
-        if (!isWallRunning)
+        if (!isWallRunning && isGrounded)
         {
             bool triggerValue;
             //tigger is being pressed
-            if (leftHand.TryGetFeatureValue(CommonUsages.triggerButton, out triggerValue) && triggerValue)
+            if (playerController.leftHand.TryGetFeatureValue(CommonUsages.triggerButton, out triggerValue) && triggerValue)
             {
                 if (!jumpPressed)
                 {
+                    playerController.canJump = false;
+                    StartCoroutine(ResetJump());
                     jumpPressed = true;
-                    //canJump = false;
+      
                     //TODO: NORMAL VECTOR
                     rigidbody.AddForce(Vector3.up * jumpForce);
+
+                    //TODO: JUMP TOWARDS SPEED DIRECTION
+                    rigidbody.AddForce(cameraTransform.forward * jumpForce /3);
                 }
             }
             //trigger is not being pressed, but jump has not been reset
@@ -242,27 +266,28 @@ public class MovementControl : LocomotionProvider
 
         
         //Wall Jump
-        else
+        else if (isWallRunning)
         {
             bool triggerValue;
             //tigger is being pressed
-            if (leftHand.TryGetFeatureValue(CommonUsages.triggerButton, out triggerValue) && triggerValue)
+            if (playerController.leftHand.TryGetFeatureValue(CommonUsages.triggerButton, out triggerValue) && triggerValue)
             {
                 if (!jumpPressed)
                 {
+                    playerController.canJump = false;
+                    StartCoroutine(ResetJump());
                     jumpPressed = true;
-                    ForceCleared = false;
                     rigidbody.AddForce(Vector3.up * jumpForce);
-                    rigidbody.AddForce(cameraTransform.forward * jumpForce);
+                    rigidbody.AddForce(cameraTransform.forward * jumpForce/3);
                     if (isWallLeft)
                     {
-                        Debug.Log("Left Wall Jump");
-                        rigidbody.AddForce(cameraTransform.right * jumpForce);
+                        //Debug.Log("Left Wall Jump");
+                        rigidbody.AddForce(cameraTransform.right * jumpForce/2);
                     }
                     else if (isWallRight)
                     {
-                        Debug.Log("Right Wall Jump");
-                        rigidbody.AddForce(-cameraTransform.right * jumpForce);
+                        //Debug.Log("Right Wall Jump");
+                        rigidbody.AddForce(-cameraTransform.right * jumpForce/2);
                     }
                 }
             }
@@ -278,22 +303,23 @@ public class MovementControl : LocomotionProvider
     {
         bool grappleValue;
         //tigger is being pressed
-        if (leftHand.TryGetFeatureValue(CommonUsages.gripButton, out grappleValue) && grappleValue)
+        if (playerController.leftHand.TryGetFeatureValue(CommonUsages.gripButton, out grappleValue) && grappleValue)
         {
             if (!grapplePressed)
             {
+                grapplePressed = true;
+
                 if (!grapplling)
                 {
-                    Debug.Log("Grapple");
+                    //Debug.Log("Grapple");
                     grapplling = true;
-                    grapplePressed = true;
                     characterController.enabled = false;
                     grappleController.StartGrapple();
                     
                 }
                 else
                 {
-                    Debug.Log("Grapple Released");
+                    //Debug.Log("Grapple Released");
                     grapplling = false;
                     characterController.enabled = true;
                     grappleController.StopGrapple();
@@ -306,26 +332,81 @@ public class MovementControl : LocomotionProvider
             grapplePressed = false;
         }
     }
-    /// <summary>
-    /// If any of the device is not available, try to bind the device
-    /// </summary>
-    void BindDevice()
+
+    void CheckDash()
     {
-        var inputDevices = new List<UnityEngine.XR.InputDevice>();
-        UnityEngine.XR.InputDevices.GetDevices(inputDevices);
-        foreach (var device in inputDevices)
+        bool gripValue;
+        //tigger is being pressed
+        if (playerController.rightHand.TryGetFeatureValue(CommonUsages.gripButton, out gripValue) && gripValue)
         {
-            //Right Hand
-            if (device.role.ToString() == "RightHanded")
+            if (!dashPressed)
             {
-                rightHand = device;
+                dashPressed = true;
+                rigidbody.AddForce(cameraTransform.forward * jumpForce);
             }
-            else if (device.role.ToString() == "LeftHanded")
+        }
+        //trigger is not being pressed, but jump has not been reset
+        else if (dashPressed)
+        {
+            dashPressed = false;
+        }
+    }
+    
+    //INCLUDED WITH XR PACKAGE
+    void CheckSnapTurn()
+    {
+        //Right pad to control snap turns
+        bool padBool;
+        Vector2 primary2dValue;
+
+        //IF PAD IS CLICKED
+        if (playerController.rightHand.TryGetFeatureValue(CommonUsages.primary2DAxisClick, out padBool) && padBool)
+        {
+            playerController.rightHand.TryGetFeatureValue(CommonUsages.primary2DAxis, out primary2dValue);
+            if (!snapPressed)
             {
-                leftHand = device;
+                snapPressed = true;
+                if (primary2dValue.x < 0)
+                {
+                    //characterController.transform.Rotate(0, -45, 0);
+                    characterController.transform.RotateAroundLocal(Vector3.up, -45);
+                }
+                else
+                {
+                    //characterController.transform.Rotate(0, 45, 0);
+                    characterController.transform.RotateAroundLocal(Vector3.up, -45);
+                }
             }
+            /*
+            if (playerController.rightHand.TryGetFeatureValue(CommonUsages.primary2DAxis, out primary2dValue) && primary2dValue != Vector2.zero)
+            {
+                
+            }
+            */   
+        }
+        else if (snapPressed)
+        {
+            snapPressed = false;
         }
     }
 
+    public void Ramp(Vector3 rampDirection)
+    {
+        if (rigidbody.velocity.magnitude <= maxWallSpeed)
+        {
+            rigidbody.AddForce(rampDirection * wallRunForce * Time.deltaTime);
+        }
+    }
 
+    public void ToggleGravity(bool isOn)
+    {
+        if (isOn)
+        {
+            rigidbody.useGravity = true;
+        }
+        else
+        {
+            rigidbody.useGravity = false;
+        }
+    }
 }

@@ -3,22 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Rendering;
 
-public class Skills : MonoBehaviour
+public class Skills :MonoBehaviour
 {
-    public PostProcessVolume defaultVolume;
-    public PostProcessVolume theWorldVolume;
-    private InputDevice leftHand;
-    private InputDevice rightHand;
+    public Volume defaultVolume;
+    public Volume theWorldVolume;
+
+    private PlayerController playerController;
+
     private bool bulletTimePressed = false;
-    // Update is called once per frame
+    private bool canUseBulletTime = true;
+
+    private void Awake()
+    {
+        playerController = GetComponent<PlayerController>();
+    }
     void Update()
     {
-        if ((leftHand.isValid && rightHand.isValid) == false)
-        {
-            BindDevice();
-            return;
-        }
+        
         CheckBulletTime();
     }
 
@@ -35,11 +38,11 @@ public class Skills : MonoBehaviour
             //Right Hand
             if (device.role.ToString() == "RightHanded")
             {
-                rightHand = device;
+                playerController.rightHand = device;
             }
             else if (device.role.ToString() == "LeftHanded")
             {
-                leftHand = device;
+                playerController.leftHand = device;
             }
         }
     }
@@ -48,28 +51,74 @@ public class Skills : MonoBehaviour
     {
         bool triggerValue;
         //tigger is being pressed
-        if (rightHand.TryGetFeatureValue(CommonUsages.triggerButton, out triggerValue) && triggerValue)
+        if (playerController.rightHand.TryGetFeatureValue(CommonUsages.triggerButton, out triggerValue) && triggerValue)
         {
-            Time.timeScale = 0.1f;
-            if (!bulletTimePressed)
+            if (!bulletTimePressed && canUseBulletTime)
             {
                 //Call Once
                 bulletTimePressed = true;
+                //Debug.Log("Enter Bullet");
                 //TODO: VISUAL
+                canUseBulletTime = false;
+                StartCoroutine(EnterTheWorld(0.2f));
             }
+            
         }
         else if (bulletTimePressed)
         {
             //Call Once
             bulletTimePressed = false;
+            //Debug.Log("Exit Bullet");
             //TODO: VISUAL
-            Time.timeScale = 1f;
+            StartCoroutine(ExitTheWorld(0.2f));
+            
         }
         else
         {
-            Time.timeScale = 1f;
+            //Time.timeScale = 1f;
         }
     }
 
-    private IEnumerator 
+   private IEnumerator EnterTheWorld(float duration)
+   {
+        
+        float elapsedTime = 0;
+        while (elapsedTime <= duration)
+        {
+            defaultVolume.weight = Mathf.Lerp(1, 0, elapsedTime / duration);
+            theWorldVolume.weight = Mathf.Lerp(0, 1, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+
+        }
+        defaultVolume.weight = 0;
+        theWorldVolume.weight = 1;
+        defaultVolume.priority = 0;
+        theWorldVolume.priority = 1;
+        Time.timeScale = 0.1f;
+    }
+    private IEnumerator ExitTheWorld(float duration)
+    {
+        StartCoroutine(ResetBulletTime(1f));
+        Time.timeScale = 1f;
+        float elapsedTime = 0;
+        while (elapsedTime <= duration)
+        {
+            defaultVolume.weight = Mathf.Lerp(0, 1, elapsedTime / duration);
+            theWorldVolume.weight = Mathf.Lerp(1, 0, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        defaultVolume.weight = 1;
+        theWorldVolume.weight = 0;
+        defaultVolume.priority = 1;
+        theWorldVolume.priority = 0;
+        
+    }
+
+    private IEnumerator ResetBulletTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        canUseBulletTime = true;
+    }
 }

@@ -6,11 +6,14 @@ public class Grapple : MonoBehaviour
 {
     private LineRenderer lineRenderer;
     private Vector3 grapplePoint;
-    public LayerMask whatIsGrappleable;
-    public float grappleDistance;
+   
     private SpringJoint joint;
     public GameObject player;
     public CapsuleCollider capsuleCollider;
+    public LayerMask whatIsGrappleable;
+    public float grappleDistance;
+
+    public bool canGrapple = true;
     private bool grappling = false;
 
     private void Awake()
@@ -34,19 +37,18 @@ public class Grapple : MonoBehaviour
     public void StartGrapple()
     {
         RaycastHit hit;
-        
+        if (!canGrapple) return;
         if (Physics.Raycast(this.transform.position, this.transform.forward, out hit, grappleDistance, whatIsGrappleable))
         {
-            if (grappling) return;
-
 
 
             lineRenderer.enabled = true;
-
-
-
-            grappling = true;
             lineRenderer.positionCount = 2;
+
+
+            canGrapple = false;
+            grappling = true;
+            
             grapplePoint = hit.point;
             joint = player.AddComponent<SpringJoint>();
             joint.autoConfigureConnectedAnchor = false;
@@ -58,7 +60,7 @@ public class Grapple : MonoBehaviour
             joint.minDistance = distance * 0.1f;
 
             joint.spring = 4.5f;
-            joint.damper = 7f;
+            joint.damper = 5f;
             joint.massScale = 0.5f;
         }
     }
@@ -72,8 +74,16 @@ public class Grapple : MonoBehaviour
 
     public void StopGrapple()
     {
-        grappling = false;
+        grappling = false; 
         lineRenderer.positionCount = 0;
         Destroy(joint);
+        
+        StartCoroutine(ResetGrapple(0.5f));
+    }
+
+    private IEnumerator ResetGrapple(float time)
+    {
+        yield return new WaitForSeconds(time);
+        canGrapple = true;
     }
 }
