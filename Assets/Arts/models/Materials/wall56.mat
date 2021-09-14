@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: wall56
-  m_Shader: {fileID: 4800000, guid: 03d4d91a55f797745b062bdc9f3f724a, type: 3}
+  m_Shader: {fileID: 4800000, guid: af046ae51fcc8594d983fdb817cefc33, type: 3}
   m_ShaderKeywords: TCP2_REFLECTIONS_FRESNEL TCP2_RIM_LIGHTING_LIGHTMASK TCP2_SHADOW_LIGHT_COLOR
     TCP2_UV_NORMALS_FULL _METALLICSPECGLOSSMAP
   m_LightmapFlags: 4
@@ -120,7 +120,7 @@ Material:
     - _NormalsSource: 0
     - _NormalsUVType: 0
     - _OcclusionStrength: 1
-    - _OutlineWidth: 1
+    - _OutlineWidth: 0.1
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _RampSmoothing: 0.1
@@ -135,6 +135,7 @@ Material:
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
+    - _SpecularRoughnessPBR: 0.5
     - _SrcBlend: 1
     - _Surface: 0
     - _UVSec: 0
@@ -148,8 +149,9 @@ Material:
     - _Color: {r: 0.17209283, g: 0.24800001, b: 0.16219202, a: 1}
     - _Emission: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HColor: {r: 0.7529412, g: 0.7243294, b: 0.7243294, a: 1}
+    - _HColor: {r: 0.95, g: 0.91906977, b: 0.91906977, a: 1}
     - _OutlineColorVertex: {r: 0, g: 0, b: 0, a: 1}
-    - _SColor: {r: 0.62992096, g: 0.66673446, b: 0.72400004, a: 1}
+    - _SColor: {r: 0.45776212, g: 0.48335132, b: 0.52599996, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _SpecularColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_BuildTextureStacks: []
