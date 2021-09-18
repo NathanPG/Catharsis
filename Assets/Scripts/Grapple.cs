@@ -40,8 +40,6 @@ public class Grapple : MonoBehaviour
         if (!canGrapple) return;
         if (Physics.Raycast(this.transform.position, this.transform.forward, out hit, grappleDistance, whatIsGrappleable))
         {
-
-
             lineRenderer.enabled = true;
             lineRenderer.positionCount = 2;
 
@@ -57,10 +55,10 @@ public class Grapple : MonoBehaviour
             float distance = Vector3.Distance(player.transform.position, grapplePoint);
 
             joint.maxDistance = distance * 0.6f;
-            joint.minDistance = distance * 0.1f;
+            joint.minDistance = 0;
 
             //Strength
-            joint.spring = 20f;
+            joint.spring = 15f;
             //Amount that the spring is reduced when active.
             joint.damper = 5f;
 

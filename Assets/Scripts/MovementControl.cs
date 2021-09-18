@@ -35,7 +35,7 @@ public class MovementControl : MonoBehaviour
 
     //Wall Running
     public LayerMask whatIsWall;
-    [HideInInspector] public float wallRunForce, maxWallSpeed;
+    public float wallRunForce, maxWallSpeed;
     [HideInInspector] public bool isWallRight, isWallLeft;
     public bool isWallRunning;
 
@@ -175,10 +175,7 @@ public class MovementControl : MonoBehaviour
         
         if (rigidbody.velocity.magnitude <= maxWallSpeed)
         {
-            //rigidbody.AddForce(cameraTransform.forward * wallRunForce * Time.deltaTime);
-
             rigidbody.AddForce(cameraTransform.transform.TransformDirection(Vector3.forward) * wallRunForce * Time.deltaTime);
-            
         }
         if (isWallRight)
         {
@@ -204,13 +201,19 @@ public class MovementControl : MonoBehaviour
     void CheckMovement()
     {
         Vector2 primary2dValue;
+        
         InputFeatureUsage<Vector2> primary2DVector = CommonUsages.primary2DAxis;
         if (playerController.leftHand.TryGetFeatureValue(primary2DVector, out primary2dValue) && primary2dValue != Vector2.zero)
         {
             var xAxis = primary2dValue.x * maxMoveSpeed * Time.deltaTime;
             var zAxis = primary2dValue.y * maxMoveSpeed * Time.deltaTime;
+            //Check everything
+            bool wallRight = Physics.Raycast(new Vector3(worldCharacterCenter.x, worldCharacterCenter.y, worldCharacterCenter.z)
+            , cameraTransform.right, 1f);
+            bool wallLeft = Physics.Raycast(new Vector3(worldCharacterCenter.x, worldCharacterCenter.y, worldCharacterCenter.z)
+            , -cameraTransform.right, 1f);
             //Horizontal movement
-            if ((!isWallRight && xAxis > 0) || (!isWallLeft && xAxis < 0))
+            if ((!wallRight && xAxis > 0) || (!wallLeft && xAxis < 0))
             {
                 transform.position += cameraTransform.transform.TransformDirection(Vector3.right) * xAxis;
             }
@@ -371,13 +374,11 @@ public class MovementControl : MonoBehaviour
                 snapPressed = true;
                 if (primary2dValue.x < 0)
                 {
-                    //characterController.transform.Rotate(0, -45, 0);
-                    characterController.transform.RotateAroundLocal(Vector3.up, -45);
+                    rigTransform.RotateAround(head.transform.position, Vector3.up, -45);
                 }
                 else
                 {
-                    //characterController.transform.Rotate(0, 45, 0);
-                    characterController.transform.RotateAroundLocal(Vector3.up, -45);
+                    rigTransform.RotateAround(head.transform.position, Vector3.up, 45);
                 }
             }
             /*
