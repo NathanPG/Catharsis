@@ -10,7 +10,8 @@
         "STYLIZATION",
         "SPECIAL EFFECTS",
         "SHADER STATES",
-        "SURFACE"
+        "SURFACE",
+        "TRANSPARENCY/BLENDING"
     ],
     "UseCustomFont": true,
     "CustomFont": {
