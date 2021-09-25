@@ -3,17 +3,12 @@ guid: 7833cb7b5ea3d7c40a154f53c69eaf97
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: medal
-    second: {fileID: 2100000, guid: 2a1a546a6a1675543815d86fe5e14b16, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
-    materialName: 0
-    materialSearch: 1
-    materialLocation: 1
+    materialName: 1
+    materialSearch: 0
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
