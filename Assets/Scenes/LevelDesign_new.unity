@@ -4375,7 +4375,6 @@ Transform:
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
-<<<<<<< HEAD
 --- !u!1001 &863252187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4435,8 +4434,6 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: cce4ba31a985e504ea0dd1eb8a68257b, type: 3}
 =======
 >>>>>>> parent of 899f9a1 (adjust the first bedroom)
-=======
->>>>>>> parent of 899f9a1 (adjust the first bedroom)
 --- !u!1001 &873183033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4459,11 +4456,7 @@ PrefabInstance:
     - target: {fileID: 5374899725118915644, guid: d5153f316316e4f45ba288271923ab31, type: 3}
       propertyPath: m_RootOrder
 <<<<<<< HEAD
-<<<<<<< HEAD
       value: 4
-=======
-      value: 1
->>>>>>> parent of 899f9a1 (adjust the first bedroom)
 =======
       value: 1
 >>>>>>> parent of 899f9a1 (adjust the first bedroom)
@@ -4973,11 +4966,8 @@ Transform:
   - {fileID: 1259864659}
   - {fileID: 166163521}
 <<<<<<< HEAD
-<<<<<<< HEAD
   - {fileID: 369694285}
   - {fileID: 728002925588404298}
-=======
->>>>>>> parent of 899f9a1 (adjust the first bedroom)
 =======
 >>>>>>> parent of 899f9a1 (adjust the first bedroom)
   m_Father: {fileID: 0}
@@ -10394,11 +10384,7 @@ PrefabInstance:
     - target: {fileID: 3576063926035980912, guid: 2d876c67c503e274a963270b73873655, type: 3}
       propertyPath: m_RootOrder
 <<<<<<< HEAD
-<<<<<<< HEAD
       value: 14
-=======
-      value: 11
->>>>>>> parent of 899f9a1 (adjust the first bedroom)
 =======
       value: 11
 >>>>>>> parent of 899f9a1 (adjust the first bedroom)
