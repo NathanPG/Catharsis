@@ -4376,6 +4376,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1001 &863252187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4437,6 +4438,8 @@ PrefabInstance:
 >>>>>>> parent of 899f9a1 (adjust the first bedroom)
 =======
 >>>>>>> parent of 899f9a1 (adjust the first bedroom)
+=======
+>>>>>>> parent of 899f9a1 (adjust the first bedroom)
 --- !u!1001 &873183033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4461,6 +4464,7 @@ PrefabInstance:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       value: 4
 =======
       value: 1
@@ -4471,6 +4475,9 @@ PrefabInstance:
 =======
       value: 3
 >>>>>>> parent of 26f6d44 (cabinet and  medal)
+=======
+      value: 1
+>>>>>>> parent of 899f9a1 (adjust the first bedroom)
       objectReference: {fileID: 0}
     - target: {fileID: 5374899725118915644, guid: d5153f316316e4f45ba288271923ab31, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4788,6 +4795,7 @@ Transform:
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -97.493, y: -301.047, z: -52.255005}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 --- !u!1 &1019151894
 GameObject:
@@ -4897,6 +4905,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UsePipelineSettings: 0
 >>>>>>> parent of 26f6d44 (cabinet and  medal)
+=======
+>>>>>>> parent of 899f9a1 (adjust the first bedroom)
 --- !u!1001 &1035565189
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5088,6 +5098,7 @@ Transform:
   - {fileID: 166163521}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 369694285}
 <<<<<<< HEAD
   - {fileID: 728002925588404298}
@@ -5097,6 +5108,8 @@ Transform:
 >>>>>>> parent of 899f9a1 (adjust the first bedroom)
 =======
 >>>>>>> parent of 26f6d44 (cabinet and  medal)
+=======
+>>>>>>> parent of 899f9a1 (adjust the first bedroom)
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10513,6 +10526,7 @@ PrefabInstance:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       value: 14
 =======
       value: 11
@@ -10523,6 +10537,9 @@ PrefabInstance:
 =======
       value: 13
 >>>>>>> parent of 26f6d44 (cabinet and  medal)
+=======
+      value: 11
+>>>>>>> parent of 899f9a1 (adjust the first bedroom)
       objectReference: {fileID: 0}
     - target: {fileID: 3576063926035980912, guid: 2d876c67c503e274a963270b73873655, type: 3}
       propertyPath: m_LocalPosition.x
