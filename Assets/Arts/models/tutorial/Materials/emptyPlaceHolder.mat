@@ -117,7 +117,7 @@ Material:
     - _ReceiveShadowsOff: 1
     - _RimMax: 0.85
     - _RimMin: 0
-    - _SketchMax: 1
+    - _SketchMax: 0.747
     - _SketchMin: 0.605
     - _SketchTexture_OffsetSpeed: 120
     - _Smoothness: 0.5
