@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class KillZone : MonoBehaviour
 {
-    public Transform playerStartTransform;
-    private Vector3 spawnPoint;
-
-    private void Start()
+    private Transform playerTransform;
+    private GameManager gameManager;
+    private void Awake()
     {
-        spawnPoint = playerStartTransform.position;
+        gameManager = GameManager.Instance;
+        playerTransform = gameManager.playerTransform;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log(other.tag);
+
         if (other.CompareTag("Player"))
         {
-            GameManager.Instance.playerObject.GetComponent<MovementControl>().ToggleGravity(true);
-            playerStartTransform.position = spawnPoint;
+            //Make Sure Gravity is On
+            gameManager.playerObject.GetComponent<MovementControl>().ToggleGravity(true);
+            //Clear Force
+            gameManager.playerObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            gameManager.playerObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            //Respawn
+            playerTransform.position = GameManager.Instance.spawnPoint;
         }
     }
 }

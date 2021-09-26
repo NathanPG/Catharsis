@@ -8,9 +8,19 @@ public class GameManager : MonoBehaviour
 
     private static GameManager _instance;
 
+    public UIController uiController;
+
+    public Transform playerTransform;
+    public Vector3 spawnPoint;
+
     private void Start()
     {
-        
+        spawnPoint = playerTransform.position;
+        //TODO: CHECK UI CONTROLLER
+        if(uiController == null)
+        {
+            
+        }
     }
 
     public static GameManager Instance
@@ -31,6 +41,8 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this);
         playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject == null) Debug.LogError("Failed to find player reference");
+
+        
     }
 
     // Update is called once per frame

@@ -8,9 +8,15 @@ public class MushRoom : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        
+        if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * mushRoomForce);
+            var rb = other.gameObject.GetComponent<Rigidbody>();
+            //Clear Force
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            //MAKE JUMP
+            rb.AddForce(Vector3.up * mushRoomForce);
         }
     }
 }
