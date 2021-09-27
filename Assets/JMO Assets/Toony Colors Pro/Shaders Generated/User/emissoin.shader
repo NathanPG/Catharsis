@@ -18,6 +18,11 @@ Shader "Toony Colors Pro 2/User/emissoin"
 		_RampSmoothing ("Smoothing", Range(0.001,1)) = 0.5
 		[TCP2Separator]
 		
+		[TCP2HeaderHelp(Sketch)]
+		_SketchTexture ("Sketch Texture", 2D) = "black" {}
+		_SketchTexture_OffsetSpeed ("Sketch Texture UV Offset Speed", Float) = 120
+		[TCP2Separator]
+		
 		[TCP2HeaderHelp(Outline)]
 		_OutlineWidth ("Width", Range(0.1,4)) = 1
 		_OutlineColorVertex ("Color", Color) = (0,0,0,1)
@@ -59,6 +64,7 @@ Shader "Toony Colors Pro 2/User/emissoin"
 
 		// Shader Properties
 		sampler2D _BaseMap;
+		sampler2D _SketchTexture;
 
 		CBUFFER_START(UnityPerMaterial)
 			
@@ -69,10 +75,21 @@ Shader "Toony Colors Pro 2/User/emissoin"
 			fixed4 _BaseColor;
 			float _RampThreshold;
 			float _RampSmoothing;
+			float4 _SketchTexture_ST;
+			half _SketchTexture_OffsetSpeed;
 			fixed4 _SColor;
 			fixed4 _HColor;
 		CBUFFER_END
 
+		// Hash without sin and uniform across platforms
+		// Adapted from: https://www.shadertoy.com/view/4djSRW (c) 2014 - Dave Hoskins - CC BY-SA 4.0 License
+		float2 hash22(float2 p)
+		{
+			float3 p3 = frac(p.xyx * float3(443.897, 441.423, 437.195));
+			p3 += dot(p3, p3.yzx + 19.19);
+			return frac((p3.xx+p3.yz)*p3.zy);
+		}
+		
 		// Built-in renderer (CG) to SRP (HLSL) bindings
 		#define UnityObjectToClipPos TransformObjectToHClip
 		#define _WorldSpaceLightPos0 _MainLightPosition
@@ -262,7 +279,8 @@ Shader "Toony Colors Pro 2/User/emissoin"
 			#ifdef _ADDITIONAL_LIGHTS_VERTEX
 				half3 vertexLights : TEXCOORD2;
 			#endif
-				float2 pack0 : TEXCOORD3; /* pack0.xy = texcoord0 */
+				float4 screenPosition : TEXCOORD3;
+				float2 pack1 : TEXCOORD4; /* pack1.xy = texcoord0 */
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
@@ -276,12 +294,16 @@ Shader "Toony Colors Pro 2/User/emissoin"
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
 				// Texture Coordinates
-				output.pack0.xy.xy = input.texcoord0.xy * _BaseMap_ST.xy + _BaseMap_ST.zw;
+				output.pack1.xy.xy = input.texcoord0.xy * _BaseMap_ST.xy + _BaseMap_ST.zw;
 
 				VertexPositionInputs vertexInput = GetVertexPositionInputs(input.vertex.xyz);
 			#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
 				output.shadowCoord = GetShadowCoord(vertexInput);
 			#endif
+				float4 clipPos = vertexInput.positionCS;
+
+				float4 screenPos = ComputeScreenPos(clipPos);
+				output.screenPosition.xyzw = screenPos;
 
 				VertexNormalInputs vertexNormalInput = GetVertexNormalInputs(input.normal);
 			#ifdef _ADDITIONAL_LIGHTS_VERTEX
@@ -311,13 +333,19 @@ Shader "Toony Colors Pro 2/User/emissoin"
 				float3 positionWS = input.worldPosAndFog.xyz;
 				float3 normalWS = NormalizeNormalPerPixel(input.normal);
 
+				//Screen Space UV
+				float2 screenUV = input.screenPosition.xyzw.xy / input.screenPosition.xyzw.w;
+				
 				// Shader Properties Sampling
-				float4 __albedo = ( tex2D(_BaseMap, input.pack0.xy).rgba );
+				float4 __albedo = ( tex2D(_BaseMap, input.pack1.xy).rgba );
 				float4 __mainColor = ( _BaseColor.rgba );
 				float __alpha = ( __albedo.a * __mainColor.a );
 				float __ambientIntensity = ( 1.0 );
 				float __rampThreshold = ( _RampThreshold );
 				float __rampSmoothing = ( _RampSmoothing );
+				float3 __sketchColor = ( float3(0,0,0) );
+				float3 __sketchTexture = ( tex2D(_SketchTexture, screenUV * _ScreenParams.zw * _SketchTexture_ST.xy + _SketchTexture_ST.zw + hash22(floor(_Time.xx * _SketchTexture_OffsetSpeed.xx) / _SketchTexture_OffsetSpeed.xx)).aaa );
+				float __sketchThresholdScale = ( 1.0 );
 				float3 __shadowColor = ( _SColor.rgb );
 				float3 __highlightColor = ( _HColor.rgb );
 
@@ -413,9 +441,12 @@ Shader "Toony Colors Pro 2/User/emissoin"
 			#endif
 
 				accumulatedRamp = saturate(accumulatedRamp);
+				half3 sketchColor = lerp(__sketchColor, half3(1,1,1), __sketchTexture);
+				half3 sketch = lerp(sketchColor, half3(1,1,1), saturate(accumulatedRamp * __sketchThresholdScale));
 				half3 shadowColor = (1 - accumulatedRamp.rgb) * __shadowColor;
 				accumulatedRamp = accumulatedColors.rgb * __highlightColor + shadowColor;
 				color += albedo * accumulatedRamp;
+				color.rgb *= sketch;
 
 				// apply ambient
 				color += indirectDiffuse;
@@ -604,5 +635,5 @@ Shader "Toony Colors Pro 2/User/emissoin"
 	CustomEditor "ToonyColorsPro.ShaderGenerator.MaterialInspector_SG2"
 }
 
-/* TCP_DATA u config(unity:"2020.3.18f1";ver:"2.7.1";tmplt:"SG2_Template_URP";features:list["UNITY_5_4","UNITY_5_5","UNITY_5_6","UNITY_2017_1","UNITY_2018_1","UNITY_2018_2","UNITY_2018_3","UNITY_2019_1","UNITY_2019_2","UNITY_2019_3","UNITY_2020_1","OUTLINE","TEMPLATE_LWRP"];flags:list[];flags_extra:dict[];keywords:dict[RENDER_TYPE="Opaque",RampTextureDrawer="[TCP2Gradient]",RampTextureLabel="Ramp Texture",SHADER_TARGET="3.0",RIM_LABEL="Rim Lighting"];shaderProperties:list[];customTextures:list[];codeInjection:codeInjection(injectedFiles:list[];mark:False);matLayers:list[]) */
-/* TCP_HASH 26aebaf34be0a00f212f90d254f1122c */
+/* TCP_DATA u config(unity:"2020.3.18f1";ver:"2.7.1";tmplt:"SG2_Template_URP";features:list["UNITY_5_4","UNITY_5_5","UNITY_5_6","UNITY_2017_1","UNITY_2018_1","UNITY_2018_2","UNITY_2018_3","UNITY_2019_1","UNITY_2019_2","UNITY_2019_3","UNITY_2020_1","DIFFUSE_TINT_MASK","SKETCH","OUTLINE","TEMPLATE_LWRP"];flags:list[];flags_extra:dict[];keywords:dict[RENDER_TYPE="Opaque",RampTextureDrawer="[TCP2Gradient]",RampTextureLabel="Ramp Texture",SHADER_TARGET="3.0",RIM_LABEL="Rim Lighting"];shaderProperties:list[];customTextures:list[];codeInjection:codeInjection(injectedFiles:list[];mark:False);matLayers:list[]) */
+/* TCP_HASH 3e27dba3f7fa2d1ee8dfd6e2bf3f542c */
