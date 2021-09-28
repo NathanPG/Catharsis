@@ -6,15 +6,22 @@ public class CheckPoint : MonoBehaviour
 {
     public bool shouldShowTip = false;
     public bool shouldShowNarrative = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public string tipString;
+    public List<string> narrativeStrings;
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if(other.gameObject.tag == "Player")
+        {
+            if (shouldShowTip)
+            {
+                GameManager.Instance.uiController.ShowTips(tipString);
+            }
+            if (shouldShowNarrative)
+            {
+                GameManager.Instance.uiController.ShowNarrative(narrativeStrings);
+            }
+        }
     }
 }

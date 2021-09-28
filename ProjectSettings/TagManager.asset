@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Weapon
+  - Hand
   layers:
   - Default
   - TransparentFX

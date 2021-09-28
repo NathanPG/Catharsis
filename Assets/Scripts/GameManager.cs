@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
 
     private static GameManager _instance;
 
+    //Mechanics
+    public Cabinet cabinet;
+
     public UIController uiController;
 
     public Transform playerTransform;
@@ -16,6 +19,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         spawnPoint = playerTransform.position;
+        
         //TODO: CHECK UI CONTROLLER
         if(uiController == null)
         {
