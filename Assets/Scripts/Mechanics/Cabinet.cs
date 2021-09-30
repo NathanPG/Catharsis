@@ -5,6 +5,7 @@ using UnityEngine;
 public class Cabinet : MonoBehaviour
 {
     public int numofCollectibles;
+    public GameObject photoLight, medalLight;
 
     private void Start()
     {
@@ -24,7 +25,8 @@ public class Cabinet : MonoBehaviour
     {
         Debug.Log("COLLECTION FINISHED");
         //Turn on lights
-
+        photoLight.SetActive(true);
+        medalLight.SetActive(true);
         //Open drawer
     }
 }
