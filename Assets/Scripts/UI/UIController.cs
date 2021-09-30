@@ -30,11 +30,13 @@ public class UIController : MonoBehaviour
                 yield return null;
             }
             tipText.enabled = false;
+            isShowingTips = false;
         }
 
         // FADE IN
         else
         {
+            isShowingTips = true;
             // FADE IN
             for (float i = 0; i <= tipFadeDuration; i += Time.deltaTime)
             {
@@ -68,12 +70,14 @@ public class UIController : MonoBehaviour
             else
             {
                 narrativeText.enabled = false;
+                isShowingNarrative = false;
             }
         }
 
         // FADE IN
         else
         {
+            isShowingNarrative = true;
             narrativeText.text = currentList[narrativeIndex];
             // FADE IN
             for (float i = 0; i <= narrativeFadeDuration; i += Time.deltaTime)
@@ -83,9 +87,10 @@ public class UIController : MonoBehaviour
             }
 
             yield return new WaitForSeconds(narrativeDuration);
-
             // FADE OUT
+            
             StartCoroutine(NarrativeInorOut(false));
+            
         }
     }
 
@@ -97,12 +102,14 @@ public class UIController : MonoBehaviour
             StopCoroutine(NarrativeInorOut(true));
             StopCoroutine(NarrativeInorOut(false));
         }
+        
+
         currentList = narrativeList;
         //RESET INDEX
         narrativeIndex = 0;
         narrativeText.text = currentList[narrativeIndex];
         narrativeText.enabled = true;
-        StartCoroutine(NarrativeInorOut(false));
+        StartCoroutine(NarrativeInorOut(true));
     }
 
     public void ShowTips(string tipMsg)

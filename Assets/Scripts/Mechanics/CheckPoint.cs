@@ -10,10 +10,13 @@ public class CheckPoint : MonoBehaviour
     public string tipString;
     public List<string> narrativeStrings;
 
+    private bool isPlayerIn = false;
+
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && !isPlayerIn)
         {
+            isPlayerIn = true;
             if (shouldShowTip)
             {
                 GameManager.Instance.uiController.ShowTips(tipString);
@@ -22,6 +25,14 @@ public class CheckPoint : MonoBehaviour
             {
                 GameManager.Instance.uiController.ShowNarrative(narrativeStrings);
             }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            isPlayerIn = false;
         }
     }
 }
