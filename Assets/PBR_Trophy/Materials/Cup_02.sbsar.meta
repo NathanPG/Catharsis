@@ -53,8 +53,7 @@ ScriptedImporter:
     generateAllOutputs: 0
     generateMipMaps: 1
     preset: " <sbspreset pkgurl=\"pkg:///Cup_02\" label=\"\" >\n  <presetinput identifier=\"$outputsize\"
-      uid=\"938612585\" type=\"8\" value=\"11,11\" />\n  <presetinput identifier=\"Cup_Metal\"
-      uid=\"1185012244\" type=\"4\" value=\"1\" />\n  <presetinput identifier=\"Gold_Roughness\"
+      uid=\"938612585\" type=\"8\" value=\"11,11\" />\n  <presetinput identifier=\"Gold_Roughness\"
       uid=\"1185012246\" type=\"0\" value=\"0.361\" />\n  <presetinput identifier=\"Silver_Roughness\"
       uid=\"1185012328\" type=\"0\" value=\"0.414\" />\n </sbspreset>\n"
     shaderName: Universal Render Pipeline/Lit

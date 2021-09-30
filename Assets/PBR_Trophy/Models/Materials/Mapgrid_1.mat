@@ -20,11 +20,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 749e1b2b4f9ebb14f8b181f30191b8a0, type: 3}
+        m_Texture: {fileID: -8718817410810157990, guid: 13d7603ed6db6144db98903d7e57f57f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 2ffae07c9f14465499f452c537c30f82, type: 3}
+        m_Texture: {fileID: 2800000, guid: 431264929dab67846baa5ef90842b502, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
