@@ -43,4 +43,15 @@ public class Ramp : MonoBehaviour
             playerInRamp = false;
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        
+    }
+    
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, transform.position + transform.TransformDirection(Vector3.forward) * 20f);
+    }
 }

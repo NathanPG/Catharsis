@@ -13,7 +13,10 @@ public class Skills :MonoBehaviour
     private PlayerController playerController;
 
     private bool bulletTimePressed = false;
+    //Normal
     private bool canUseBulletTime = true;
+    //Minimum CD
+    private bool minCDMet = true;
 
     private void Awake()
     {
@@ -57,32 +60,32 @@ public class Skills :MonoBehaviour
             {
                 //Call Once
                 bulletTimePressed = true;
-                //Debug.Log("Enter Bullet");
+                
                 //TODO: VISUAL
                 canUseBulletTime = false;
+
                 StartCoroutine(EnterTheWorld(0.2f));
             }
-            
+
         }
+        
         else if (bulletTimePressed)
         {
             //Call Once
-            bulletTimePressed = false;
-            //Debug.Log("Exit Bullet");
-            //TODO: VISUAL
-            StartCoroutine(ExitTheWorld(0.2f));
-            
-        }
-        else
-        {
-            //Time.timeScale = 1f;
+            if (canUseBulletTime)
+            {
+                bulletTimePressed = false;
+                Debug.Log("Exit Bullet");
+                StartCoroutine(ExitTheWorld(0.2f));
+            }
         }
     }
 
-   private IEnumerator EnterTheWorld(float duration)
+    private IEnumerator EnterTheWorld(float duration)
    {
-        
+        Debug.Log("Enter Bullet");
         float elapsedTime = 0;
+        
         while (elapsedTime <= duration)
         {
             defaultVolume.weight = Mathf.Lerp(1, 0, elapsedTime / duration);
@@ -91,17 +94,25 @@ public class Skills :MonoBehaviour
             yield return new WaitForEndOfFrame();
 
         }
+
         defaultVolume.weight = 0;
         theWorldVolume.weight = 1;
         defaultVolume.priority = 0;
         theWorldVolume.priority = 1;
         Time.timeScale = 0.1f;
+
+        //SCALE IS 1, 0.2 = 2
+        StartCoroutine(ResetBulletTime(0.2f));
     }
+
     private IEnumerator ExitTheWorld(float duration)
     {
-        StartCoroutine(ResetBulletTime(1f));
+        Debug.Log("Exit Bullet");
         Time.timeScale = 1f;
         float elapsedTime = 0;
+
+        
+        
         while (elapsedTime <= duration)
         {
             defaultVolume.weight = Mathf.Lerp(0, 1, elapsedTime / duration);
@@ -119,6 +130,7 @@ public class Skills :MonoBehaviour
     private IEnumerator ResetBulletTime(float time)
     {
         yield return new WaitForSeconds(time);
+        Debug.Log("Reset");
         canUseBulletTime = true;
     }
 }
