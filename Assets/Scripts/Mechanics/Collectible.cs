@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
+    public string collectibleName = "";
     public bool shouldShowNarrative = false;
+     
     public List<string> narrativeMsg;
 
     private bool isCollected = false;
@@ -15,7 +17,14 @@ public class Collectible : MonoBehaviour
         {
             isCollected = true;
             GameManager.Instance.uiController.ShowNarrative(narrativeMsg);
-            GameManager.Instance.cabinet.UpdateProgress();
+            if(collectibleName == "Trophy")
+            {
+                GameManager.Instance.cabinet.TrophyCollected();
+            }
+            else if(collectibleName == "Photo")
+            {
+                GameManager.Instance.cabinet.PhotoCollected();
+            }
         }
     }
 }

@@ -333,7 +333,6 @@ MonoBehaviour:
   isWallRight: 0
   isWallLeft: 0
   isWallRunning: 0
-  testHeight: 0
   dashForce: 300
 --- !u!114 &3576063926035980910
 MonoBehaviour:
@@ -364,6 +363,7 @@ MonoBehaviour:
   inBulletTimePlayer: 0
   hp: 100
   dead: 0
+  canUseBulletTime: 1
   canMove: 1
   canJump: 1
 --- !u!54 &3576063926035980905

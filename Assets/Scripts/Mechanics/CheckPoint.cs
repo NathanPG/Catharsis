@@ -6,6 +6,8 @@ public class CheckPoint : MonoBehaviour
 {
     public bool shouldShowTip = false;
     public bool shouldShowNarrative = false;
+    public bool shouldRepeatNarrative = false;
+    public bool isSpawnPoint = false;
 
     public string tipString;
     public List<string> narrativeStrings;
@@ -25,6 +27,10 @@ public class CheckPoint : MonoBehaviour
             {
                 GameManager.Instance.uiController.ShowNarrative(narrativeStrings);
             }
+            if (isSpawnPoint)
+            {
+                GameManager.Instance.spawnPoint = transform.position;
+            }
         }
     }
 
@@ -33,6 +39,7 @@ public class CheckPoint : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             isPlayerIn = false;
+            if (!shouldRepeatNarrative) shouldShowNarrative = false;
         }
     }
 }

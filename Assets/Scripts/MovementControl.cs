@@ -21,7 +21,7 @@ public class MovementControl : MonoBehaviour
     private bool snapPressed = false;
 
     //Jump
-    [HideInInspector] public bool isGrounded = true;
+    public bool isGrounded = true;
     public float jumpForce;
     public float jumpCD;
     private bool jumpPressed = false;
@@ -40,7 +40,8 @@ public class MovementControl : MonoBehaviour
     public bool isWallRunning;
 
     //TESTING
-    public float testHeight;
+    //public float testHeight;
+    //public Vector3 testForward;
 
     //Sliding
     private bool dashPressed = false;
@@ -65,7 +66,7 @@ public class MovementControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        testHeight = head.transform.localPosition.y;
+        //testHeight = head.transform.localPosition.y;
         PositionController();
         CheckWall();
         if (playerController.canMove && !isWallRunning )
@@ -212,12 +213,16 @@ public class MovementControl : MonoBehaviour
             , cameraTransform.right, 1f);
             bool wallLeft = Physics.Raycast(new Vector3(worldCharacterCenter.x, worldCharacterCenter.y, worldCharacterCenter.z)
             , -cameraTransform.right, 1f);
-            //Horizontal movement
+            //Left/Right movement
             if ((!wallRight && xAxis > 0) || (!wallLeft && xAxis < 0))
             {
                 transform.position += cameraTransform.transform.TransformDirection(Vector3.right) * xAxis;
             }
-            transform.position += cameraTransform.transform.TransformDirection(Vector3.forward) * zAxis;
+            Vector3 forwardVector = cameraTransform.transform.TransformDirection(Vector3.forward) * zAxis;
+            forwardVector = new Vector3(forwardVector.x, 0f, forwardVector.z);
+            transform.position += forwardVector;
+            
+            //transform.position += cameraTransform.transform.forward * zAxis;
         }
     }
 
@@ -237,9 +242,9 @@ public class MovementControl : MonoBehaviour
     /// </summary>
     void CheckJump()
     {
-        isGrounded = Physics.Raycast(new Vector3(worldCharacterCenter.x, transform.position.y + 0.1f , worldCharacterCenter.z)
+        isGrounded = Physics.Raycast(new Vector3(worldCharacterCenter.x, transform.position.y + 1f, worldCharacterCenter.z)
             , Vector3.down,1f);
-        Debug.DrawRay(new Vector3(worldCharacterCenter.x, transform.position.y + 0.1f, worldCharacterCenter.z), Vector3.down, Color.red, 1f);
+        Debug.DrawRay(new Vector3(worldCharacterCenter.x, transform.position.y + 1f, worldCharacterCenter.z), Vector3.down, Color.white, 1f);
 
         if (!playerController.canJump) return;
 
@@ -284,16 +289,16 @@ public class MovementControl : MonoBehaviour
                     StartCoroutine(ResetJump());
                     jumpPressed = true;
                     rigidbody.AddForce(Vector3.up * jumpForce);
-                    rigidbody.AddForce(cameraTransform.forward * jumpForce/3);
+                    rigidbody.AddForce(cameraTransform.forward * jumpForce / 10);
                     if (isWallLeft)
                     {
                         //Debug.Log("Left Wall Jump");
-                        rigidbody.AddForce(cameraTransform.right * jumpForce/2);
+                        rigidbody.AddForce(cameraTransform.right * jumpForce/3);
                     }
                     else if (isWallRight)
                     {
                         //Debug.Log("Right Wall Jump");
-                        rigidbody.AddForce(-cameraTransform.right * jumpForce/2);
+                        rigidbody.AddForce(-cameraTransform.right * jumpForce/3);
                     }
                 }
             }
