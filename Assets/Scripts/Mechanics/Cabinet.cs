@@ -5,7 +5,7 @@ using UnityEngine;
 public class Cabinet : MonoBehaviour
 {
     public int numofCollectibles;
-    public GameObject photoLight, medalLight, emptyPhoto, emptyTrophy;
+    public GameObject trophyLight, photoLight, emptyPhoto, emptyTrophy;
 
     private void Start()
     {
@@ -30,7 +30,7 @@ public class Cabinet : MonoBehaviour
     public void TrophyCollected()
     {
         emptyTrophy.SetActive(false);
-        medalLight.SetActive(true);
+        trophyLight.SetActive(true);
         UpdateProgress();
     }
 

@@ -333,7 +333,6 @@ MonoBehaviour:
   isWallRight: 0
   isWallLeft: 0
   isWallRunning: 0
-  testHeight: 0
   dashForce: 300
 --- !u!114 &3576063926035980910
 MonoBehaviour:
