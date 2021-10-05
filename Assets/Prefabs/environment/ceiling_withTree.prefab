@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!136 &1761235526389856647
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5119404421596124187}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.63, z: 0}
 --- !u!1 &5461369789685333799
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,8 +491,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: lamp1_LP
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a4740566903cf4942b4ba59912b711df, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4740566903cf4942b4ba59912b711df, type: 3}
+--- !u!1 &5119404421596124187 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a4740566903cf4942b4ba59912b711df, type: 3}
+  m_PrefabInstance: {fileID: 5461369790247479626}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5494417512772488865 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a4740566903cf4942b4ba59912b711df, type: 3}

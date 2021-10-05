@@ -364,6 +364,7 @@ MonoBehaviour:
   inBulletTimePlayer: 0
   hp: 100
   dead: 0
+  canUseBulletTime: 1
   canMove: 1
   canJump: 1
 --- !u!54 &3576063926035980905

@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     public float hp = 100;
     public bool dead;
 
+    //Skill
+    public bool canUseBulletTime = true;
+
     //Move control
     public bool canMove = true;
     public bool canJump = true;

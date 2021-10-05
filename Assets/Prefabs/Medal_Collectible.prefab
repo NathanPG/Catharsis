@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 263138228996775164}
   - component: {fileID: 9165042839774712991}
   m_Layer: 0
-  m_Name: memal1_LP_collected
+  m_Name: Medal_Collectible
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
