@@ -12,7 +12,7 @@ public class EnemyBase : MonoBehaviour
 
     public Vector3 startingPosition;
     protected NavMeshAgent agent;
-    protected bool playerInSight, canAttackPalyer;
+    protected bool playerInSight, canAttackPalyer, canMove;
     protected bool alreadyAttacked = false;
     protected bool isDead = false;
 
@@ -96,5 +96,10 @@ public class EnemyBase : MonoBehaviour
     protected void ResetAttack()
     {
         alreadyAttacked = false;
+    }
+
+    public void SetMove(int i)
+    {
+        canMove = (i == 1) ? true : false;
     }
 }

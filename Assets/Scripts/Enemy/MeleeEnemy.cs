@@ -15,6 +15,7 @@ public class MeleeEnemy : EnemyBase
         state = State.Idle;
         player = Camera.main.transform;
         meleeAnimator.SetBool("Idle", true);
+        canMove = true;
     }
 
     // Update is called once per frame
@@ -31,11 +32,11 @@ public class MeleeEnemy : EnemyBase
         {
             if ((transform.position - startingPosition).magnitude > maxChaseRange)
             {
-                state = State.Returning;
+                if (canMove) state = State.Returning;
             }
             else
             {
-                state = State.Approaching;
+                if(canMove) state = State.Approaching;
             }
         }  
         else
@@ -46,7 +47,7 @@ public class MeleeEnemy : EnemyBase
             }
             else
             {
-                state = State.Returning;
+                if(canMove) state = State.Returning;
             }
         }
 
