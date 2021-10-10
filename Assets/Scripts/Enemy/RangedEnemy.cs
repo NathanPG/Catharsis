@@ -81,7 +81,7 @@ public class RangedEnemy : EnemyBase
 
 
 
-            BeAttacked();
+            //BeAttacked();
         }
     }
 }

@@ -74,12 +74,24 @@ public class MeleeEnemy : EnemyBase
         }
     }
 
+    private void BeAttacked()
+    {
+        //StartCoroutine(Death(1f));
+        isDead = true;
+        GameManager.Instance.TimeStopEffect();
+        
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Weapon") && !isDead)
         {
             Debug.Log("Hit Enemy");
             BeAttacked();
+
+            //TODO: ANIMATION
+            //meleeAnimator
+
         }
     }
 

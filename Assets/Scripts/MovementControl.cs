@@ -117,12 +117,12 @@ public class MovementControl : MonoBehaviour
         isWallRight = Physics.Raycast(new Vector3(worldCharacterCenter.x, worldCharacterCenter.y, worldCharacterCenter.z)
             , cameraTransform.right, 1f, whatIsWall);
 
-        Debug.DrawRay(new Vector3(worldCharacterCenter.x, worldCharacterCenter.y, worldCharacterCenter.z), cameraTransform.right, Color.green, 1f);
+        //Debug.DrawRay(new Vector3(worldCharacterCenter.x, worldCharacterCenter.y, worldCharacterCenter.z), cameraTransform.right, Color.green, 1f);
 
         isWallLeft = Physics.Raycast(new Vector3(worldCharacterCenter.x, worldCharacterCenter.y, worldCharacterCenter.z)
             , -cameraTransform.right, 1f, whatIsWall);
 
-        Debug.DrawRay(new Vector3(worldCharacterCenter.x, worldCharacterCenter.y, worldCharacterCenter.z), -cameraTransform.right, Color.green, 1f);
+        //Debug.DrawRay(new Vector3(worldCharacterCenter.x, worldCharacterCenter.y, worldCharacterCenter.z), -cameraTransform.right, Color.green, 1f);
     }
 
     void CheckWallRun()
@@ -244,7 +244,7 @@ public class MovementControl : MonoBehaviour
     {
         isGrounded = Physics.Raycast(new Vector3(worldCharacterCenter.x, transform.position.y + 1f, worldCharacterCenter.z)
             , Vector3.down,1f);
-        Debug.DrawRay(new Vector3(worldCharacterCenter.x, transform.position.y + 1f, worldCharacterCenter.z), Vector3.down, Color.white, 1f);
+        //Debug.DrawRay(new Vector3(worldCharacterCenter.x, transform.position.y + 1f, worldCharacterCenter.z), Vector3.down, Color.white, 1f);
 
         if (!playerController.canJump) return;
 
