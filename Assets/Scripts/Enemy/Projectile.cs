@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : BaseProjectile
+public class Projectile : BaseProjectile
 {
     Vector3 m_direction;
     bool m_fired;

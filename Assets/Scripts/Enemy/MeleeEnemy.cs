@@ -6,10 +6,11 @@ using UnityEngine.AI;
 public class MeleeEnemy : EnemyBase
 {
     public State state;
-    public Animator meleeAnimator;
+    private Animator meleeAnimator;
     // Start is called before the first frame update
     void Start()
     {
+        meleeAnimator = GetComponent<Animator>();
         startingPosition = transform.position;
         agent = GetComponent<NavMeshAgent>();
         state = State.Idle;
@@ -76,10 +77,10 @@ public class MeleeEnemy : EnemyBase
 
     private void BeAttacked()
     {
-        //StartCoroutine(Death(1f));
         isDead = true;
         GameManager.Instance.TimeStopEffect();
-        
+        //TODO: RANDOM DEATH ANIM
+        meleeAnimator.Play("Death0");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -88,10 +89,6 @@ public class MeleeEnemy : EnemyBase
         {
             Debug.Log("Hit Enemy");
             BeAttacked();
-
-            //TODO: ANIMATION
-            //meleeAnimator
-
         }
     }
 
@@ -105,6 +102,11 @@ public class MeleeEnemy : EnemyBase
             meleeAnimator.Play("Attack");
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
+    }
+
+    public void DeathAnimEnd()
+    {
+        //Destroy(this.gameObject);
     }
 
     
