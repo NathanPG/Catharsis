@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3576063925459520629}
   - component: {fileID: 3576063925459520628}
   m_Layer: 3
-  m_Name: GameObject
+  m_Name: Grapple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   capsuleCollider: {fileID: 0}
   whatIsGrappleable:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
   grappleDistance: 100
   canGrapple: 1
 --- !u!1 &3576063925476273189
@@ -227,14 +227,13 @@ GameObject:
   m_Component:
   - component: {fileID: 3576063926035980912}
   - component: {fileID: 3576063926035980915}
-  - component: {fileID: 3576063926035980914}
-  - component: {fileID: 3576063926035980909}
   - component: {fileID: 3576063926035980911}
   - component: {fileID: 3576063926035980910}
   - component: {fileID: 1321115648571447755}
   - component: {fileID: 3576063926035980905}
   - component: {fileID: 3576063926035980904}
   - component: {fileID: 3576063926035980907}
+  - component: {fileID: 2063278376}
   m_Layer: 3
   m_Name: XR Rig
   m_TagString: Player
@@ -277,35 +276,6 @@ MonoBehaviour:
   m_TrackingOriginMode: 2
   m_TrackingSpace: 3
   m_CameraYOffset: 1.36144
---- !u!114 &3576063926035980914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3576063926035980906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017c5e3933235514c9520e1dace2a4b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ActionAssets:
-  - {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  - {fileID: -944628639613478452, guid: cbfe609d73660bf47a5467cefa4bf903, type: 3}
---- !u!114 &3576063926035980909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3576063926035980906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03a5df2202a8b96488c744be3bd0c33e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Timeout: 10
-  m_XRRig: {fileID: 3576063926035980915}
 --- !u!114 &3576063926035980911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 3576063926293578405}
-  rigTransform: {fileID: 0}
+  rigTransform: {fileID: 3576063926035980912}
   maxMoveSpeed: 5
   isGrounded: 1
   jumpForce: 300
@@ -328,8 +298,8 @@ MonoBehaviour:
   whatIsWall:
     serializedVersion: 2
     m_Bits: 64
-  wallRunForce: 100
-  maxWallSpeed: 6
+  wallRunForce: 300
+  maxWallSpeed: 10
   isWallRight: 0
   isWallLeft: 0
   isWallRunning: 0
@@ -414,6 +384,20 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &2063278376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3576063926035980906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017c5e3933235514c9520e1dace2a4b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ActionAssets:
+  - {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!1 &3576063926170448362
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,9 +927,10 @@ GameObject:
   - component: {fileID: 3576063926836307998}
   - component: {fileID: 3576063926836307993}
   - component: {fileID: 3576063926836307992}
+  - component: {fileID: 2125562655}
   m_Layer: 3
   m_Name: RightHand Controller
-  m_TagString: Untagged
+  m_TagString: Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1384,6 +1369,19 @@ MonoBehaviour:
   m_SnapThresholdDistance: 10
   m_Reticle: {fileID: 0}
   m_StopLineAtFirstRaycastHit: 1
+--- !u!135 &2125562655
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3576063926836307994}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3576063927317506737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1397,9 +1395,10 @@ GameObject:
   - component: {fileID: 3576063927317506741}
   - component: {fileID: 3576063927317506740}
   - component: {fileID: 3576063927317506743}
+  - component: {fileID: 398978486}
   m_Layer: 3
   m_Name: LeftHand Controller
-  m_TagString: Untagged
+  m_TagString: Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1674,7 +1673,7 @@ LineRenderer:
   m_Positions: []
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.02
+    widthMultiplier: 0.01
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -1748,9 +1747,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e988983f96fe1dd48800bcdfc82f23e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LineWidth: 0.02
+  m_LineWidth: 0.01
   m_OverrideInteractorLineLength: 1
-  m_LineLength: 10
+  m_LineLength: 5
   m_WidthCurve:
     serializedVersion: 2
     m_Curve:
@@ -1806,7 +1805,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   m_InvalidColorGradient:
     serializedVersion: 2
-    key0: {r: 1, g: 0, b: 0, a: 1}
+    key0: {r: 0, g: 0.06715846, b: 1, a: 1}
     key1: {r: 1, g: 0, b: 0, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
@@ -1838,6 +1837,19 @@ MonoBehaviour:
   m_SnapThresholdDistance: 10
   m_Reticle: {fileID: 0}
   m_StopLineAtFirstRaycastHit: 1
+--- !u!135 &398978486
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3576063927317506737}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &3576063927287803988
 CapsuleCollider:
   m_ObjectHideFlags: 0

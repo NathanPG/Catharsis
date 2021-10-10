@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     public bool isShowingNarrative = false, isShowingTips = false;
-    public Text narrativeText, tipText;
+    public Text narrativeText, tipText, goalText;
     public float narrativeFadeDuration, tipFadeDuration, narrativeDuration, tipDuration;
 
     private int narrativeIndex = 0;
@@ -125,5 +125,24 @@ public class UIController : MonoBehaviour
         tipText.text = currentTip;
         tipText.enabled = true;
         StartCoroutine(TipInorOut(true));
+    }
+
+    public void ToggleGoal(bool b, string s)
+    {
+        if (s.Length > 0)
+        {
+            goalText.text = s;
+        }
+
+        if (b)
+        {  
+            goalText.enabled = true;
+        }
+        else
+        {
+            goalText.enabled = false;
+        }
+
+        
     }
 }

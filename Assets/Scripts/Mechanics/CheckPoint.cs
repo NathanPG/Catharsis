@@ -8,11 +8,24 @@ public class CheckPoint : MonoBehaviour
     public bool shouldShowNarrative = false;
     public bool shouldRepeatNarrative = false;
     public bool isSpawnPoint = false;
+    public bool isStartPoint = false;
+    public bool shouldShowGoal = true;
 
     public string tipString;
     public List<string> narrativeStrings;
+    public string goalString;
 
     private bool isPlayerIn = false;
+
+    private void Start()
+    {
+        if (isStartPoint)
+        {
+            GameManager.Instance.uiController.ShowTips(tipString);
+            GameManager.Instance.uiController.ShowNarrative(narrativeStrings);
+            GameManager.Instance.uiController.ToggleGoal(true, goalString);
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -30,6 +43,15 @@ public class CheckPoint : MonoBehaviour
             if (isSpawnPoint)
             {
                 GameManager.Instance.spawnPoint = transform.position;
+            }
+
+            if (shouldShowGoal)
+            {
+                GameManager.Instance.uiController.ToggleGoal(true, goalString);
+            }
+            else
+            {
+                GameManager.Instance.uiController.ToggleGoal(false, goalString);
             }
         }
     }
