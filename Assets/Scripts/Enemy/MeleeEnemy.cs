@@ -79,7 +79,8 @@ public class MeleeEnemy : EnemyBase
         //StartCoroutine(Death(1f));
         isDead = true;
         GameManager.Instance.TimeStopEffect();
-        
+        //TODO: RANDOM DEATH ANIM
+        meleeAnimator.Play("Death0");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -105,6 +106,11 @@ public class MeleeEnemy : EnemyBase
             meleeAnimator.Play("Attack");
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
+    }
+
+    public void DeathAnimEnd()
+    {
+        //Destroy(this.gameObject);
     }
 
     
