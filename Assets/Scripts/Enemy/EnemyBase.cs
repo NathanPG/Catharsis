@@ -25,11 +25,6 @@ public class EnemyBase : MonoBehaviour
     }
 
 
-    protected void BeAttacked()
-    {
-        //StartCoroutine(Death(1f));
-    }
-
     protected void Approach()
     {
         agent.SetDestination(player.position);
@@ -38,6 +33,7 @@ public class EnemyBase : MonoBehaviour
 
     protected IEnumerator Death(float duration)
     {
+        /*
         MeshRenderer mr = GetComponent<MeshRenderer>();
         float elapsedTime = 0f;
         float cutOff = transform.position.y + 1.7f;
@@ -49,6 +45,8 @@ public class EnemyBase : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         mr.material.SetFloat("_CutoffHeight", transform.position.y - 1.7f);
+        */
+        yield return new WaitForSecondsRealtime(3f);
         Destroy(this.gameObject);
     }
 

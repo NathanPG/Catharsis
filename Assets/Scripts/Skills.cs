@@ -20,30 +20,7 @@ public class Skills :MonoBehaviour
     }
     void Update()
     {
-        
         CheckBulletTime();
-    }
-
-
-    /// <summary>
-    /// If any of the device is not available, try to bind the device
-    /// </summary>
-    void BindDevice()
-    {
-        var inputDevices = new List<UnityEngine.XR.InputDevice>();
-        UnityEngine.XR.InputDevices.GetDevices(inputDevices);
-        foreach (var device in inputDevices)
-        {
-            //Right Hand
-            if (device.role.ToString() == "RightHanded")
-            {
-                playerController.rightHand = device;
-            }
-            else if (device.role.ToString() == "LeftHanded")
-            {
-                playerController.leftHand = device;
-            }
-        }
     }
 
     void CheckBulletTime()
@@ -91,15 +68,16 @@ public class Skills :MonoBehaviour
             yield return new WaitForEndOfFrame();
 
         }
-
         defaultVolume.weight = 0;
         theWorldVolume.weight = 1;
         defaultVolume.priority = 0;
         theWorldVolume.priority = 1;
+
+        //SLOW DOWN TIME
         Time.timeScale = 0.1f;
 
-        //SCALE IS 1, VALUE HAS TO /10
-        StartCoroutine(ResetBulletTime(0.1f));
+        //REAL TIME 1F
+        StartCoroutine(ResetBulletTime(1f));
     }
 
     private IEnumerator ExitTheWorld(float duration)
@@ -119,13 +97,34 @@ public class Skills :MonoBehaviour
         theWorldVolume.weight = 0;
         defaultVolume.priority = 1;
         theWorldVolume.priority = 0;
-        
     }
 
     private IEnumerator ResetBulletTime(float time)
     {
-        yield return new WaitForSeconds(time);
-        Debug.Log("Reset");
+        yield return new WaitForSecondsRealtime(time);
         playerController.canUseBulletTime = true;
     }
+
+    /*
+    /// <summary>
+    /// If any of the device is not available, try to bind the device
+    /// </summary>
+    void BindDevice()
+    {
+        var inputDevices = new List<UnityEngine.XR.InputDevice>();
+        UnityEngine.XR.InputDevices.GetDevices(inputDevices);
+        foreach (var device in inputDevices)
+        {
+            //Right Hand
+            if (device.role.ToString() == "RightHanded")
+            {
+                playerController.rightHand = device;
+            }
+            else if (device.role.ToString() == "LeftHanded")
+            {
+                playerController.leftHand = device;
+            }
+        }
+    }
+    */
 }

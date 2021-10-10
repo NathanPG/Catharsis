@@ -19,39 +19,48 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         spawnPoint = playerTransform.position;
-        
-        //TODO: CHECK UI CONTROLLER
-        if(uiController == null)
-        {
-            
-        }
     }
 
     public static GameManager Instance
     {
         get
         {
-            if (_instance == null)
-            {
-
-            }
             return _instance;
         }
     }
 
+    public void TimeStopEffect()
+    {
+        if (Time.timeScale != 1) return;
+        if(playerObject == null) playerObject = GameObject.FindGameObjectWithTag("Player");
+        StartCoroutine(TimeStopCR());
+    }
+    IEnumerator TimeStopCR()
+    {
+
+        playerObject.GetComponent<PlayerController>().canUseBulletTime = false;
+        //SLOW DOWN FOR 0.2S
+        Time.timeScale = 0.1f;
+        yield return new WaitForSecondsRealtime(0.2f);
+
+        playerObject.GetComponent<PlayerController>().canUseBulletTime = true;
+        Time.timeScale = 1f;
+    }
+
     private void Awake()
     {
-        _instance = this;
-        DontDestroyOnLoad(this);
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        
         playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject == null) Debug.LogError("Failed to find player reference");
-
-        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
