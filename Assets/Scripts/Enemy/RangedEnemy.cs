@@ -6,15 +6,18 @@ using UnityEngine.AI;
 public class RangedEnemy : EnemyBase
 {
     private State state;
-    public GameObject bulletPrefab;
+    public GameObject projectilePrefab, rulerObj;
     public Transform fireLocation;
+    private Animator rangedAnimator;
     // Start is called before the first frame update
     void Start()
     {
+        rangedAnimator = GetComponent<Animator>();
         startingPosition = transform.position;
         agent = GetComponent<NavMeshAgent>();
         state = State.Idle;
         player = Camera.main.transform;
+       
     }
 
     // Update is called once per frame
@@ -30,13 +33,6 @@ public class RangedEnemy : EnemyBase
         {
             case State.Attacking:
                 agent.isStopped = true;
-                /*
-                if ((transform.position - startingPosition).magnitude > maxChaseRange)
-                {
-                    state = State.Returning;
-                    break;
-                }
-                */
                 Attack();
                 break;
             case State.Idle:
@@ -47,14 +43,16 @@ public class RangedEnemy : EnemyBase
 
     protected void Attack()
     {
-        transform.LookAt(player);
+        Vector3 rotation = Quaternion.LookRotation(player.transform.position).eulerAngles;
+        rotation.x = 0f;
+        rotation.z = 0f;
+        transform.rotation = Quaternion.Euler(rotation);
+
+
         if (!alreadyAttacked)
         {
             alreadyAttacked = true;
-            //ATTACK
-            
-            Debug.Log("Shot Fired!");
-            Fire();
+            rangedAnimator.Play("RangedAttack");
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
@@ -63,25 +61,29 @@ public class RangedEnemy : EnemyBase
     {
         Vector3 fireLoc = fireLocation.position;
         Vector3 targetLoc = player.position;
+        rulerObj.SetActive(false);
+        GameObject proj = Instantiate(projectilePrefab, fireLoc, Quaternion.LookRotation(targetLoc - fireLoc));
+        proj.GetComponent<Projectile>().FireProjectile(fireLoc, targetLoc, damage);
+    }
 
-        GameObject proj = Instantiate(bulletPrefab, fireLoc, Quaternion.LookRotation(targetLoc - fireLoc));
-        proj.GetComponent<Bullet>().FireProjectile(fireLoc, targetLoc, damage);
+    private void ResetRuler()
+    {
+        rulerObj.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Weapon") && !isDead)
         {
-
-
-
-            isDead = true;
-
-
-
-
-
-            //BeAttacked();
+            BeAttacked();
         }
+    }
+
+    private void BeAttacked()
+    {
+        isDead = true;
+        GameManager.Instance.TimeStopEffect();
+        //TODO: RANDOM DEATH ANIM
+        rangedAnimator.Play("Death0");
     }
 }
