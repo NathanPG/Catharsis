@@ -13,7 +13,7 @@ public class UIController : MonoBehaviour
     private List<string> currentList;
     private string currentTip;
 
-    private void Start()
+    private void Awake()
     {
         narrativeText.enabled = false;
         tipText.enabled = false;
