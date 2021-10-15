@@ -63,7 +63,8 @@ public class RangedEnemy : EnemyBase
         Vector3 targetLoc = player.position;
         rulerObj.SetActive(false);
         GameObject proj = Instantiate(projectilePrefab, fireLoc, Quaternion.LookRotation(targetLoc - fireLoc));
-        proj.GetComponent<Projectile>().FireProjectile(fireLoc, targetLoc, damage);
+        //GameObject proj = Instantiate(projectilePrefab, fireLoc, Quaternion.identity);
+        proj.GetComponent<Ruler>().FireProjectile(fireLoc, targetLoc, damage);
     }
 
     private void ResetRuler()

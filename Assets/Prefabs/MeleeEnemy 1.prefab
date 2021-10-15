@@ -2376,8 +2376,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5423231595506166432}
-  - component: {fileID: 6387775612273497206}
   - component: {fileID: 5533104363284216719}
+  - component: {fileID: 6387775612273497206}
   - component: {fileID: 8350515042115754607}
   - component: {fileID: 4703110042668276696}
   m_Layer: 0
@@ -2403,20 +2403,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &6387775612273497206
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4614184983045713946}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.8
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!95 &5533104363284216719
 Animator:
   serializedVersion: 3
@@ -2436,6 +2422,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &6387775612273497206
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4614184983045713946}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!195 &8350515042115754607
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2481,7 +2481,6 @@ MonoBehaviour:
   player: {fileID: 0}
   startingPosition: {x: 0, y: 0, z: 0}
   state: 3
-  meleeAnimator: {fileID: 5533104363284216719}
 --- !u!1 &4643337931012325908
 GameObject:
   m_ObjectHideFlags: 0
