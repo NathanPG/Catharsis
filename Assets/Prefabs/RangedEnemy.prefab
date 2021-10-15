@@ -997,7 +997,6 @@ GameObject:
   - component: {fileID: 3874540307539360903}
   - component: {fileID: 3869504887180518625}
   - component: {fileID: 3861956917443732763}
-  - component: {fileID: 1291278427150062290}
   m_Layer: 0
   m_Name: RULER
   m_TagString: Untagged
@@ -1068,20 +1067,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1291278427150062290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3876836984549580899}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f92493a1a066c5409011326b4061dcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  height: 1.5
 --- !u!1 &3909942662757015069
 GameObject:
   m_ObjectHideFlags: 0
@@ -1289,7 +1274,7 @@ MonoBehaviour:
   damage: 0
   player: {fileID: 0}
   startingPosition: {x: 0, y: 0, z: 0}
-  projectilePrefab: {fileID: 1940036396469110, guid: e6d5a1f281c80404ea97b8ec440318ed, type: 3}
+  projectilePrefab: {fileID: 7818535080671740509, guid: e6d5a1f281c80404ea97b8ec440318ed, type: 3}
   rulerObj: {fileID: 3876836984549580899}
   fireLocation: {fileID: 4765738652428476331}
 --- !u!54 &4978965500658188633

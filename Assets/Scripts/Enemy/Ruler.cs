@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : BaseProjectile
+public class Ruler : BaseProjectile
 {
     Vector3 m_direction;
     bool m_fired;
+    public GameObject entity;
+    public float rotateSpeed;
     // Update is called once per frame
     void Update()
     {
         if (m_fired)
         {
             transform.position += m_direction * (speed * Time.deltaTime);
+            SelfRotation();
         }
     }
 
@@ -32,6 +35,11 @@ public class Projectile : BaseProjectile
 
             Destroy(gameObject);
         }
+    }
+
+    void SelfRotation()
+    {
+        entity.transform.RotateAround(entity.transform.forward, rotateSpeed * Time.deltaTime);
     }
     
 }

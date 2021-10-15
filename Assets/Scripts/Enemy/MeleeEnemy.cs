@@ -26,29 +26,36 @@ public class MeleeEnemy : EnemyBase
 
         playerInSight = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         canAttackPalyer = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-        if (playerInSight && canAttackPalyer) state = State.Attacking;
+
+        if (playerInSight && canAttackPalyer)
+        {
+            meleeAnimator.SetBool("Attacking", true);
+            state = State.Attacking;
+        }
 
         //Try to approach
         else if (playerInSight && !canAttackPalyer && state != State.Returning)
         {
+            meleeAnimator.SetBool("Attacking", false);
             if ((transform.position - startingPosition).magnitude > maxChaseRange)
             {
                 if (canMove) state = State.Returning;
             }
             else
             {
-                if(canMove) state = State.Approaching;
+                if (canMove) state = State.Approaching;
             }
-        }  
+        }
         else
         {
+            meleeAnimator.SetBool("Attacking", false);
             if ((transform.position - startingPosition).magnitude < 3f)
             {
                 state = State.Idle;
             }
             else
             {
-                if(canMove) state = State.Returning;
+                if (canMove) state = State.Returning;
             }
         }
 
@@ -57,6 +64,7 @@ public class MeleeEnemy : EnemyBase
             case State.Approaching:
                 agent.isStopped = false;
                 meleeAnimator.SetBool("Idle", false);
+                meleeAnimator.Play("Forward");
                 Approach();
                 break;
             case State.Attacking:
@@ -98,7 +106,7 @@ public class MeleeEnemy : EnemyBase
         {
             alreadyAttacked = true;
             //ATTACK
-            transform.LookAt(player);
+            
             meleeAnimator.Play("Attack");
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
