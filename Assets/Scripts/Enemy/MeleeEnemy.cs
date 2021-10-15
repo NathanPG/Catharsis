@@ -112,10 +112,7 @@ public class MeleeEnemy : EnemyBase
         }
     }
 
-    public void DeathAnimEnd()
-    {
-        //Destroy(this.gameObject);
-    }
+    
 
     
 }

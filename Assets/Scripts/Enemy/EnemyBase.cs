@@ -100,4 +100,9 @@ public class EnemyBase : MonoBehaviour
     {
         canMove = (i == 1) ? true : false;
     }
+
+    protected void DeathAnimEnd()
+    {
+        Destroy(this.gameObject, 5f);
+    }
 }

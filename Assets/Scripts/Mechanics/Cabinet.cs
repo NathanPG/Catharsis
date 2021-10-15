@@ -6,10 +6,13 @@ public class Cabinet : MonoBehaviour
 {
     public int numofCollectibles;
     public GameObject trophyLight, photoLight, emptyPhoto, emptyTrophy;
+    private Animation animation;
 
     private void Start()
     {
         GameManager.Instance.cabinet = this;
+        animation = GetComponent<Animation>();
+        
     }
 
     private void UpdateProgress()
@@ -25,6 +28,7 @@ public class Cabinet : MonoBehaviour
     {
         Debug.Log("COLLECTION FINISHED");
         //Open drawer
+        animation.Play();
     }
 
     public void TrophyCollected()
