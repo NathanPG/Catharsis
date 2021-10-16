@@ -17,7 +17,10 @@ public class Collectible : MonoBehaviour
         {
             isCollected = true;
             GameManager.Instance.uiController.ShowNarrative(narrativeMsg);
-            if(collectibleName == "Trophy")
+
+            GetComponent<Animation>().Play();
+
+            if (collectibleName == "Trophy")
             {
                 GameManager.Instance.cabinet.TrophyCollected();
             }

@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 6721951884818499470}
   - component: {fileID: 667934750362943681}
   - component: {fileID: 3780154598670050691}
+  - component: {fileID: 6768471580095884422}
   m_Layer: 0
   m_Name: photoFrame_LP_collected
   m_TagString: Untagged
@@ -106,9 +107,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6197792235446050100}
-  m_LocalRotation: {x: -0, y: 0.03765921, z: -0, w: 0.9992907}
+  m_LocalRotation: {x: 0, y: 0.037655268, z: 0, w: 0.9992908}
   m_LocalPosition: {x: 0.299, y: 1.418, z: 0}
-  m_LocalScale: {x: 1.451392, y: 1.451392, z: 1.451392}
+  m_LocalScale: {x: 2.1525598, y: 2.1525598, z: 2.1525598}
   m_Children:
   - {fileID: 7092142099720359604}
   - {fileID: 3206864065519311517}
@@ -127,10 +128,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69c9322db98fbdb43be218e8e7bd0f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleName: 
+  collectibleName: Photo
   shouldShowNarrative: 1
   narrativeMsg:
-  - 'TEMP: PHOTO COLLECTED'
+  - 'TEST: PHOTO COLLECTED'
 --- !u!135 &3780154598670050691
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -144,6 +145,21 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.08
   m_Center: {x: 0, y: 0, z: -0.03}
+--- !u!111 &6768471580095884422
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6197792235446050100}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 79fb9421f0c046b4281339b76cff2c6e, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &6216542936410193321
 GameObject:
   m_ObjectHideFlags: 0

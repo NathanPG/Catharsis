@@ -10120,14 +10120,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 291157963}
     m_Modifications:
-    - target: {fileID: 667934750362943681, guid: ae8cb5db1c800994cb671afdf5ea2530, type: 3}
-      propertyPath: collectibleName
-      value: Photo
-      objectReference: {fileID: 0}
-    - target: {fileID: 667934750362943681, guid: ae8cb5db1c800994cb671afdf5ea2530, type: 3}
-      propertyPath: narrativeMsg.Array.data[0]
-      value: 'TEST: PHOTO COLLECTED'
-      objectReference: {fileID: 0}
     - target: {fileID: 6197792235446050100, guid: ae8cb5db1c800994cb671afdf5ea2530, type: 3}
       propertyPath: m_Name
       value: photoFrame_LP_collected
@@ -10135,18 +10127,6 @@ PrefabInstance:
     - target: {fileID: 6721951884818499470, guid: ae8cb5db1c800994cb671afdf5ea2530, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6721951884818499470, guid: ae8cb5db1c800994cb671afdf5ea2530, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.1525598
-      objectReference: {fileID: 0}
-    - target: {fileID: 6721951884818499470, guid: ae8cb5db1c800994cb671afdf5ea2530, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.1525598
-      objectReference: {fileID: 0}
-    - target: {fileID: 6721951884818499470, guid: ae8cb5db1c800994cb671afdf5ea2530, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.1525598
       objectReference: {fileID: 0}
     - target: {fileID: 6721951884818499470, guid: ae8cb5db1c800994cb671afdf5ea2530, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15349,6 +15329,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 213031841}
     m_Modifications:
+    - target: {fileID: 4253846917791991470, guid: fedea37fb03827f40bb517dbc835815a, type: 3}
+      propertyPath: m_Animation
+      value: 
+      objectReference: {fileID: 7400000, guid: 6939a854700bc3b4bba46652bc8cac4d, type: 2}
+    - target: {fileID: 4253846917791991470, guid: fedea37fb03827f40bb517dbc835815a, type: 3}
+      propertyPath: m_PlayAutomatically
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253846917791991470, guid: fedea37fb03827f40bb517dbc835815a, type: 3}
+      propertyPath: m_Animations.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253846917791991470, guid: fedea37fb03827f40bb517dbc835815a, type: 3}
+      propertyPath: m_Animations.Array.data[0]
+      value: 
+      objectReference: {fileID: 7400000, guid: 6939a854700bc3b4bba46652bc8cac4d, type: 2}
     - target: {fileID: 7645368982636751067, guid: fedea37fb03827f40bb517dbc835815a, type: 3}
       propertyPath: collectibleName
       value: Trophy
@@ -15391,11 +15387,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8545107694589146629, guid: fedea37fb03827f40bb517dbc835815a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -104.097
+      value: -104.119514
       objectReference: {fileID: 0}
     - target: {fileID: 8545107694589146629, guid: fedea37fb03827f40bb517dbc835815a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.29333335
       objectReference: {fileID: 0}
     - target: {fileID: 8545107694589544917, guid: fedea37fb03827f40bb517dbc835815a, type: 3}
       propertyPath: m_Name
