@@ -19,6 +19,7 @@ public class Destructible : MonoBehaviour
     {
         if(other.gameObject.tag == "Weapon")
         {
+            GetComponent<BoxCollider>().enabled = false;
             DestroyObjs();
         }
     }

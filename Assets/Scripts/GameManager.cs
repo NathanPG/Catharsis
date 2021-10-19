@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         playerObject.GetComponent<PlayerController>().canUseBulletTime = false;
         //SLOW DOWN FOR 0.2S
         Time.timeScale = 0.1f;
-        yield return new WaitForSecondsRealtime(5f);
+        yield return new WaitForSecondsRealtime(3f);
 
         playerObject.GetComponent<PlayerController>().canUseBulletTime = true;
         Time.timeScale = 1f;
