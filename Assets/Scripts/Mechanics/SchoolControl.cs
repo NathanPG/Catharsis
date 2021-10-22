@@ -18,7 +18,8 @@ public class SchoolControl : MonoBehaviour
 
     private void Start()
     {
-        StartToFall();
+        //isFalling = true;
+        //StartToFall();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,16 +27,17 @@ public class SchoolControl : MonoBehaviour
         if(other.tag == "Player")
         {
             isFalling = true;
-            StartToFall();
+            Invoke("StartToFall", floorList[0].GetComponent<Floor>().fallCD);
         }
     }
 
     private void StartToFall()
     {
-        if (!isFalling) return;
-        //Debug.Log("Test");
+        if (!isFalling || floorIndex >= 8) return;
         floorList[floorIndex].GetComponent<Floor>().Fall();
         Invoke("StartToFall", floorList[floorIndex + 1].GetComponent<Floor>().fallCD);
+        Debug.Log("Fall:" + floorIndex);
+        floorIndex++;
     }
 
     public void SpawnReset()
