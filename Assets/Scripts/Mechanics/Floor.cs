@@ -19,6 +19,7 @@ public class Floor : MonoBehaviour
 
     public void Fall()
     {
+        Debug.Log(this.gameObject.name);
         rb.isKinematic = false;
         rb.useGravity = true;
         Invoke("Hide", 5f);
@@ -33,7 +34,9 @@ public class Floor : MonoBehaviour
 
     public void ResetFloor()
     {
-        this.gameObject.SetActive(true);
+        CancelInvoke("Hide");
+        rb.isKinematic = true;
+        rb.useGravity = false;
         transform.position = spawnPoint;
     }
 }

@@ -12,6 +12,7 @@ public class SchoolControl : MonoBehaviour
         foreach(Transform floor in transform)
         {
             floorList.Add(floor.gameObject);
+            //Debug.Log(floor.gameObject.name);
         }
         Debug.Log("Floor Num:" + floorList.Count);
     }
@@ -24,19 +25,20 @@ public class SchoolControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "Player" && !isFalling)
         {
+            GameManager.Instance.spawnPoint = new Vector3(-1.11000001f, -18.2700005f, 69.3650055f);
             isFalling = true;
-            Invoke("StartToFall", floorList[0].GetComponent<Floor>().fallCD);
+            StartToFall();
         }
     }
 
     private void StartToFall()
     {
-        if (!isFalling || floorIndex >= 8) return;
+        if (!isFalling) return;
         floorList[floorIndex].GetComponent<Floor>().Fall();
-        Invoke("StartToFall", floorList[floorIndex + 1].GetComponent<Floor>().fallCD);
-        Debug.Log("Fall:" + floorIndex);
+        if (floorIndex == 7) return;
+        Invoke("StartToFall", floorList[floorIndex+1].GetComponent<Floor>().fallCD);
         floorIndex++;
     }
 
@@ -47,6 +49,8 @@ public class SchoolControl : MonoBehaviour
         floorIndex = 0;
         foreach (GameObject g in floorList)
         {
+            //Debug.Log("RESET: "+ g.name);
+            g.SetActive(true);
             g.GetComponent<Floor>().ResetFloor();
         }
     }
