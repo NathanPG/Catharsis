@@ -28,9 +28,9 @@ Shader "Toony Colors Pro 2/User/walls"
 		_RampSmoothingOtherLights ("Smoothing", Range(0.001,1)) = 0.5
 		[Space]
 		[TCP2Separator]
-
-		[TCP2HeaderHelp(Emission)]
-		[TCP2ColorNoAlpha] [HDR] _Emission ("Emission Color", Color) = (0,0,0,1)
+		
+		[TCP2HeaderHelp(Normal Mapping)]
+		[NoScaleOffset] _BumpMap ("Normal Map", 2D) = "bump" {}
 		[TCP2Separator]
 		
 		[TCP2HeaderHelp(Outline)]
@@ -73,6 +73,7 @@ Shader "Toony Colors Pro 2/User/walls"
 		// Uniforms
 
 		// Shader Properties
+		sampler2D _BumpMap;
 		sampler2D _BaseMap;
 
 		CBUFFER_START(UnityPerMaterial)
@@ -85,7 +86,6 @@ Shader "Toony Colors Pro 2/User/walls"
 			float _HSV_S;
 			float _HSV_V;
 			fixed4 _BaseColor;
-			half4 _Emission;
 			float _RampThreshold;
 			float _RampSmoothing;
 			float _RampThresholdOtherLights;
@@ -158,9 +158,7 @@ Shader "Toony Colors Pro 2/User/walls"
 		#if TCP2_COLORS_AS_NORMALS
 			float4 vertexColor : COLOR;
 		#endif
-		#if TCP2_TANGENT_AS_NORMALS
 			float4 tangent : TANGENT;
-		#endif
 			UNITY_VERTEX_INPUT_INSTANCE_ID
 		};
 
@@ -322,7 +320,9 @@ Shader "Toony Colors Pro 2/User/walls"
 			#ifdef _ADDITIONAL_LIGHTS_VERTEX
 				half3 vertexLights : TEXCOORD2;
 			#endif
-				float2 pack0 : TEXCOORD3; /* pack0.xy = texcoord0 */
+				float3 pack0 : TEXCOORD3; /* pack0.xyz = tangent */
+				float3 pack1 : TEXCOORD4; /* pack1.xyz = bitangent */
+				float2 pack2 : TEXCOORD5; /* pack2.xy = texcoord0 */
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
@@ -336,14 +336,14 @@ Shader "Toony Colors Pro 2/User/walls"
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
 				// Texture Coordinates
-				output.pack0.xy.xy = input.texcoord0.xy * _BaseMap_ST.xy + _BaseMap_ST.zw;
+				output.pack2.xy.xy = input.texcoord0.xy * _BaseMap_ST.xy + _BaseMap_ST.zw;
 
 				VertexPositionInputs vertexInput = GetVertexPositionInputs(input.vertex.xyz);
 			#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
 				output.shadowCoord = GetShadowCoord(vertexInput);
 			#endif
 
-				VertexNormalInputs vertexNormalInput = GetVertexNormalInputs(input.normal);
+				VertexNormalInputs vertexNormalInput = GetVertexNormalInputs(input.normal, input.tangent);
 			#ifdef _ADDITIONAL_LIGHTS_VERTEX
 				// Vertex lighting
 				output.vertexLights = VertexLighting(vertexInput.positionWS, vertexNormalInput.normalWS);
@@ -354,6 +354,10 @@ Shader "Toony Colors Pro 2/User/walls"
 
 				// normal
 				output.normal = NormalizeNormalPerVertex(vertexNormalInput.normalWS);
+
+				// tangent
+				output.pack0.xyz = vertexNormalInput.tangentWS;
+				output.pack1.xyz = vertexNormalInput.bitangentWS;
 
 				// clip position
 				output.positionCS = vertexInput.positionCS;
@@ -370,22 +374,30 @@ Shader "Toony Colors Pro 2/User/walls"
 				
 				float3 positionWS = input.worldPosAndFog.xyz;
 				float3 normalWS = NormalizeNormalPerPixel(input.normal);
+				half3 tangentWS = input.pack0.xyz;
+				half3 bitangentWS = input.pack1.xyz;
+				half3x3 tangentToWorldMatrix = half3x3(tangentWS.xyz, bitangentWS.xyz, normalWS.xyz);
 
 				// Shader Properties Sampling
-				float4 __albedo = ( tex2D(_BaseMap, input.pack0.xy).rgba );
+				float4 __normalMap = ( tex2D(_BumpMap, input.pack2.xy).rgba );
+				float4 __albedo = ( tex2D(_BaseMap, input.pack2.xy).rgba );
 				float4 __mainColor = ( _BaseColor.rgba );
 				float __alpha = ( __albedo.a * __mainColor.a );
 				float __albedoHue = ( _HSV_H );
 				float __albedoSaturation = ( _HSV_S );
 				float __albedoValue = ( _HSV_V );
 				float __ambientIntensity = ( 1.0 );
-				float3 __emission = ( _Emission.rgb );
 				float __rampThreshold = ( _RampThreshold );
 				float __rampSmoothing = ( _RampSmoothing );
 				float __rampThresholdOtherLights = ( _RampThresholdOtherLights );
 				float __rampSmoothingOtherLights = ( _RampSmoothingOtherLights );
 				float3 __shadowColor = ( _SColor.rgb );
 				float3 __highlightColor = ( _HColor.rgb );
+
+				half4 normalMap = half4(0,0,0,0);
+				normalMap = __normalMap;
+				half3 normalTS = UnpackNormal(normalMap);
+				normalWS = normalize( mul(normalTS, tangentToWorldMatrix) );
 
 				// main texture
 				half3 albedo = __albedo.rgb;
@@ -428,7 +440,6 @@ Shader "Toony Colors Pro 2/User/walls"
 
 				half3 indirectDiffuse = bakedGI;
 				indirectDiffuse *= occlusion * albedo * __ambientIntensity;
-				emission += __emission;
 
 				half3 lightDir = mainLight.direction;
 				half3 lightColor = mainLight.color.rgb;
@@ -676,5 +687,5 @@ Shader "Toony Colors Pro 2/User/walls"
 	CustomEditor "ToonyColorsPro.ShaderGenerator.MaterialInspector_SG2"
 }
 
-/* TCP_DATA u config(unity:"2020.3.18f1";ver:"2.7.1";tmplt:"SG2_Template_URP";features:list["UNITY_5_4","UNITY_5_5","UNITY_5_6","UNITY_2017_1","UNITY_2018_1","UNITY_2018_2","UNITY_2018_3","UNITY_2019_1","UNITY_2019_2","UNITY_2019_3","UNITY_2020_1","OUTLINE","ALBEDO_HSV","RAMP_MAIN_OTHER","RAMP_SEPARATED","TEMPLATE_LWRP","EMISSION"];flags:list[];flags_extra:dict[];keywords:dict[RENDER_TYPE="Opaque",RampTextureDrawer="[TCP2Gradient]",RampTextureLabel="Ramp Texture",SHADER_TARGET="3.0"];shaderProperties:list[];customTextures:list[];codeInjection:codeInjection(injectedFiles:list[];mark:False);matLayers:list[]) */
-/* TCP_HASH f90f9741d351ef2609d9c446f06f7b02 */
+/* TCP_DATA u config(unity:"2020.3.18f1";ver:"2.7.1";tmplt:"SG2_Template_URP";features:list["UNITY_5_4","UNITY_5_5","UNITY_5_6","UNITY_2017_1","UNITY_2018_1","UNITY_2018_2","UNITY_2018_3","UNITY_2019_1","UNITY_2019_2","UNITY_2019_3","UNITY_2020_1","OUTLINE","ALBEDO_HSV","RAMP_MAIN_OTHER","RAMP_SEPARATED","TEMPLATE_LWRP","BUMP"];flags:list[];flags_extra:dict[];keywords:dict[RENDER_TYPE="Opaque",RampTextureDrawer="[TCP2Gradient]",RampTextureLabel="Ramp Texture",SHADER_TARGET="3.0"];shaderProperties:list[];customTextures:list[];codeInjection:codeInjection(injectedFiles:list[];mark:False);matLayers:list[]) */
+/* TCP_HASH e6133aab2cb928a6e69b68ea9abf9e74 */
