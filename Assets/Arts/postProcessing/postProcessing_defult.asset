@@ -16,13 +16,13 @@ MonoBehaviour:
   m_AdvancedMode: 0
   lift:
     m_OverrideState: 1
-    m_Value: {x: 0.9445733, y: 0.96607375, z: 1, w: 0}
+    m_Value: {x: 0.9454418, y: 0.9755703, z: 1, w: 0}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 0.9629761, y: 0.9136349, z: 1, w: 0}
+    m_Value: {x: 0.9749056, y: 0.8880106, z: 1, w: 0}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 0.8911598, y: 0.9115898, z: 1, w: 0}
+    m_Value: {x: 0.8406304, y: 0.82238877, z: 1, w: 0}
 --- !u!114 &-7893295128165547882
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -43,7 +43,7 @@ MonoBehaviour:
     min: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.58
     min: 0
   scatter:
     m_OverrideState: 1
@@ -69,8 +69,8 @@ MonoBehaviour:
     min: 0
     max: 16
   dirtTexture:
-    m_OverrideState: 0
-    m_Value: {fileID: 0}
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: f626d8602c192684f8d71f7cf0185079, type: 3}
   dirtIntensity:
     m_OverrideState: 0
     m_Value: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
   active: 1
   m_AdvancedMode: 0
   color:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {r: 0, g: 0, b: 0, a: 1}
     hdr: 0
     showAlpha: 0
@@ -100,12 +100,12 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.237
+    m_Value: 0.264
     min: 0
     max: 1
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.52
+    m_Value: 0.609
     min: 0.01
     max: 1
   rounded:
@@ -149,7 +149,7 @@ MonoBehaviour:
     m_Value: -0.12
   contrast:
     m_OverrideState: 1
-    m_Value: 7.3
+    m_Value: 20
     min: -100
     max: 100
   colorFilter:
@@ -187,10 +187,10 @@ MonoBehaviour:
     m_Value: {x: 0.9074964, y: 0.9327763, z: 1, w: 0}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.97372204, z: 0.92076695, w: 0}
+    m_Value: {x: 0.9874974, y: 1, z: 0.956367, w: 0}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 0.99082184, y: 0.8872692, z: 1, w: 0}
+    m_Value: {x: 0.9812372, y: 0.91083694, z: 1, w: 0}
   shadowsStart:
     m_OverrideState: 0
     m_Value: 0
@@ -228,6 +228,8 @@ MonoBehaviour:
   - {fileID: -8859470679537266593}
   - {fileID: 5174453971191025512}
   - {fileID: -5115339750834994717}
+  - {fileID: 1907295049279752884}
+  - {fileID: 997043771611869432}
 --- !u!114 &849379129802519247
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -245,6 +247,58 @@ MonoBehaviour:
   mode:
     m_OverrideState: 1
     m_Value: 2
+--- !u!114 &997043771611869432
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e021b4c809a781e468c2988c016ebbea, type: 3}
+  m_Name: ColorLookup
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  texture:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+  contribution:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+    max: 1
+--- !u!114 &1907295049279752884
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf1aba9553839d41ae37dd52e9ebcce, type: 3}
+  m_Name: MotionBlur
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  mode:
+    m_OverrideState: 0
+    m_Value: 0
+  quality:
+    m_OverrideState: 1
+    m_Value: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.083
+    min: 0
+    max: 1
+  clamp:
+    m_OverrideState: 1
+    m_Value: 0.051
+    min: 0
+    max: 0.2
 --- !u!114 &5174453971191025512
 MonoBehaviour:
   m_ObjectHideFlags: 3

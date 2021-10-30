@@ -123,6 +123,8 @@ Material:
     - _RampThresholdOtherLights: 0.5
     - _ReceiveShadows: 1
     - _ReceiveShadowsOff: 1
+    - _SketchMax: 1
+    - _SketchMin: 0
     - _SketchTexture_OffsetSpeed: 120
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
@@ -133,7 +135,7 @@ Material:
     - _UseMatCap: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - __BeginGroup_AlbedoHSV: 0
+    - __BeginGroup_AlbedoHSV: 1
     - __EndGroup: 0
     - __dummy__: 0
     m_Colors:
