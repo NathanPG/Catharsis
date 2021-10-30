@@ -139,7 +139,7 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HColor: {r: 0.95, g: 0.91906977, b: 0.91906977, a: 1}
     - _OutlineColorVertex: {r: 0, g: 0, b: 0, a: 1}
-    - _SColor: {r: 0.45776212, g: 0.48335132, b: 0.52599996, a: 1}
+    - _SColor: {r: 0.34750745, g: 0.36532834, b: 0.398, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SpecularColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_BuildTextureStacks: []
