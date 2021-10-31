@@ -16,6 +16,7 @@ public class CheckPoint : MonoBehaviour
     public string goalString;
 
     private bool isPlayerIn = false;
+    private bool inBulletTutorial = false;
 
     private void Start()
     {
