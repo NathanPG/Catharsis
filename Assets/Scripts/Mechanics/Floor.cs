@@ -5,6 +5,7 @@ using UnityEngine;
 public class Floor : MonoBehaviour
 {
     private Vector3 spawnPoint;
+    private Quaternion spawnRotation;
     private Rigidbody rb;
     //Developer Set Fall Interval From Last Fllor
     public float fallCD = 1f;
@@ -15,6 +16,7 @@ public class Floor : MonoBehaviour
     void Start()
     {
         spawnPoint = transform.position;
+        spawnRotation = transform.rotation;
     }
 
     public void Fall()
@@ -37,6 +39,7 @@ public class Floor : MonoBehaviour
         CancelInvoke("Hide");
         rb.isKinematic = true;
         rb.useGravity = false;
+        transform.rotation = spawnRotation;
         transform.position = spawnPoint;
     }
 }
