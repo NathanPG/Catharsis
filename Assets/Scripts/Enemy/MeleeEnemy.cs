@@ -95,8 +95,8 @@ public class MeleeEnemy : EnemyBase
     {
         if (other.gameObject.CompareTag("Weapon") && !isDead)
         {
-            Debug.Log("Hit Enemy");
             BeAttacked();
+            GetComponent<AudioSource>().PlayOneShot(hitList[Random.Range(0, hitList.Count)]);
         }
     }
 

@@ -19,7 +19,7 @@ public class Collectible : MonoBehaviour
             GameManager.Instance.uiController.ShowNarrative(narrativeMsg);
 
             GetComponent<Animation>().Play();
-
+            GetComponent<AudioSource>().Play();
             if (collectibleName == "Trophy")
             {
                 GameManager.Instance.cabinet.TrophyCollected();

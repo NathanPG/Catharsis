@@ -8,6 +8,7 @@ public class EnemyBase : MonoBehaviour
     
     public LayerMask whatIsPlayer;
     public float timeBetweenAttacks, sightRange, attackRange, maxChaseRange, damage;
+    public List<AudioClip> hitList = new List<AudioClip>();
     [HideInInspector] public Transform player;
 
     public Vector3 startingPosition;
@@ -48,6 +49,11 @@ public class EnemyBase : MonoBehaviour
         */
         yield return new WaitForSecondsRealtime(3f);
         Destroy(this.gameObject);
+    }
+
+    protected void HitSFX()
+    {
+        GetComponent<AudioSource>().Play();
     }
 
     

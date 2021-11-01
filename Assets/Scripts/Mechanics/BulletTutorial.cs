@@ -13,6 +13,7 @@ public class BulletTutorial : MonoBehaviour
         {
             isPlayerIn = true;
             GameManager.Instance.playerObject.GetComponent<PlayerController>().canMove = false;
+            GameManager.Instance.playerObject.GetComponent<PlayerController>().canJump = false;
         }
     }
 
@@ -21,11 +22,14 @@ public class BulletTutorial : MonoBehaviour
         if (isPlayerIn)
         {
             if(GameManager.Instance.playerObject.GetComponent<PlayerController>()
-                .rightHand.TryGetFeatureValue(CommonUsages.gripButton, out bool gripPressed))
+                .rightHand.TryGetFeatureValue(CommonUsages.triggerButton, out bool triggerPressed))
             {
-                if (gripPressed)
+                if (triggerPressed)
                 {
                     GameManager.Instance.playerObject.GetComponent<PlayerController>().canMove = true;
+                    GameManager.Instance.playerObject.GetComponent<PlayerController>().canJump = true;
+                    finished = true;
+                    this.gameObject.SetActive(false);
                 }
             } 
         }

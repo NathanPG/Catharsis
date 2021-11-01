@@ -14,6 +14,7 @@ public class MovementControl : MonoBehaviour
     private CapsuleCollider capsuleCollider = null;
     private CharacterController characterController = null;
     private GameObject head = null;
+    private AudioController audioController;
 
     //Movement
     //private float moveSpeed;
@@ -54,6 +55,7 @@ public class MovementControl : MonoBehaviour
         head = GetComponent<XRRig>().cameraGameObject;
         rigidbody = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<CapsuleCollider>();
+        audioController = GetComponent<AudioController>();
     }
 
     void Start()
@@ -242,10 +244,11 @@ public class MovementControl : MonoBehaviour
     /// </summary>
     void CheckJump()
     {
+        bool lastFrameGrounded = isGrounded;
         isGrounded = Physics.Raycast(new Vector3(worldCharacterCenter.x, transform.position.y + 1f, worldCharacterCenter.z)
             , Vector3.down,1f);
         //Debug.DrawRay(new Vector3(worldCharacterCenter.x, transform.position.y + 1f, worldCharacterCenter.z), Vector3.down, Color.white, 1f);
-
+        if (!lastFrameGrounded && isGrounded) audioController.LandSound();
         if (!playerController.canJump) return;
 
         //Normal Jump
@@ -257,6 +260,7 @@ public class MovementControl : MonoBehaviour
             {
                 if (!jumpPressed)
                 {
+                    audioController.JumpSound();
                     playerController.canJump = false;
                     StartCoroutine(ResetJump());
                     jumpPressed = true;
@@ -285,6 +289,7 @@ public class MovementControl : MonoBehaviour
             {
                 if (!jumpPressed)
                 {
+                    audioController.JumpSound();
                     playerController.canJump = false;
                     StartCoroutine(ResetJump());
                     jumpPressed = true;
@@ -323,6 +328,7 @@ public class MovementControl : MonoBehaviour
                 if (!grapplling)
                 {
                     //Debug.Log("Grapple");
+                    audioController.GrappleSound();
                     grapplling = true;
                     characterController.enabled = false;
                     grappleController.StartGrapple();

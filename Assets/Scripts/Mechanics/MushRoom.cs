@@ -12,6 +12,7 @@ public class MushRoom : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             var rb = other.gameObject.GetComponent<Rigidbody>();
+            GetComponent<AudioSource>().Play();
             //Clear Force
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;

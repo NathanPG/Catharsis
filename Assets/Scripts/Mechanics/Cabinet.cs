@@ -6,13 +6,14 @@ public class Cabinet : MonoBehaviour
 {
     public int numofCollectibles;
     public GameObject trophyLight, photoLight, emptyPhoto, emptyTrophy;
+
     private Animation animation;
+    private bool finished = false, opened = false;
 
     private void Start()
     {
         GameManager.Instance.cabinet = this;
         animation = GetComponent<Animation>();
-        
     }
 
     private void UpdateProgress()
@@ -26,9 +27,7 @@ public class Cabinet : MonoBehaviour
 
     private void FinishedCollection()
     {
-        Debug.Log("COLLECTION FINISHED");
-        //Open drawer
-        animation.Play();
+        finished = true;
     }
 
     public void TrophyCollected()
@@ -45,6 +44,16 @@ public class Cabinet : MonoBehaviour
         UpdateProgress();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Player" && finished && !opened)
+        {
+            //Open drawer
+            opened = true;
+            animation.Play();
+            GetComponent<AudioSource>().Play();
+        }
+    }
 
-    
+
 }

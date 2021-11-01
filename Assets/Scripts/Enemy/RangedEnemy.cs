@@ -43,10 +43,12 @@ public class RangedEnemy : EnemyBase
 
     protected void Attack()
     {
-        Vector3 rotation = Quaternion.LookRotation(player.transform.position).eulerAngles;
-        rotation.x = 0f;
-        rotation.z = 0f;
-        transform.rotation = Quaternion.Euler(rotation);
+        Vector3 lookVector = player.position - transform.position;
+        lookVector.y = transform.position.y;
+        Quaternion rot = Quaternion.LookRotation(lookVector);
+        rot.x = 0;
+        rot.z = 0;
+        transform.rotation = Quaternion.Slerp(transform.rotation, rot, 1);
 
 
         if (!alreadyAttacked)
@@ -77,6 +79,7 @@ public class RangedEnemy : EnemyBase
         if (other.gameObject.CompareTag("Weapon") && !isDead)
         {
             BeAttacked();
+            GetComponent<AudioSource>().PlayOneShot(hitList[Random.Range(0, hitList.Count)]);
         }
     }
 

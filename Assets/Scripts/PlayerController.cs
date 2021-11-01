@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public bool inBulletTimePlayer = false;
     public float hp = 100;
     public bool dead;
+    public GameObject weapon;
 
     //Skill
     public bool canUseBulletTime = true;
@@ -74,7 +75,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void enableWeapon()
+    {
+        weapon.SetActive(true);
+    }
 
-
-    
 }
