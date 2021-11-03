@@ -22,7 +22,7 @@ public class AudioController : MonoBehaviour
 
     public void LandSound()
     {
-        audioSource.PlayOneShot(landClip);
+        //audioSource.PlayOneShot(landClip);
     }
 
     public void GrappleSound()

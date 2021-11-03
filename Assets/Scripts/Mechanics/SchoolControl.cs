@@ -14,7 +14,7 @@ public class SchoolControl : MonoBehaviour
             floorList.Add(floor.gameObject);
             //Debug.Log(floor.gameObject.name);
         }
-        Debug.Log("Floor Num:" + floorList.Count);
+        //Debug.Log("Floor Num:" + floorList.Count);
     }
 
     private void Start()

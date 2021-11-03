@@ -112,6 +112,12 @@ public class MeleeEnemy : EnemyBase
         }
     }
 
+    void Respawn()
+    {
+        transform.position = startingPosition;
+        state = State.Idle;
+        GetComponent<CapsuleCollider>().isTrigger = false;
+    }
     
 
     

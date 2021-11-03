@@ -5,7 +5,7 @@ using UnityEngine;
 public class Cabinet : MonoBehaviour
 {
     public int numofCollectibles;
-    public GameObject trophyLight, photoLight, emptyPhoto, emptyTrophy;
+    public GameObject trophyLight, photoLight, emptyPhoto, emptyTrophy, weaponObj;
 
     private Animation animation;
     private bool finished = false, opened = false;
@@ -28,6 +28,7 @@ public class Cabinet : MonoBehaviour
     private void FinishedCollection()
     {
         finished = true;
+        weaponObj.GetComponent<WeaponPickUp>().SetAvailable();
     }
 
     public void TrophyCollected()

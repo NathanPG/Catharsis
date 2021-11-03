@@ -21,7 +21,7 @@ public class Floor : MonoBehaviour
 
     public void Fall()
     {
-        Debug.Log(this.gameObject.name);
+        //Debug.Log(this.gameObject.name);
         rb.isKinematic = false;
         rb.useGravity = true;
         Invoke("Hide", 5f);

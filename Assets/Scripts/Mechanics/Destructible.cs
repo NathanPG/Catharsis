@@ -12,22 +12,24 @@ public class Destructible : MonoBehaviour
         {
             fragmentList.Add(child.gameObject);
         }
-        DestroyObjs();
+        //DestroyObjs();
     }
-
-    private void OnTriggerEnter(Collider other)
+    
+    private void OnTriggerEnter(Collider collider)
     {
-        if(other.gameObject.tag == "Weapon")
+        if (collider.gameObject.tag == "Weapon")
         {
             GetComponent<BoxCollider>().enabled = false;
             DestroyObjs();
         }
     }
 
+
     private void DestroyObjs()
     {
         foreach (GameObject g in fragmentList)
         {
+            g.GetComponent<Rigidbody>().isKinematic = false;
             g.GetComponent<Rigidbody>().useGravity = true;
             Destroy(g, 5f);
         }

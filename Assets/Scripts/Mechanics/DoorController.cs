@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class DoorController : MonoBehaviour
 {
-    private bool isOpen = false;
+    private bool alreadyInteracted = false;
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player" && !isOpen)
+        if(other.gameObject.tag == "Player" && !alreadyInteracted)
         {
-            isOpen = true;
+            alreadyInteracted = true;
             GetComponent<Animation>().Play();
             GetComponent<AudioSource>().Play();
         }

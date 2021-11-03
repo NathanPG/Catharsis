@@ -17,7 +17,6 @@ public class RangedEnemy : EnemyBase
         agent = GetComponent<NavMeshAgent>();
         state = State.Idle;
         player = Camera.main.transform;
-       
     }
 
     // Update is called once per frame
@@ -89,5 +88,13 @@ public class RangedEnemy : EnemyBase
         GameManager.Instance.TimeStopEffect();
         //TODO: RANDOM DEATH ANIM
         rangedAnimator.Play("Death0");
+        GetComponent<CapsuleCollider>().isTrigger = true;
+    }
+
+    void Respawn()
+    {
+        transform.position = startingPosition;
+        state = State.Idle;
+        GetComponent<CapsuleCollider>().isTrigger = false;
     }
 }
