@@ -135,7 +135,7 @@ Material:
     - _UseMatCap: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - __BeginGroup_AlbedoHSV: 1
+    - __BeginGroup_AlbedoHSV: 0
     - __EndGroup: 0
     - __dummy__: 0
     m_Colors:
