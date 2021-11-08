@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2325274660752794508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1593800528917549471}
+  - component: {fileID: 7729680663350799273}
+  - component: {fileID: 4069528892269991760}
+  - component: {fileID: 4037826955090684523}
+  m_Layer: 0
+  m_Name: wood planks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &1593800528917549471
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2325274660752794508}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
+  m_LocalPosition: {x: -7.75, y: 0.0495045, z: -3.8514102}
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
+--- !u!33 &7729680663350799273
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2325274660752794508}
+  m_Mesh: {fileID: -215421003467305660, guid: 67bd148931c0ceb46bd0d6a0fc6d34d4, type: 3}
+--- !u!23 &4069528892269991760
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2325274660752794508}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 0a54f26792de4264baa895bc893ba4cc, type: 2}
+  - {fileID: 2100000, guid: ea84ea08e7867f545ae45f1a915335a9, type: 2}
+  - {fileID: 2100000, guid: de278d22bc3bce64ea2dd7bd0e25afef, type: 2}
+  - {fileID: 2100000, guid: 1f0d881fb8529f24e96c353d11b53781, type: 2}
+  - {fileID: 2100000, guid: ba7d936703ed324449797cb9321cf91d, type: 2}
+  - {fileID: 2100000, guid: 350be5eda7cb2a7419ef048813141070, type: 2}
+  - {fileID: 2100000, guid: 2b95f4088431aea4bbbb0a75fce8f8c6, type: 2}
+  - {fileID: 2100000, guid: 7d1df0a53ee1f374eb6dc744f1cba9f5, type: 2}
+  - {fileID: 2100000, guid: b2f621067a1719e4d835d7a89329c647, type: 2}
+  - {fileID: 2100000, guid: cd9a4ff154d29734b94bafb471660b0f, type: 2}
+  - {fileID: 2100000, guid: 3012b78273b23344aaafb2b6ee775b77, type: 2}
+  - {fileID: 2100000, guid: 6e0cde67c56aaaf47b0de7bc946b3b13, type: 2}
+  - {fileID: 2100000, guid: 3fc6af9cde87bcd4a86b96c9ff4db0ad, type: 2}
+  - {fileID: 2100000, guid: 8f2e4cd56c639df4992f23684aaa3fa4, type: 2}
+  - {fileID: 2100000, guid: 4c0fe57bfb7b43340beb2de7620d9d3f, type: 2}
+  - {fileID: 2100000, guid: 6f4171ab94dcf66408ebe1ea3960060d, type: 2}
+  - {fileID: 2100000, guid: cf22fcaaf26aa0e45908805019f85165, type: 2}
+  - {fileID: 2100000, guid: 3ba982e4b2b4d77418b69e4e5da9a100, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 4
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4037826955090684523
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2325274660752794508}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.020018104, y: 0.025078135, z: 0.00047052503}
+  m_Center: {x: -0.000021889806, y: 0.0024972209, z: 0.00016688864}
