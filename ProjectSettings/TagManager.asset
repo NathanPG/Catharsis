@@ -6,6 +6,12 @@ TagManager:
   tags:
   - Weapon
   - Hand
+  - Item
+  - Interact
+  - Block
+  - Fire
+  - Pedistal
+  - Road
   layers:
   - Default
   - TransparentFX
@@ -17,7 +23,7 @@ TagManager:
   - Grapples
   - pointLight
   - noLight
-  - 
+  - Persistent
   - 
   - 
   - 
