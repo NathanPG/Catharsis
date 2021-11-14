@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
 
     //Mechanics
-    public Cabinet cabinet;
 
     public UIController uiController;
 

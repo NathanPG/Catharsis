@@ -17,12 +17,14 @@ public class Indicator : MonoBehaviour
     public void Show()
     {
         gameObject.SetActive(true);
-        animator.SetBool("Show", true);
+        //animator.SetBool("Show", true);
+        animator.Play("Show");
     }
 
     public void Hide()
     {
-        animator.SetBool("Show", false);
+        //animator.SetBool("Show", false);
+        animator.Play("Hide");
     }
 
     public void Deactivate()

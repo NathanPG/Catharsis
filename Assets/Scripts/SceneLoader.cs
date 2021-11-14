@@ -7,12 +7,16 @@ public class SceneLoader : Singleton<SceneLoader>
 {
     public UnityEvent OnLoadBegin = new UnityEvent();
     public UnityEvent OnLoadEnd = new UnityEvent();
-    public ScreenFader screenFader = null;
-
+    //public ScreenFader screenFader = null;
+    
+    public Camera mainCamera = null;
+    public Camera persistentCamera = null;
+    private ScreenFade screenFade = null;
     private bool isLoading = false;
 
     private void Awake()
     {
+        screenFade = GetComponent<ScreenFade>();
         SceneManager.sceneLoaded += SetActiveScene;
     }
 
@@ -34,13 +38,19 @@ public class SceneLoader : Singleton<SceneLoader>
         isLoading = true;
 
         OnLoadBegin?.Invoke();
-        yield return screenFader.StartFadeIn();
+        persistentCamera.enabled = true;
+        //yield return screenFader.StartFadeIn();
+        yield return new WaitForSecondsRealtime(screenFade.FadeIn());
         yield return StartCoroutine(UnloadCurrent());
 
         yield return new WaitForSecondsRealtime(3.0f);
 
+        
         yield return StartCoroutine(LoadNew(sceneName));
-        yield return screenFader.StartFadeOut();
+        //yield return screenFader.StartFadeOut();
+        //yield return new WaitForSecondsRealtime(screenFade.FadeOut());
+        screenFade.FadeOut();
+        persistentCamera.enabled = false;
         OnLoadEnd?.Invoke();
 
         isLoading = false;

@@ -14,6 +14,7 @@ public class ScreenFader : MonoBehaviour
         _fadeMaterial.SetFloat("_Intensity", _intensity);
         _fadeMaterial.SetColor("_FadeColor", _color);
         Graphics.Blit(source, destination, _fadeMaterial);
+        Debug.Log("Miao");
     }
 
     public Coroutine StartFadeIn()

@@ -12,7 +12,6 @@ public class Cabinet : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.cabinet = this;
         animation = GetComponent<Animation>();
     }
 

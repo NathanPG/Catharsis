@@ -9,6 +9,9 @@ public class Collectible : MonoBehaviour
      
     public List<string> narrativeMsg;
 
+    //Better to make subclass
+    public Cabinet cabinet;
+
     private bool isCollected = false;
 
     private void OnTriggerEnter(Collider other)
@@ -22,11 +25,11 @@ public class Collectible : MonoBehaviour
             GetComponent<AudioSource>().Play();
             if (collectibleName == "Trophy")
             {
-                GameManager.Instance.cabinet.TrophyCollected();
+                cabinet.TrophyCollected();
             }
             else if(collectibleName == "Photo")
             {
-                GameManager.Instance.cabinet.PhotoCollected();
+                cabinet.PhotoCollected();
             }
         }
     }
