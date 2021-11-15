@@ -227,6 +227,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObject: {fileID: 0}
+  playerController: {fileID: 0}
+  playerRigidbody: {fileID: 0}
+  movementControl: {fileID: 0}
   uiController: {fileID: 1947159012}
   playerTransform: {fileID: 749470340}
   spawnPoint: {x: 0, y: 0, z: 0}
@@ -277,11 +280,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3576063926035980912, guid: 2d876c67c503e274a963270b73873655, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.683
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3576063926035980912, guid: 2d876c67c503e274a963270b73873655, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.68
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3576063926035980912, guid: 2d876c67c503e274a963270b73873655, type: 3}
       propertyPath: m_LocalRotation.w

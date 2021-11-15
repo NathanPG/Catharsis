@@ -12,8 +12,8 @@ public class BulletTutorial : MonoBehaviour
         if (other.gameObject.tag == "Player" && !isPlayerIn && !finished)
         {
             isPlayerIn = true;
-            GameManager.Instance.playerObject.GetComponent<PlayerController>().canMove = false;
-            GameManager.Instance.playerObject.GetComponent<PlayerController>().canJump = false;
+            GameManager.Instance.playerController.canMove = false;
+            GameManager.Instance.playerController.canJump = false;
         }
     }
 
@@ -21,13 +21,13 @@ public class BulletTutorial : MonoBehaviour
     {
         if (isPlayerIn)
         {
-            if(GameManager.Instance.playerObject.GetComponent<PlayerController>()
+            if(GameManager.Instance.playerController
                 .rightHand.TryGetFeatureValue(CommonUsages.triggerButton, out bool triggerPressed))
             {
                 if (triggerPressed)
                 {
-                    GameManager.Instance.playerObject.GetComponent<PlayerController>().canMove = true;
-                    GameManager.Instance.playerObject.GetComponent<PlayerController>().canJump = true;
+                    GameManager.Instance.playerController.canMove = true;
+                    GameManager.Instance.playerController.canJump = true;
                     finished = true;
                     this.gameObject.SetActive(false);
                 }

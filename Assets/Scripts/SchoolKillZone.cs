@@ -19,10 +19,10 @@ public class SchoolKillZone : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //Make Sure Gravity is On
-            gameManager.playerObject.GetComponent<MovementControl>().ToggleGravity(true);
+            gameManager.movementControl.ToggleGravity(true);
             //Clear Force
-            gameManager.playerObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            gameManager.playerObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            gameManager.playerRigidbody.velocity = Vector3.zero;
+            gameManager.playerRigidbody.angularVelocity = Vector3.zero;
 
             sc.SpawnReset();
             //Respawn

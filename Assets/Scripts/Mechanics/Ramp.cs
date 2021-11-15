@@ -11,18 +11,18 @@ public class Ramp : MonoBehaviour
     private Vector3 forwardDirection;
     private void Start()
     {
-        playerMovement = GameManager.Instance.playerObject.GetComponent<MovementControl>();
-        playerRef = GameManager.Instance.playerObject.GetComponent<PlayerController>();
+        playerMovement = GameManager.Instance.movementControl;
+        playerRef = GameManager.Instance.playerController;
         forwardDirection = transform.TransformDirection(Vector3.forward) * 10;
     }
 
     void Update()
     {
         Debug.DrawRay(transform.position, forwardDirection, Color.red);
-        playerMovement = GameManager.Instance.playerObject.GetComponent<MovementControl>();
+
         if (playerInRamp)
         {
-            if(playerMovement == null) playerMovement = GameManager.Instance.playerObject.GetComponent<MovementControl>();
+            if(playerMovement == null) Debug.LogError("Movement control missing");
             playerMovement.Ramp(forwardDirection);
         }
     }
