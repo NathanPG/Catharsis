@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [HideInInspector]public GameObject playerObject = null;
-
+    public GameObject playerObject = null;
+    [HideInInspector] public PlayerController playerController = null;
+    [HideInInspector] public Rigidbody playerRigidbody = null;
+    [HideInInspector] public MovementControl movementControl = null;
     private static GameManager _instance;
 
     //Mechanics
@@ -15,11 +17,7 @@ public class GameManager : MonoBehaviour
     public Transform playerTransform;
     public Vector3 spawnPoint;
 
-    private void Start()
-    {
-        spawnPoint = playerTransform.position;
-    }
-
+    
     public static GameManager Instance
     {
         get
@@ -31,18 +29,18 @@ public class GameManager : MonoBehaviour
     public void TimeStopEffect()
     {
         if (Time.timeScale != 1) return;
-        if(playerObject == null) playerObject = GameObject.FindGameObjectWithTag("Player");
+        //if(playerObject == null) playerObject = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(TimeStopCR());
     }
     IEnumerator TimeStopCR()
     {
         Debug.Log("TIME STOP");
-        playerObject.GetComponent<PlayerController>().canUseBulletTime = false;
+        playerController.canUseBulletTime = false;
         //SLOW DOWN FOR 0.2S
         Time.timeScale = 0.1f;
         yield return new WaitForSecondsRealtime(2f);
 
-        playerObject.GetComponent<PlayerController>().canUseBulletTime = true;
+        playerController.canUseBulletTime = true;
         Time.timeScale = 1f;
     }
 
@@ -58,8 +56,36 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
         
-        playerObject = GameObject.FindGameObjectWithTag("Player");
+        //playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject == null) Debug.LogError("Failed to find player reference");
+        playerController = playerObject.GetComponent<PlayerController>();
+        playerRigidbody = playerObject.GetComponent<Rigidbody>();
+        movementControl = playerObject.GetComponent<MovementControl>();
     }
 
+    private void Start()
+    {
+        spawnPoint = playerTransform.position;
+        playerController.canJump = false;
+        playerController.canMove = false;
+        playerRigidbody.useGravity = false;
+    }
+
+    public void Level1Start()
+    {
+        spawnPoint = new Vector3(-22.7600002f, 0.430000007f, -99.7099991f);
+        playerObject.transform.position = spawnPoint;
+        playerController.canJump = true;
+        playerController.canMove = true;
+        playerRigidbody.useGravity = true;
+    }
+
+    public void ExamSceneStart()
+    {
+        spawnPoint = new Vector3();
+        playerObject.transform.position = spawnPoint;
+        playerController.canJump = true;
+        playerController.canMove = true;
+        playerRigidbody.useGravity = true;
+    }
 }

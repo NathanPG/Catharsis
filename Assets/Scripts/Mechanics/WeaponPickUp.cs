@@ -18,7 +18,7 @@ public class WeaponPickUp : MonoBehaviour
             //Open drawer
             pickedUp = true;
             GetComponent<AudioSource>().Play();
-            GameManager.Instance.playerObject.GetComponent<PlayerController>().enableWeapon();
+            GameManager.Instance.playerController.enableWeapon();
             this.gameObject.SetActive(false);
         }
     }

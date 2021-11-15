@@ -18,10 +18,10 @@ public class KillZone : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //Make Sure Gravity is On
-            gameManager.playerObject.GetComponent<MovementControl>().ToggleGravity(true);
+            gameManager.movementControl.ToggleGravity(true);
             //Clear Force
-            gameManager.playerObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            gameManager.playerObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            gameManager.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            gameManager.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             //Respawn
             playerTransform.position = GameManager.Instance.spawnPoint;
         }
