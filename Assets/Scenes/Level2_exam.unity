@@ -637,15 +637,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6708369720013502970, guid: 66c4e83c12201d94bb4523e3a7432539, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.0018463
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 6708369720013502970, guid: 66c4e83c12201d94bb4523e3a7432539, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.41999996
+      value: 2.09
       objectReference: {fileID: 0}
     - target: {fileID: 6708369720013502970, guid: 66c4e83c12201d94bb4523e3a7432539, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.7760296
+      value: 0.78
       objectReference: {fileID: 0}
     - target: {fileID: 6708369720013502970, guid: 66c4e83c12201d94bb4523e3a7432539, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1023,6 +1023,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone tiles light damage groundless (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5366138871255716786, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8944996616625594785, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -1179,7 +1183,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 51189324}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -43.950104, y: -0.679719, z: 0.5532932}
+  m_LocalPosition: {x: -43.950104, y: -4.86, z: 0.5532932}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2077251694}
@@ -1982,7 +1986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8944996616625594785, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.4
+      value: -0.25999966
       objectReference: {fileID: 0}
     - target: {fileID: 8944996616625594785, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2482,7 +2486,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3055161511593845785, guid: 4175d2f73efe79942b9883eb5015b029, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.05
+      value: 7.83
       objectReference: {fileID: 0}
     - target: {fileID: 3055161511593845785, guid: 4175d2f73efe79942b9883eb5015b029, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2490,7 +2494,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3055161511593845785, guid: 4175d2f73efe79942b9883eb5015b029, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.4848614
+      value: 4.48
       objectReference: {fileID: 0}
     - target: {fileID: 3055161511593845785, guid: 4175d2f73efe79942b9883eb5015b029, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3870,7 +3874,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6384727118004049978, guid: cfe1267d1c11c584da5f8bc30ad2be82, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.058502
+      value: 7.8385053
       objectReference: {fileID: 0}
     - target: {fileID: 6384727118004049978, guid: cfe1267d1c11c584da5f8bc30ad2be82, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3878,7 +3882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6384727118004049978, guid: cfe1267d1c11c584da5f8bc30ad2be82, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.9068584
+      value: 5.9020004
       objectReference: {fileID: 0}
     - target: {fileID: 6384727118004049978, guid: cfe1267d1c11c584da5f8bc30ad2be82, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5025,7 +5029,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4464727454568462899, guid: 6b92c330ec0a9464492bb9f0046343c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.050003
+      value: 7.830006
       objectReference: {fileID: 0}
     - target: {fileID: 4464727454568462899, guid: 6b92c330ec0a9464492bb9f0046343c4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5033,7 +5037,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4464727454568462899, guid: 6b92c330ec0a9464492bb9f0046343c4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.6793575
+      value: 5.6744995
       objectReference: {fileID: 0}
     - target: {fileID: 4464727454568462899, guid: 6b92c330ec0a9464492bb9f0046343c4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5898,6 +5902,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone tiles light damage groundless (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 5366138871255716786, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5928017851168253806, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -5970,7 +5978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1230020026910569707, guid: 3f5c0751397f8b04d838d547d2bc5710, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: 1.52
       objectReference: {fileID: 0}
     - target: {fileID: 1230020026910569707, guid: 3f5c0751397f8b04d838d547d2bc5710, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6036,7 +6044,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4464727454568462899, guid: 6b92c330ec0a9464492bb9f0046343c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.050003
+      value: 7.830006
       objectReference: {fileID: 0}
     - target: {fileID: 4464727454568462899, guid: 6b92c330ec0a9464492bb9f0046343c4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6044,7 +6052,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4464727454568462899, guid: 6b92c330ec0a9464492bb9f0046343c4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.5178585
+      value: 3.5130005
       objectReference: {fileID: 0}
     - target: {fileID: 4464727454568462899, guid: 6b92c330ec0a9464492bb9f0046343c4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6203,7 +6211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3055161511593845785, guid: 4175d2f73efe79942b9883eb5015b029, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.050018
+      value: 7.8300214
       objectReference: {fileID: 0}
     - target: {fileID: 3055161511593845785, guid: 4175d2f73efe79942b9883eb5015b029, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6211,7 +6219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3055161511593845785, guid: 4175d2f73efe79942b9883eb5015b029, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.7581425
+      value: -0.76300037
       objectReference: {fileID: 0}
     - target: {fileID: 3055161511593845785, guid: 4175d2f73efe79942b9883eb5015b029, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6898,6 +6906,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone tiles 3 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7729218675507645417, guid: 66c4e83c12201d94bb4523e3a7432539, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66c4e83c12201d94bb4523e3a7432539, type: 3}
 --- !u!4 &363052738 stripped
@@ -7101,7 +7113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8944996616625594785, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.39999998
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 8944996616625594785, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7159,15 +7171,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6949750609300358272, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.0008316
+      value: -6.998995
       objectReference: {fileID: 0}
     - target: {fileID: 6949750609300358272, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.39999998
+      value: 2.1100001
       objectReference: {fileID: 0}
     - target: {fileID: 6949750609300358272, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.2289791
+      value: -1.2250112
       objectReference: {fileID: 0}
     - target: {fileID: 6949750609300358272, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7345,7 +7357,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3055161511593845785, guid: 4175d2f73efe79942b9883eb5015b029, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.050018
+      value: 7.8300214
       objectReference: {fileID: 0}
     - target: {fileID: 3055161511593845785, guid: 4175d2f73efe79942b9883eb5015b029, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7353,7 +7365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3055161511593845785, guid: 4175d2f73efe79942b9883eb5015b029, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.30086327
+      value: 0.29600534
       objectReference: {fileID: 0}
     - target: {fileID: 3055161511593845785, guid: 4175d2f73efe79942b9883eb5015b029, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7689,7 +7701,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 407018523}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.5001, y: -0.47971916, z: -1.5467072}
+  m_LocalPosition: {x: -20.5001, y: -5.01, z: -1.5467072}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1370685753}
@@ -8181,7 +8193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6949750609300358272, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.42799997
+      value: 1.3620005
       objectReference: {fileID: 0}
     - target: {fileID: 6949750609300358272, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8523,6 +8535,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone tiles light damage groundless (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 5366138871255716786, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5928017851168253806, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -8752,7 +8768,7 @@ Transform:
   - {fileID: 2006489589}
   - {fileID: 468366695}
   m_Father: {fileID: 390251488244012238}
-  m_RootOrder: 73
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &472576707
 MeshCollider:
@@ -9139,6 +9155,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone tiles heavy damage (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2831270386678105848, guid: 3f5c0751397f8b04d838d547d2bc5710, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4572956162791191076, guid: 3f5c0751397f8b04d838d547d2bc5710, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -9439,7 +9459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8944996616625594785, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.41999996
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 8944996616625594785, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12244,7 +12264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6949750609300358272, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.43299997
+      value: 1.02
       objectReference: {fileID: 0}
     - target: {fileID: 6949750609300358272, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12343,6 +12363,10 @@ PrefabInstance:
     - target: {fileID: 8886298491967950099, guid: 19f399ff287e62248ab15823520626e7, type: 3}
       propertyPath: m_Name
       value: stone tiles heavy damage groundless (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8886298491967950099, guid: 19f399ff287e62248ab15823520626e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19f399ff287e62248ab15823520626e7, type: 3}
@@ -13189,7 +13213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3055161511593845785, guid: 4175d2f73efe79942b9883eb5015b029, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.050003
+      value: 7.830006
       objectReference: {fileID: 0}
     - target: {fileID: 3055161511593845785, guid: 4175d2f73efe79942b9883eb5015b029, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13197,7 +13221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3055161511593845785, guid: 4175d2f73efe79942b9883eb5015b029, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.7868633
+      value: 4.7820053
       objectReference: {fileID: 0}
     - target: {fileID: 3055161511593845785, guid: 4175d2f73efe79942b9883eb5015b029, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13386,7 +13410,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5551004013882785536, guid: 19f399ff287e62248ab15823520626e7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.41999996
+      value: 0.43999875
       objectReference: {fileID: 0}
     - target: {fileID: 5551004013882785536, guid: 19f399ff287e62248ab15823520626e7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13584,7 +13608,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6949750609300358272, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.39999998
+      value: 0.010000825
       objectReference: {fileID: 0}
     - target: {fileID: 6949750609300358272, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13823,6 +13847,10 @@ PrefabInstance:
     - target: {fileID: 8886298491967950099, guid: 19f399ff287e62248ab15823520626e7, type: 3}
       propertyPath: m_Name
       value: stone tiles heavy damage groundless (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8886298491967950099, guid: 19f399ff287e62248ab15823520626e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19f399ff287e62248ab15823520626e7, type: 3}
@@ -14237,6 +14265,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone tiles 2 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2227700106905812524, guid: 12121e50b76097e48a07d9ff89561679, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2932187131661945919, guid: 12121e50b76097e48a07d9ff89561679, type: 3}
       propertyPath: m_RootOrder
       value: 45
@@ -14356,7 +14388,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27426
+  m_Name: pb_Mesh27430
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14669,7 +14701,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 390251488244012238}
-  m_RootOrder: 26
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &758729902
 MeshCollider:
@@ -14813,7 +14845,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4464727454568462899, guid: 6b92c330ec0a9464492bb9f0046343c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.050018
+      value: 7.8300214
       objectReference: {fileID: 0}
     - target: {fileID: 4464727454568462899, guid: 6b92c330ec0a9464492bb9f0046343c4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14821,7 +14853,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4464727454568462899, guid: 6b92c330ec0a9464492bb9f0046343c4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.8468609
+      value: 0.842003
       objectReference: {fileID: 0}
     - target: {fileID: 4464727454568462899, guid: 6b92c330ec0a9464492bb9f0046343c4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15386,6 +15418,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone tiles heavy damage groundless (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8886298491967950099, guid: 19f399ff287e62248ab15823520626e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19f399ff287e62248ab15823520626e7, type: 3}
 --- !u!4 &788110094 stripped
@@ -15744,7 +15780,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27970
+  m_Name: pb_Mesh27976
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17100,7 +17136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6384727118004049978, guid: cfe1267d1c11c584da5f8bc30ad2be82, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.058524
+      value: 7.838527
       objectReference: {fileID: 0}
     - target: {fileID: 6384727118004049978, guid: cfe1267d1c11c584da5f8bc30ad2be82, type: 3}
       propertyPath: m_LocalPosition.y
@@ -17108,7 +17144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6384727118004049978, guid: cfe1267d1c11c584da5f8bc30ad2be82, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.2661381
+      value: -1.270996
       objectReference: {fileID: 0}
     - target: {fileID: 6384727118004049978, guid: cfe1267d1c11c584da5f8bc30ad2be82, type: 3}
       propertyPath: m_LocalRotation.w
@@ -17489,6 +17525,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone tiles light damage (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6208529310323701395, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6949750609300358272, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
       propertyPath: m_RootOrder
       value: 23
@@ -17706,6 +17746,10 @@ PrefabInstance:
     - target: {fileID: 6208529310323701395, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
       propertyPath: m_Name
       value: stone tiles light damage (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6208529310323701395, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6949750609300358272, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
       propertyPath: m_RootOrder
@@ -18930,7 +18974,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8944996616625594785, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.39999998
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 8944996616625594785, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_LocalPosition.z
@@ -19131,7 +19175,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3837578676261692906, guid: 35ff9df972c386b4c97caf197ef6179e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.798
+      value: 7.578003
       objectReference: {fileID: 0}
     - target: {fileID: 3837578676261692906, guid: 35ff9df972c386b4c97caf197ef6179e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -19139,7 +19183,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3837578676261692906, guid: 35ff9df972c386b4c97caf197ef6179e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.580862
+      value: 2.576004
       objectReference: {fileID: 0}
     - target: {fileID: 3837578676261692906, guid: 35ff9df972c386b4c97caf197ef6179e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -19288,15 +19332,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6949750609300358272, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.9958344
+      value: -6.9939976
       objectReference: {fileID: 0}
     - target: {fileID: 6949750609300358272, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.39999998
+      value: 2.1100001
       objectReference: {fileID: 0}
     - target: {fileID: 6949750609300358272, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.22296906
+      value: -0.21900119
       objectReference: {fileID: 0}
     - target: {fileID: 6949750609300358272, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
       propertyPath: m_LocalRotation.w
@@ -19811,6 +19855,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone tiles heavy damage groundless (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 8886298491967950099, guid: 19f399ff287e62248ab15823520626e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19f399ff287e62248ab15823520626e7, type: 3}
 --- !u!4 &1096854646 stripped
@@ -19953,7 +20001,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106593808}
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 8.049988, y: -1.7597256, z: 7.5768623}
+  m_LocalPosition: {x: 7.829991, y: -1.7597256, z: 7.5720043}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 172254134}
@@ -20418,6 +20466,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone tiles heavy damage (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2831270386678105848, guid: 3f5c0751397f8b04d838d547d2bc5710, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4572956162791191076, guid: 3f5c0751397f8b04d838d547d2bc5710, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -20429,6 +20481,170 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1230020026910569707, guid: 3f5c0751397f8b04d838d547d2bc5710, type: 3}
   m_PrefabInstance: {fileID: 1122150429}
   m_PrefabAsset: {fileID: 0}
+--- !u!43 &1122438432
+Mesh:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: pb_Mesh29380
+  serializedVersion: 10
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 36
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 24
+    localAABB:
+      m_Center: {x: 3.164853, y: 1.9697354, z: -0.8297193}
+      m_Extent: {x: 3.164853, y: 7.989917, z: 0.17028067}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_BonesAABB: []
+  m_VariableBoneCountWeights:
+    m_Data: 
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 000001000200010003000200040005000600050007000600080009000a0009000b000a000c000d000e000d000f000e00100011001200110013001200140015001600150017001600
+  m_VertexData:
+    serializedVersion: 3
+    m_VertexCount: 24
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 24
+      format: 0
+      dimension: 4
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 40
+      format: 0
+      dimension: 2
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 1152
+    _typelessdata: 4911633547a5c0c043d328bfa328b9b60dae8e350000803f000080bf0dae0e21a328b9b6000080bf9e723b3646a5c0c0ee8cca4053a5c0c0f9d028bfbed7b8b6392e8f350000803f000080bf00000000bed7b8b6000080bfe68ccac052a5c0c000000000b85a1f4160d428bfbed7b8b6392e8f350000803f000080bf00000000bed7b8b6000080bf8c387436b95a1f41f48cca40bc5a1f4118d228bfd986b8b665ae8f350000803f000080bf00000000d986b8b6000080bfec8ccac0bd5a1f41ee8cca4053a5c0c0f9d028bf0000803f083e40b4ebb6d3abebb6d32b000000000000803f000080bff9d028bf51a5c0c0ee8cca404da5c0c09ffc7fbf0000803f0a3e40b4ebb653abebb6532b000000000000803f000080bf9ffc7fbf4ba5c0c0f48cca40bc5a1f4118d228bf0000803f0a3e40b4ebb653abebb6532b000000000000803f000080bf18d228bfbd5a1f41f48cca40bb5a1f41befd7fbf0000803f0b3e40b40000000000000000000000000000803f000080bfbefd7fbfbc5a1f41ee8cca404da5c0c09ffc7fbf5043b73667ae8fb5000080bf0000803f000000005043b736000080bfe38cca404ba5c0c00dde3c3549a5c0c0e3fe7fbf6af2b6363a2e8fb5000080bf0000803f000000006af2b636000080bfc2a69fb647a5c0c0f48cca40bb5a1f41befd7fbf6af2b6363a2e8fb5000080bf0000803f000000006af2b636000080bfe98cca40bc5a1f4100000000b85a1f41000080bf84a1b6360dae8eb5000080bf0000803f0000000084a1b636000080bf5043b7b6b95a1f410dde3c3549a5c0c0e3fe7fbf000080bf9b1a3db3dd5ee034dd5ee0b49b1abd1c000080bf000080bfe3fe7f3f49a5c0c04911633547a5c0c043d328bf000080bfa43a50b3dd5e6034dd5e60b4a43a501c000080bf000080bf43d3283f47a5c0c000000000b85a1f41000080bf000080bfa43a50b3dd5e6034dd5e60b4a43a501c000080bf000080bf0000803fb85a1f4100000000b85a1f4160d428bf000080bfae5a63b3000000000000000000000000000080bf000080bf60d4283fb85a1f4100000000b85a1f4160d428bfe1c621b50000803f000000000000803fe1c6213500000000000080bfb467c93660d428bff48cca40bc5a1f4118d228bf7e8d0db50000803f18f4bbb50000803f7e8d0d3500000000000080bf018dca4018d228bf00000000b85a1f41000080bf7e8d0db50000803f18f4bbb50000803f7e8d0d3500000000000080bfb467c936000080bff48cca40bb5a1f41befd7fbf38a8f2b40000803f18f43bb60000803f38a8f23400000000000080bf018dca40befd7fbf0dde3c3549a5c0c0e3fe7fbf00c9a1b4000080bf25f43b36000080bf00c9a13400000000000080bfb8f628b6feff7fbfee8cca404da5c0c09ffc7fbfd6c521b5000080bf12f43bb6000080bfd6c5213500000000000080bff28ccac0bafd7fbf4911633547a5c0c043d328bfd6c521b5000080bf12f43bb6000080bfd6c5213500000000000080bf868332b65ed428bfee8cca4053a5c0c0f9d028bf2ca772b5000080bf12f70cb7000080bf2ca7723512f70c21000080bff28ccac014d228bf
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 3.164853, y: 1.9697354, z: -0.8297193}
+    m_Extent: {x: 3.164853, y: 7.989917, z: 0.17028067}
+  m_MeshUsageFlags: 0
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  m_MeshMetrics[0]: 1
+  m_MeshMetrics[1]: 1
+  m_MeshOptimizationFlags: 1
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 
 --- !u!1 &1122997039
 GameObject:
   m_ObjectHideFlags: 0
@@ -20649,6 +20865,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone tiles light damage groundless (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 5366138871255716786, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5928017851168253806, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -20725,7 +20945,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8944996616625594785, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.39999998
+      value: 0.19
       objectReference: {fileID: 0}
     - target: {fileID: 8944996616625594785, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_LocalPosition.z
@@ -20791,7 +21011,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8944996616625594785, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.41999996
+      value: 0.72000134
       objectReference: {fileID: 0}
     - target: {fileID: 8944996616625594785, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_LocalPosition.z
@@ -21919,7 +22139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8944996616625594785, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.39999998
+      value: 0.19000018
       objectReference: {fileID: 0}
     - target: {fileID: 8944996616625594785, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_LocalPosition.z
@@ -22322,6 +22542,10 @@ PrefabInstance:
     - target: {fileID: 5366138871255716786, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_Name
       value: stone tiles light damage groundless (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5366138871255716786, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8944996616625594785, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_RootOrder
@@ -22933,7 +23157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5551004013882785536, guid: 19f399ff287e62248ab15823520626e7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.41999996
+      value: 1.0329996
       objectReference: {fileID: 0}
     - target: {fileID: 5551004013882785536, guid: 19f399ff287e62248ab15823520626e7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -23534,6 +23758,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone tiles light damage (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 6208529310323701395, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6949750609300358272, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
       propertyPath: m_RootOrder
       value: 41
@@ -23984,6 +24212,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone tiles 1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3729376398583943572, guid: b45aaaa4db61aba4ab06f217b27dc200, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b45aaaa4db61aba4ab06f217b27dc200, type: 3}
 --- !u!4 &1370685753 stripped
@@ -24017,7 +24249,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1370773502}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.028, y: -0.286, z: -0.95200014}
+  m_LocalPosition: {x: 1.028, y: -0.262, z: -0.95200014}
   m_LocalScale: {x: 2.0489671, y: 2.0489671, z: 2.0489671}
   m_Children: []
   m_Father: {fileID: 1855508682}
@@ -24599,7 +24831,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 403689867248444295, guid: b45aaaa4db61aba4ab06f217b27dc200, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.35000002
+      value: 0.51
       objectReference: {fileID: 0}
     - target: {fileID: 403689867248444295, guid: b45aaaa4db61aba4ab06f217b27dc200, type: 3}
       propertyPath: m_LocalPosition.z
@@ -25225,7 +25457,7 @@ Transform:
   - {fileID: 1209993813}
   - {fileID: 1004339261}
   m_Father: {fileID: 390251488244012238}
-  m_RootOrder: 25
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1448404436
 GameObject:
@@ -25556,7 +25788,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8944996616625594785, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.39999998
+      value: 0.74
       objectReference: {fileID: 0}
     - target: {fileID: 8944996616625594785, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_LocalPosition.z
@@ -25793,6 +26025,10 @@ PrefabInstance:
     - target: {fileID: 6208529310323701395, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
       propertyPath: m_Name
       value: stone tiles light damage (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6208529310323701395, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6949750609300358272, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
       propertyPath: m_RootOrder
@@ -26365,7 +26601,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 403689867248444295, guid: b45aaaa4db61aba4ab06f217b27dc200, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.47000003
+      value: 1.32
       objectReference: {fileID: 0}
     - target: {fileID: 403689867248444295, guid: b45aaaa4db61aba4ab06f217b27dc200, type: 3}
       propertyPath: m_LocalPosition.z
@@ -27484,7 +27720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8944996616625594785, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.39999998
+      value: 1.7500006
       objectReference: {fileID: 0}
     - target: {fileID: 8944996616625594785, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_LocalPosition.z
@@ -29444,7 +29680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4464727454568462899, guid: 6b92c330ec0a9464492bb9f0046343c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.050003
+      value: 7.830006
       objectReference: {fileID: 0}
     - target: {fileID: 4464727454568462899, guid: 6b92c330ec0a9464492bb9f0046343c4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -29452,7 +29688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4464727454568462899, guid: 6b92c330ec0a9464492bb9f0046343c4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.0868587
+      value: 4.0820007
       objectReference: {fileID: 0}
     - target: {fileID: 4464727454568462899, guid: 6b92c330ec0a9464492bb9f0046343c4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -30455,6 +30691,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone tiles heavy damage groundless (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 8886298491967950099, guid: 19f399ff287e62248ab15823520626e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19f399ff287e62248ab15823520626e7, type: 3}
 --- !u!4 &1739112753 stripped
@@ -30596,6 +30836,10 @@ PrefabInstance:
     - target: {fileID: 5366138871255716786, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_Name
       value: stone tiles light damage groundless (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5366138871255716786, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5928017851168253806, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -31299,170 +31543,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1813769888}
   m_Mesh: {fileID: 3376104058510400480, guid: 360149fc56476bb4e96e54d3916515b4, type: 3}
---- !u!43 &1813772590
-Mesh:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29364
-  serializedVersion: 10
-  m_SubMeshes:
-  - serializedVersion: 2
-    firstByte: 0
-    indexCount: 36
-    topology: 0
-    baseVertex: 0
-    firstVertex: 0
-    vertexCount: 24
-    localAABB:
-      m_Center: {x: 3.164853, y: 1.9697354, z: -0.8297193}
-      m_Extent: {x: 3.164853, y: 7.989917, z: 0.17028067}
-  m_Shapes:
-    vertices: []
-    shapes: []
-    channels: []
-    fullWeights: []
-  m_BindPose: []
-  m_BoneNameHashes: 
-  m_RootBoneNameHash: 0
-  m_BonesAABB: []
-  m_VariableBoneCountWeights:
-    m_Data: 
-  m_MeshCompression: 0
-  m_IsReadable: 1
-  m_KeepVertices: 1
-  m_KeepIndices: 1
-  m_IndexFormat: 0
-  m_IndexBuffer: 000001000200010003000200040005000600050007000600080009000a0009000b000a000c000d000e000d000f000e00100011001200110013001200140015001600150017001600
-  m_VertexData:
-    serializedVersion: 3
-    m_VertexCount: 24
-    m_Channels:
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 3
-    - stream: 0
-      offset: 12
-      format: 0
-      dimension: 3
-    - stream: 0
-      offset: 24
-      format: 0
-      dimension: 4
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 40
-      format: 0
-      dimension: 2
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    m_DataSize: 1152
-    _typelessdata: 4911633547a5c0c043d328bfa328b9b60dae8e350000803f000080bf0dae0e21a328b9b6000080bf9e723b3646a5c0c0ee8cca4053a5c0c0f9d028bfbed7b8b6392e8f350000803f000080bf00000000bed7b8b6000080bfe68ccac052a5c0c000000000b85a1f4160d428bfbed7b8b6392e8f350000803f000080bf00000000bed7b8b6000080bf8c387436b95a1f41f48cca40bc5a1f4118d228bfd986b8b665ae8f350000803f000080bf00000000d986b8b6000080bfec8ccac0bd5a1f41ee8cca4053a5c0c0f9d028bf0000803f083e40b4ebb6d3abebb6d32b000000000000803f000080bff9d028bf51a5c0c0ee8cca404da5c0c09ffc7fbf0000803f0a3e40b4ebb653abebb6532b000000000000803f000080bf9ffc7fbf4ba5c0c0f48cca40bc5a1f4118d228bf0000803f0a3e40b4ebb653abebb6532b000000000000803f000080bf18d228bfbd5a1f41f48cca40bb5a1f41befd7fbf0000803f0b3e40b40000000000000000000000000000803f000080bfbefd7fbfbc5a1f41ee8cca404da5c0c09ffc7fbf5043b73667ae8fb5000080bf0000803f000000005043b736000080bfe38cca404ba5c0c00dde3c3549a5c0c0e3fe7fbf6af2b6363a2e8fb5000080bf0000803f000000006af2b636000080bfc2a69fb647a5c0c0f48cca40bb5a1f41befd7fbf6af2b6363a2e8fb5000080bf0000803f000000006af2b636000080bfe98cca40bc5a1f4100000000b85a1f41000080bf84a1b6360dae8eb5000080bf0000803f0000000084a1b636000080bf5043b7b6b95a1f410dde3c3549a5c0c0e3fe7fbf000080bf9b1a3db3dd5ee034dd5ee0b49b1abd1c000080bf000080bfe3fe7f3f49a5c0c04911633547a5c0c043d328bf000080bfa43a50b3dd5e6034dd5e60b4a43a501c000080bf000080bf43d3283f47a5c0c000000000b85a1f41000080bf000080bfa43a50b3dd5e6034dd5e60b4a43a501c000080bf000080bf0000803fb85a1f4100000000b85a1f4160d428bf000080bfae5a63b3000000000000000000000000000080bf000080bf60d4283fb85a1f4100000000b85a1f4160d428bfe1c621b50000803f000000000000803fe1c6213500000000000080bfb467c93660d428bff48cca40bc5a1f4118d228bf7e8d0db50000803f18f4bbb50000803f7e8d0d3500000000000080bf018dca4018d228bf00000000b85a1f41000080bf7e8d0db50000803f18f4bbb50000803f7e8d0d3500000000000080bfb467c936000080bff48cca40bb5a1f41befd7fbf38a8f2b40000803f18f43bb60000803f38a8f23400000000000080bf018dca40befd7fbf0dde3c3549a5c0c0e3fe7fbf00c9a1b4000080bf25f43b36000080bf00c9a13400000000000080bfb8f628b6feff7fbfee8cca404da5c0c09ffc7fbfd6c521b5000080bf12f43bb6000080bfd6c5213500000000000080bff28ccac0bafd7fbf4911633547a5c0c043d328bfd6c521b5000080bf12f43bb6000080bfd6c5213500000000000080bf868332b65ed428bfee8cca4053a5c0c0f9d028bf2ca772b5000080bf12f70cb7000080bf2ca7723512f70c21000080bff28ccac014d228bf
-  m_CompressedMesh:
-    m_Vertices:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UV:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Normals:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Tangents:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Weights:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_NormalSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_TangentSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_FloatColors:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_BoneIndices:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Triangles:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UVInfo: 0
-  m_LocalAABB:
-    m_Center: {x: 3.164853, y: 1.9697354, z: -0.8297193}
-    m_Extent: {x: 3.164853, y: 7.989917, z: 0.17028067}
-  m_MeshUsageFlags: 0
-  m_BakedConvexCollisionMesh: 
-  m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
-  m_MeshOptimizationFlags: 1
-  m_StreamData:
-    serializedVersion: 2
-    offset: 0
-    size: 0
-    path: 
 --- !u!1001 &1813903238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32108,7 +32188,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 1813772590}
+  m_Mesh: {fileID: 1122438432}
 --- !u!33 &1856449363
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -32116,7 +32196,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856449360}
-  m_Mesh: {fileID: 1813772590}
+  m_Mesh: {fileID: 1122438432}
 --- !u!23 &1856449364
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -32369,7 +32449,7 @@ MonoBehaviour:
     m_AreaError: 15
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
-  m_Mesh: {fileID: 1813772590}
+  m_Mesh: {fileID: 1122438432}
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -32384,6 +32464,10 @@ PrefabInstance:
     - target: {fileID: 6208529310323701395, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
       propertyPath: m_Name
       value: stone tiles light damage (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6208529310323701395, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6949750609300358272, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
       propertyPath: m_RootOrder
@@ -32899,6 +32983,10 @@ PrefabInstance:
     - target: {fileID: 5366138871255716786, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_Name
       value: stone tiles light damage groundless (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5366138871255716786, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5928017851168253806, guid: 19dfd9d2fa4c32f48aa5edc71bc0ef01, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -33421,7 +33509,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 390251488244012238}
-  m_RootOrder: 41
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1932780021
 MeshCollider:
@@ -33617,7 +33705,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 168072762667588892, guid: ee14e244fc446f049a3fa0f3381775f1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.435023
+      value: 8.215026
       objectReference: {fileID: 0}
     - target: {fileID: 168072762667588892, guid: ee14e244fc446f049a3fa0f3381775f1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -33625,7 +33713,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 168072762667588892, guid: ee14e244fc446f049a3fa0f3381775f1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.9547787
+      value: 3.9499207
       objectReference: {fileID: 0}
     - target: {fileID: 168072762667588892, guid: ee14e244fc446f049a3fa0f3381775f1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -34241,6 +34329,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone tiles light damage (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6208529310323701395, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6949750609300358272, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -34654,7 +34746,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5551004013882785536, guid: 19f399ff287e62248ab15823520626e7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.42
+      value: -0.28
       objectReference: {fileID: 0}
     - target: {fileID: 5551004013882785536, guid: 19f399ff287e62248ab15823520626e7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -34736,7 +34828,7 @@ Transform:
   - {fileID: 1885992377}
   - {fileID: 214399594}
   m_Father: {fileID: 390251488244012238}
-  m_RootOrder: 24
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2047282513
 PrefabInstance:
@@ -35069,27 +35161,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 44f4b7ddb8c47dc4c842ead81eb79f42, type: 3}
       propertyPath: m_LocalScale.x
-      value: 171.02116
+      value: 156.63144
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 44f4b7ddb8c47dc4c842ead81eb79f42, type: 3}
       propertyPath: m_LocalScale.y
-      value: 171.02116
+      value: 156.63144
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 44f4b7ddb8c47dc4c842ead81eb79f42, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.140141
+      value: 1.0442096
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 44f4b7ddb8c47dc4c842ead81eb79f42, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -98.3
+      value: -92.6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 44f4b7ddb8c47dc4c842ead81eb79f42, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -17.7
+      value: -17.703
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 44f4b7ddb8c47dc4c842ead81eb79f42, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 31
+      value: 24.3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 44f4b7ddb8c47dc4c842ead81eb79f42, type: 3}
       propertyPath: m_LocalRotation.w
@@ -35179,6 +35271,10 @@ PrefabInstance:
     - target: {fileID: 3729376398583943572, guid: b45aaaa4db61aba4ab06f217b27dc200, type: 3}
       propertyPath: m_Name
       value: stone tiles 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3729376398583943572, guid: b45aaaa4db61aba4ab06f217b27dc200, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b45aaaa4db61aba4ab06f217b27dc200, type: 3}
@@ -35387,6 +35483,10 @@ PrefabInstance:
     - target: {fileID: 2227700106905812524, guid: 12121e50b76097e48a07d9ff89561679, type: 3}
       propertyPath: m_Name
       value: stone tiles 2 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227700106905812524, guid: 12121e50b76097e48a07d9ff89561679, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2932187131661945919, guid: 12121e50b76097e48a07d9ff89561679, type: 3}
       propertyPath: m_RootOrder
@@ -36028,6 +36128,10 @@ PrefabInstance:
     - target: {fileID: 6208529310323701395, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
       propertyPath: m_Name
       value: stone tiles light damage (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6208529310323701395, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6949750609300358272, guid: 70b96c934de0a974fa969cacb1a19f04, type: 3}
       propertyPath: m_RootOrder
@@ -38603,17 +38707,19 @@ Transform:
   - {fileID: 390251487736624976}
   - {fileID: 390251489359406310}
   - {fileID: 390251487576115036}
+  - {fileID: 2040777145}
   - {fileID: 390251487525152776}
   - {fileID: 390251488586551515}
+  - {fileID: 1436930054}
   - {fileID: 390251488605653987}
+  - {fileID: 758729901}
+  - {fileID: 1932780020}
   - {fileID: 390251488305055003}
   - {fileID: 390251489432482886}
   - {fileID: 390251488308803058}
   - {fileID: 390251489290240063}
   - {fileID: 390251488515285222}
-  - {fileID: 2040777145}
-  - {fileID: 1436930054}
-  - {fileID: 758729901}
+  - {fileID: 472576706}
   - {fileID: 440124828}
   - {fileID: 686254591}
   - {fileID: 1393904897}
@@ -38628,7 +38734,6 @@ Transform:
   - {fileID: 976343078}
   - {fileID: 1246900567}
   - {fileID: 1572488726}
-  - {fileID: 1932780020}
   - {fileID: 244720785}
   - {fileID: 1978218837}
   - {fileID: 929680997}
@@ -38660,7 +38765,6 @@ Transform:
   - {fileID: 228343811}
   - {fileID: 193304586}
   - {fileID: 727089467}
-  - {fileID: 472576706}
   m_Father: {fileID: 62712837}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -41545,13 +41649,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6525177577818622000}
-  m_LocalRotation: {x: -0.000000007450581, y: 0.18750462, z: -0.000000013969839, w: 0.98226374}
-  m_LocalPosition: {x: -0.088999964, y: -0.408, z: -1.2599998}
+  m_LocalRotation: {x: -0.6465746, y: 0.14115344, z: 0.123424694, w: 0.73944813}
+  m_LocalPosition: {x: -0.0886, y: -0.4431, z: -1.2589}
   m_LocalScale: {x: 1.4465, y: 1.4465, z: 1.4465}
   m_Children: []
   m_Father: {fileID: 1899820906}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 21.614, z: 0}
+  m_LocalEulerAnglesHint: {x: -82.333, y: 21.614, z: 0}
 --- !u!1 &533665670937141700
 GameObject:
   m_ObjectHideFlags: 0
@@ -47207,7 +47311,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7141970540497531121, guid: f516cc0b5d6d29c448f9cb44939c23a3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -17.22
+      value: -18.25
       objectReference: {fileID: 0}
     - target: {fileID: 7141970540497531121, guid: f516cc0b5d6d29c448f9cb44939c23a3, type: 3}
       propertyPath: m_LocalPosition.z
