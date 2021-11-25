@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
 
     public void Level1Start()
     {
-        spawnPoint = new Vector3(-22.7600002f, 0.430000007f, -99.7099991f);
+        spawnPoint = new Vector3(-22.7600002f, 0.430000007f, -100.601997f);
         playerObject.transform.position = spawnPoint;
         playerController.canJump = true;
         playerController.canMove = true;

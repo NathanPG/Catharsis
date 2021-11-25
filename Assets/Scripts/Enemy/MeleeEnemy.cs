@@ -17,16 +17,16 @@ public class MeleeEnemy : EnemyBase
         player = Camera.main.transform;
         meleeAnimator.SetBool("Idle", true);
         canMove = true;
+
     }
 
     // Update is called once per frame
     void Update()
     {
         if (isDead) return;
-
         playerInSight = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         canAttackPalyer = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-
+        
         if (playerInSight && canAttackPalyer)
         {
             meleeAnimator.SetBool("Attacking", true);
@@ -58,7 +58,7 @@ public class MeleeEnemy : EnemyBase
                 if (canMove) state = State.Returning;
             }
         }
-
+        
         switch (state)
         {
             case State.Approaching:
@@ -81,6 +81,7 @@ public class MeleeEnemy : EnemyBase
                 Returning();
                 break;
         }
+        
     }
 
     private void BeAttacked()

@@ -37,7 +37,7 @@ public class ScreenFade : MonoBehaviour
     public float FadeIn()
     {
         // Fade to black
-        Debug.Log("FADEIN");
+        //Debug.Log("FADEIN");
         Tween.ShaderFloat(fadeMaterial, "_Alpha", 1, duration, 0);
         return duration;
     }
@@ -45,7 +45,7 @@ public class ScreenFade : MonoBehaviour
     public float FadeOut()
     {
         // Fade to clear
-        Debug.Log("FADEOUT");
+        //Debug.Log("FADEOUT");
         Tween.ShaderFloat(fadeMaterial, "_Alpha", 0, duration, 0);
         return duration;
     }

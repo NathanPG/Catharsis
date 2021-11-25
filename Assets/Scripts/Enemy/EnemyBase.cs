@@ -25,12 +25,15 @@ public class EnemyBase : MonoBehaviour
         Idle
     }
 
-
     protected void Approach()
     {
         agent.SetDestination(player.position);
     }
-    
+
+    protected void SetDest(Vector3 globalPosition)
+    {
+        agent.SetDestination(globalPosition);
+    }
 
     protected IEnumerator Death(float duration)
     {

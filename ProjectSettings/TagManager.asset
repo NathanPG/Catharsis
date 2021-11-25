@@ -12,6 +12,7 @@ TagManager:
   - Fire
   - Pedistal
   - Road
+  - Lava
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - noLight
   - Persistent
   - PostProcess
-  - 
+  - Ground
   - 
   - 
   - 

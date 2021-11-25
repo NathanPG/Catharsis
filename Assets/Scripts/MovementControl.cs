@@ -19,6 +19,10 @@ public class MovementControl : MonoBehaviour
     //Movement
     //private float moveSpeed;
     public float maxMoveSpeed;
+    public float acceleration = 0f;
+    public float deceleration = 0f;
+    private float xSpeed = 0f;
+    private float zSpeed = 0f;
     private bool snapPressed = false;
 
     //Jump
@@ -210,22 +214,48 @@ public class MovementControl : MonoBehaviour
         {
             var xAxis = primary2dValue.x * maxMoveSpeed * Time.deltaTime;
             var zAxis = primary2dValue.y * maxMoveSpeed * Time.deltaTime;
-            //Check everything
-            bool wallRight = Physics.Raycast(new Vector3(worldCharacterCenter.x, worldCharacterCenter.y, worldCharacterCenter.z)
-            , cameraTransform.right, 1f);
-            bool wallLeft = Physics.Raycast(new Vector3(worldCharacterCenter.x, worldCharacterCenter.y, worldCharacterCenter.z)
-            , -cameraTransform.right, 1f);
-            //Left/Right movement
-            if ((!wallRight && xAxis > 0) || (!wallLeft && xAxis < 0))
-            {
-                transform.position += cameraTransform.transform.TransformDirection(Vector3.right) * xAxis;
-            }
-            Vector3 forwardVector = cameraTransform.transform.TransformDirection(Vector3.forward) * zAxis;
-            forwardVector = new Vector3(forwardVector.x, 0f, forwardVector.z);
-            transform.position += forwardVector;
-            
+
+            xSpeed = Mathf.Clamp(xSpeed + xAxis * acceleration * Time.deltaTime, -maxMoveSpeed, maxMoveSpeed);
+            zSpeed = Mathf.Clamp(zSpeed + zAxis * acceleration * Time.deltaTime, -maxMoveSpeed, maxMoveSpeed);
+
+
             //transform.position += cameraTransform.transform.forward * zAxis;
         }
+        else
+        {
+            if(xSpeed >= 0)
+            {
+                xSpeed = Mathf.Clamp(xSpeed - deceleration * Time.deltaTime, 0, maxMoveSpeed);
+            }
+            else
+            {
+                xSpeed = Mathf.Clamp(xSpeed + deceleration * Time.deltaTime, -maxMoveSpeed, 0);
+            }
+            if (zSpeed >= 0)
+            {
+                zSpeed = Mathf.Clamp(zSpeed - deceleration * Time.deltaTime, 0, maxMoveSpeed);
+            }
+            else
+            {
+                zSpeed = Mathf.Clamp(zSpeed + deceleration * Time.deltaTime, -maxMoveSpeed, 0);
+            }
+        }
+
+        //Check everything
+        bool wallRight = Physics.Raycast(new Vector3(worldCharacterCenter.x, worldCharacterCenter.y, worldCharacterCenter.z)
+        , cameraTransform.right, 1f);
+        bool wallLeft = Physics.Raycast(new Vector3(worldCharacterCenter.x, worldCharacterCenter.y, worldCharacterCenter.z)
+        , -cameraTransform.right, 1f);
+
+        //Left/Right movement
+        if ((!wallRight && xSpeed > 0) || (!wallLeft && xSpeed < 0))
+        {
+            transform.position += cameraTransform.transform.TransformDirection(Vector3.right) * xSpeed;
+        }
+
+        Vector3 forwardVector = cameraTransform.transform.TransformDirection(Vector3.forward) * zSpeed;
+        forwardVector = new Vector3(forwardVector.x, 0f, forwardVector.z);
+        transform.position += forwardVector;
     }
 
     
