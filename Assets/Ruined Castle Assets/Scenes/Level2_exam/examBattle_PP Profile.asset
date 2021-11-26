@@ -52,7 +52,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 0.7761158, y: 0.8475518, z: 1, w: 0}
+    m_Value: {x: 0.82244074, y: 0.91173166, z: 1, w: 0}
   midtones:
     m_OverrideState: 1
     m_Value: {x: 1, y: 0.78253865, z: 0.7248749, w: 0}
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   lift:
     m_OverrideState: 1
-    m_Value: {x: 0.68207395, y: 0.80163926, z: 1, w: 0}
+    m_Value: {x: 0.6508758, y: 0.78655905, z: 1, w: 0}
   gamma:
     m_OverrideState: 1
     m_Value: {x: 1, y: 0.76797515, z: 0.73466897, w: 0}
@@ -218,6 +218,7 @@ MonoBehaviour:
   - {fileID: 3405255745816403107}
   - {fileID: -4320717321618306855}
   - {fileID: -5031196241530558184}
+  - {fileID: 8477363854904556890}
 --- !u!114 &3405255745816403107
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -230,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf1aba9553839d41ae37dd52e9ebcce, type: 3}
   m_Name: MotionBlur
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   mode:
     m_OverrideState: 1
@@ -267,7 +268,7 @@ MonoBehaviour:
     m_Value: 0
   contrast:
     m_OverrideState: 1
-    m_Value: 12
+    m_Value: 13.2
     min: -100
     max: 100
   colorFilter:
@@ -282,6 +283,37 @@ MonoBehaviour:
     min: -180
     max: 180
   saturation:
+    m_OverrideState: 1
+    m_Value: 0
+    min: -100
+    max: 100
+--- !u!114 &8477363854904556890
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70afe9e12c7a7ed47911bb608a23a8ff, type: 3}
+  m_Name: SplitToning
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  shadows:
+    m_OverrideState: 1
+    m_Value: {r: 0.62527275, g: 0.67228574, b: 0.72400004, a: 1}
+    hdr: 0
+    showAlpha: 0
+    showEyeDropper: 1
+  highlights:
+    m_OverrideState: 1
+    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    hdr: 0
+    showAlpha: 0
+    showEyeDropper: 1
+  balance:
     m_OverrideState: 1
     m_Value: 0
     min: -100

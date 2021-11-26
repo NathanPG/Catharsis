@@ -111,7 +111,7 @@ Material:
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _RampSmoothing: 0.1
-    - _RampSmoothingOtherLights: 0.1
+    - _RampSmoothingOtherLights: 1
     - _RampThreshold: 0.75
     - _RampThresholdOtherLights: 0.75
     - _ReceiveShadows: 1
