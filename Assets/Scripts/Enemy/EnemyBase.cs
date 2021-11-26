@@ -30,8 +30,9 @@ public class EnemyBase : MonoBehaviour
         agent.SetDestination(player.position);
     }
 
-    protected void SetDest(Vector3 globalPosition)
+    protected IEnumerator SetDest(Vector3 globalPosition, float delay)
     {
+        yield return new WaitForSeconds(delay);
         agent.SetDestination(globalPosition);
     }
 

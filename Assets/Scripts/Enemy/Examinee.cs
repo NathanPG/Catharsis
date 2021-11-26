@@ -7,11 +7,13 @@ public class Examinee : EnemyBase
 {
     public bool shouldMove = true, shouldRespawn = true, dead = false;
     public GroundDetector groundDetector = null;
-    public Transform destBox;
+    public Transform destBox, hipTransform;
+    
     public State state;
 
     private Animator examineeAnimator;
-    
+    private Vector3 hipStartingPosition;
+    private bool lostTrack = false;
 
     private void Start()
     {
@@ -23,7 +25,7 @@ public class Examinee : EnemyBase
         //examineeAnimator.SetBool("Idle", true);
         canMove = true;
 
-        SetDest(destBox.position);
+        StartCoroutine(SetDest(destBox.position, 3f));
 
         groundDetector.SetSelfRef(this);
     }
@@ -76,24 +78,42 @@ public class Examinee : EnemyBase
     {
         if (dead) return;
 
-        if (!groundDetector.isGrounded)
+        if (!groundDetector.isGrounded && !lostTrack)
         {
-
+            Debug.Log("Lost Track!");
+            lostTrack = true;
             agent.enabled = false;
             examineeAnimator.enabled = false;
             GetComponent<Rigidbody>().isKinematic = false;
+        }
 
+        RaycastHit r;
+        if (Physics.Raycast(transform.position, Vector3.down, out r, 2f))
+        {
+            
+            if (r.transform.tag == "Lava" && !dead)
+            {
+                Debug.Log("Touched Lava");
+                dead = true;
+                Death();
+            }
         }
     }
 
-    public void Respawn()
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawLine(transform.position, transform.position - Vector3.up * 2f);
+    }
+
+    private void Respawn()
     {
         agent.enabled = true;
         transform.position = startingPosition;
         examineeAnimator.enabled = true;
+        lostTrack = false;
         GetComponent<Rigidbody>().isKinematic = true;
+        StartCoroutine(SetDest(destBox.position, 3f));
 
-        SetDest(destBox.position);
     }
 
     public void Death()
@@ -102,5 +122,10 @@ public class Examinee : EnemyBase
         dead = true;
         //Respawn
         Invoke("Respawn", 1f);
+    }
+
+    private void UpdatePosition()
+    {
+        Vector3 deltaPosition = hipTransform.position - hipStartingPosition;
     }
 }
