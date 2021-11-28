@@ -12,7 +12,7 @@ public class Examinee : EnemyBase
     public State state;
 
     private Animator examineeAnimator;
-    private Vector3 hipStartingPosition;
+    private Vector3 destPosition;
     private bool lostTrack = false;
 
     private void Start()
@@ -24,8 +24,8 @@ public class Examinee : EnemyBase
         player = Camera.main.transform;
         //examineeAnimator.SetBool("Idle", true);
         canMove = true;
-
-        StartCoroutine(SetDest(destBox.position, 3f));
+        destPosition = destBox.position;
+        StartCoroutine(SetDest(destPosition, 3f));
 
         groundDetector.SetSelfRef(this);
     }
@@ -33,7 +33,7 @@ public class Examinee : EnemyBase
     void Update()
     {
         if (dead) return;
-        /*
+        
         canAttackPalyer = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
         if (!shouldMove)
@@ -46,7 +46,6 @@ public class Examinee : EnemyBase
             //meleeAnimator.SetBool("Attacking", true);
             state = State.Attacking;
         }
-
         else
         {
             //meleeAnimator.SetBool("Attacking", false);
@@ -57,26 +56,28 @@ public class Examinee : EnemyBase
         switch (state)
         {
             case State.Approaching:
-                agent.isStopped = false;
+                //agent.isStopped = false;
                 //meleeAnimator.SetBool("Idle", false);
                 //meleeAnimator.Play("Forward");
                 //Approach();
                 break;
             case State.Attacking:
-                agent.isStopped = true;
+                //agent.isStopped = true;
                 //Attack();
                 break;
             case State.Idle:
                 //meleeAnimator.SetBool("Idle", true);
-                agent.isStopped = true;
+                //agent.isStopped = true;
                 break;
         }
-        */
+        
     }
 
     private void FixedUpdate()
     {
         if (dead) return;
+
+        if (!groundDetector.isGrounded) Debug.Log("NOT GROUNDED");
 
         if (!groundDetector.isGrounded && !lostTrack)
         {
@@ -102,7 +103,7 @@ public class Examinee : EnemyBase
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawLine(transform.position, transform.position - Vector3.up * 2f);
+        //Gizmos.DrawLine(transform.position, transform.position - Vector3.up * 2f);
     }
 
     private void Respawn()
@@ -112,8 +113,8 @@ public class Examinee : EnemyBase
         examineeAnimator.enabled = true;
         lostTrack = false;
         GetComponent<Rigidbody>().isKinematic = true;
-        StartCoroutine(SetDest(destBox.position, 3f));
-
+        StartCoroutine(SetDest(destPosition, 3f));
+        dead = false;
     }
 
     public void Death()
@@ -124,8 +125,5 @@ public class Examinee : EnemyBase
         Invoke("Respawn", 1f);
     }
 
-    private void UpdatePosition()
-    {
-        Vector3 deltaPosition = hipTransform.position - hipStartingPosition;
-    }
+    
 }

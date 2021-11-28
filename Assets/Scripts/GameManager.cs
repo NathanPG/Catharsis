@@ -80,6 +80,15 @@ public class GameManager : MonoBehaviour
         playerRigidbody.useGravity = true;
     }
 
+    public void Level2Start(Vector3 startPos)
+    {
+        spawnPoint = startPos;
+        playerObject.transform.position = spawnPoint;
+        playerController.canJump = true;
+        playerController.canMove = true;
+        playerRigidbody.useGravity = true;
+    }
+
     public void ExamSceneStart()
     {
         spawnPoint = new Vector3();
