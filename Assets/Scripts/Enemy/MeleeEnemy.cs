@@ -119,7 +119,11 @@ public class MeleeEnemy : EnemyBase
         state = State.Idle;
         GetComponent<CapsuleCollider>().isTrigger = false;
     }
-    
 
-    
+    private void DisableAnimator()
+    {
+        meleeAnimator.enabled = false;
+    }
+
+
 }

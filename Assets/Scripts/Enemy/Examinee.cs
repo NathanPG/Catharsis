@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Examinee : EnemyBase
 {
-    public bool shouldMove = true, shouldRespawn = true, dead = false;
+    public bool shouldMove = true, shouldRespawn = true;
     public GroundDetector groundDetector = null;
     public Transform destBox, hipTransform;
     
@@ -22,16 +22,17 @@ public class Examinee : EnemyBase
         agent = GetComponent<NavMeshAgent>();
         state = State.Idle;
         player = Camera.main.transform;
+
         //examineeAnimator.SetBool("Idle", true);
+
         canMove = true;
         destPosition = destBox.position;
         StartCoroutine(SetDest(destPosition, 3f));
-
-        groundDetector.SetSelfRef(this);
     }
     // Update is called once per frame
     void Update()
     {
+        /*
         if (dead) return;
         
         canAttackPalyer = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
@@ -70,12 +71,12 @@ public class Examinee : EnemyBase
                 //agent.isStopped = true;
                 break;
         }
-        
+        */
     }
 
     private void FixedUpdate()
     {
-        if (dead) return;
+        if (isDead) return;
 
         if (!groundDetector.isGrounded) Debug.Log("NOT GROUNDED");
 
@@ -85,17 +86,17 @@ public class Examinee : EnemyBase
             lostTrack = true;
             agent.enabled = false;
             examineeAnimator.enabled = false;
-            GetComponent<Rigidbody>().isKinematic = false;
+            //GetComponent<Rigidbody>().isKinematic = false;
         }
 
         RaycastHit r;
         if (Physics.Raycast(transform.position, Vector3.down, out r, 2f))
         {
             
-            if (r.transform.tag == "Lava" && !dead)
+            if (r.transform.tag == "Lava" && !isDead)
             {
                 Debug.Log("Touched Lava");
-                dead = true;
+                isDead = true;
                 Death();
             }
         }
@@ -112,15 +113,15 @@ public class Examinee : EnemyBase
         transform.position = startingPosition;
         examineeAnimator.enabled = true;
         lostTrack = false;
-        GetComponent<Rigidbody>().isKinematic = true;
+        //GetComponent<Rigidbody>().isKinematic = true;
         StartCoroutine(SetDest(destPosition, 3f));
-        dead = false;
+        isDead = false;
     }
 
     public void Death()
     {
         //Touch Lava
-        dead = true;
+        isDead = true;
         //Respawn
         Invoke("Respawn", 1f);
     }

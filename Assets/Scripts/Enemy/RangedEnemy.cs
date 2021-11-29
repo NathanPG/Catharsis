@@ -97,4 +97,9 @@ public class RangedEnemy : EnemyBase
         state = State.Idle;
         GetComponent<CapsuleCollider>().isTrigger = false;
     }
+
+    private void DisableAnimator()
+    {
+        rangedAnimator.enabled = false;
+    }
 }

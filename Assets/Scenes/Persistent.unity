@@ -233,6 +233,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3576063926035980905, guid: 2d876c67c503e274a963270b73873655, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3576063926035980906, guid: 2d876c67c503e274a963270b73873655, type: 3}
       propertyPath: m_Name
       value: XR Rig
@@ -249,6 +253,18 @@ PrefabInstance:
       propertyPath: theWorldVolume
       value: 
       objectReference: {fileID: 1212504782}
+    - target: {fileID: 3576063926035980911, guid: 2d876c67c503e274a963270b73873655, type: 3}
+      propertyPath: acceleration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576063926035980911, guid: 2d876c67c503e274a963270b73873655, type: 3}
+      propertyPath: deceleration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576063926035980911, guid: 2d876c67c503e274a963270b73873655, type: 3}
+      propertyPath: maxMoveSpeed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3576063926035980912, guid: 2d876c67c503e274a963270b73873655, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -294,6 +310,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3576063926293578404, guid: 2d876c67c503e274a963270b73873655, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576063926293578409, guid: 2d876c67c503e274a963270b73873655, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 30719
+      objectReference: {fileID: 0}
+    - target: {fileID: 4974218480580830402, guid: 2d876c67c503e274a963270b73873655, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5316095338918369620, guid: 2d876c67c503e274a963270b73873655, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5534641475850218619, guid: 2d876c67c503e274a963270b73873655, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -409,7 +441,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1417607195}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3986073, y: -18.199917, z: 159.4771}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

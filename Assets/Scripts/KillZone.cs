@@ -8,6 +8,12 @@ public class KillZone : MonoBehaviour
     private GameManager gameManager;
     private void Awake()
     {
+        
+        
+    }
+
+    private void Start()
+    {
         gameManager = GameManager.Instance;
         playerTransform = gameManager.playerTransform;
     }

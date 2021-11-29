@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         playerController.canUseBulletTime = false;
         //SLOW DOWN FOR 0.2S
         Time.timeScale = 0.1f;
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(1.5f);
 
         playerController.canUseBulletTime = true;
         Time.timeScale = 1f;
@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
         spawnPoint = playerTransform.position;
         playerController.canJump = false;
         playerController.canMove = false;
+        playerController.canUseBulletTime = false;
         playerRigidbody.useGravity = false;
     }
 
@@ -87,6 +88,7 @@ public class GameManager : MonoBehaviour
         playerController.canJump = true;
         playerController.canMove = true;
         playerRigidbody.useGravity = true;
+        playerController.canUseBulletTime = true;
     }
 
     public void ExamSceneStart()

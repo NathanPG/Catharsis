@@ -21,7 +21,8 @@ public class BulletTutorial : MonoBehaviour
     {
         if (isPlayerIn)
         {
-            if(GameManager.Instance.playerController
+            GameManager.Instance.playerController.canUseBulletTime = true;
+            if (GameManager.Instance.playerController
                 .rightHand.TryGetFeatureValue(CommonUsages.triggerButton, out bool triggerPressed))
             {
                 if (triggerPressed)

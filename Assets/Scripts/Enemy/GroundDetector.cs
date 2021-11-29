@@ -6,11 +6,8 @@ public class GroundDetector : MonoBehaviour
 {
     public bool isGrounded = true;
     public LayerMask WhatIsGround;
-    private Examinee examinee;
+    
 
-    private void Start()
-    {
-    }
     private void FixedUpdate()
     {
         isGrounded = Physics.CheckSphere(transform.position, 0.5f, WhatIsGround);
@@ -21,13 +18,5 @@ public class GroundDetector : MonoBehaviour
         Gizmos.DrawSphere(transform.position, 0.5f);
     }
 
-    public void SetSelfRef(Examinee e)
-    {
-        examinee = e;
-    }
-
-    private void TouchLava()
-    {
-
-    }
+   
 }
