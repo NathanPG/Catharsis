@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: poster02_1
-  m_Shader: {fileID: 4800000, guid: 6fdcefe19021f5841ae11735a4b1b015, type: 3}
+  m_Shader: {fileID: 4800000, guid: 631f78b3cc241c94daec4a32c10a4214, type: 3}
   m_ShaderKeywords: TCP2_UV_NORMALS_FULL _METALLICSPECGLOSSMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -115,7 +115,9 @@ Material:
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _RampSmoothing: 0.5
+    - _RampSmoothingOtherLights: 0.5
     - _RampThreshold: 0.5
+    - _RampThresholdOtherLights: 0.5
     - _ReceiveShadows: 1
     - _ReceiveShadowsOff: 1
     - _Smoothness: 1
