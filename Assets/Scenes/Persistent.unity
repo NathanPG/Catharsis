@@ -255,15 +255,19 @@ PrefabInstance:
       objectReference: {fileID: 1212504782}
     - target: {fileID: 3576063926035980911, guid: 2d876c67c503e274a963270b73873655, type: 3}
       propertyPath: acceleration
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3576063926035980911, guid: 2d876c67c503e274a963270b73873655, type: 3}
       propertyPath: deceleration
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3576063926035980911, guid: 2d876c67c503e274a963270b73873655, type: 3}
       propertyPath: maxMoveSpeed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576063926035980911, guid: 2d876c67c503e274a963270b73873655, type: 3}
+      propertyPath: maxWallSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3576063926035980912, guid: 2d876c67c503e274a963270b73873655, type: 3}
       propertyPath: m_RootOrder
