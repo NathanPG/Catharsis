@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class Level1 : MonoBehaviour
 {
-  
-    public void Awake()
-    {
-        
-    }
+    public Material Level1SkyBox;
     private void Start()
     {
         GameManager.Instance.Level1Start();
+        RenderSettings.skybox = Level1SkyBox;
     }
 }
