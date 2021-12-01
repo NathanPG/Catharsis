@@ -17,64 +17,49 @@ public class Examinee : EnemyBase
 
     private void Awake()
     {
+        examineeAnimator = GetComponent<Animator>();
         DisableRagdoll();
     }
 
     private void Start()
     {
-        DisableRagdoll();
-        examineeAnimator = GetComponent<Animator>();
         startingPosition = transform.position;
         agent = GetComponent<NavMeshAgent>();
-        state = State.Idle;
         player = Camera.main.transform;
         canMove = true;
         destPosition = destBox.position;
         StartCoroutine(SetDest(destPosition, 3f));
     }
-    // Update is called once per frame
-    void Update()
-    {
-        /*
-        if (dead) return;
-        
-        canAttackPalyer = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!shouldMove)
+    private void Update()
+    {
+        float dist = Vector3.Distance(transform.position, destPosition);
+
+        if(dist < 2f)
         {
-            //STAY
             state = State.Idle;
-        }
-        else if (canAttackPalyer)
-        {
-            //meleeAnimator.SetBool("Attacking", true);
-            state = State.Attacking;
+            examineeAnimator.SetBool("isApproaching", false);
         }
         else
         {
-            //meleeAnimator.SetBool("Attacking", false);
             state = State.Approaching;
-            //CONTINUE TO MOVE
+            examineeAnimator.SetBool("isApproaching", true);
         }
+    }
 
-        switch (state)
+    public void ResetDestOrDie()
+    {
+        state = State.Approaching;
+
+        if (agent.isOnNavMesh)
         {
-            case State.Approaching:
-                //agent.isStopped = false;
-                //meleeAnimator.SetBool("Idle", false);
-                //meleeAnimator.Play("Forward");
-                //Approach();
-                break;
-            case State.Attacking:
-                //agent.isStopped = true;
-                //Attack();
-                break;
-            case State.Idle:
-                //meleeAnimator.SetBool("Idle", true);
-                //agent.isStopped = true;
-                break;
+            StartCoroutine(SetDest(destPosition, 0.5f));
         }
-        */
+        else
+        {
+            DisableRagdoll();
+            Invoke("Respawn", 2f);
+        }
     }
 
     private void FixedUpdate()
@@ -85,7 +70,7 @@ public class Examinee : EnemyBase
         {
             lostTrack = true;
             agent.enabled = false;
-            examineeAnimator.enabled = false;
+            
             GetComponent<Rigidbody>().isKinematic = false;
             EnableRagdoll();
         }
@@ -109,7 +94,6 @@ public class Examinee : EnemyBase
         DisableRagdoll();
         agent.enabled = true;
         agent.Warp(startingPosition);
-        examineeAnimator.enabled = true;
         lostTrack = false;
         
         StartCoroutine(SetDest(destPosition, 3f));
@@ -124,7 +108,7 @@ public class Examinee : EnemyBase
         Invoke("Respawn", 1f);
     }
 
-    private void DisableRagdoll()
+    public void DisableRagdoll()
     {
         var colsChildren = ragdollObject.GetComponentsInChildren<Collider>();
         var rigsChildren = ragdollObject.GetComponentsInChildren<Rigidbody>();
@@ -137,10 +121,12 @@ public class Examinee : EnemyBase
             r.isKinematic = true;
         }
         GetComponent<CapsuleCollider>().isTrigger = false;
+        examineeAnimator.enabled = true;
     }
 
-    private void EnableRagdoll()
+    public void EnableRagdoll()
     {
+        examineeAnimator.enabled = false;
         GetComponent<CapsuleCollider>().isTrigger = true;
         var colsChildren = ragdollObject.GetComponentsInChildren<Collider>();
         var rigsChildren = ragdollObject.GetComponentsInChildren<Rigidbody>();

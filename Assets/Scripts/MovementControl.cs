@@ -31,7 +31,7 @@ public class MovementControl : MonoBehaviour
     public float jumpCD;
     private bool jumpPressed = false;
     //private Vector3 characterCenter;
-    private Vector3 worldCharacterCenter;
+    [HideInInspector]public Vector3 worldCharacterCenter;
 
     //Grapple
     public Grapple grappleController;

@@ -8,6 +8,7 @@ public class Deserter : EnemyBase
     public bool shouldAttack = false, shouldRespawn = true;
     public GameObject ragdollObject;
     public State state;
+    public float pushBackForce;
 
     private Animator deserterAnimator;
 
@@ -98,6 +99,8 @@ public class Deserter : EnemyBase
     }
     */
 
+
+
     private void OnDrawGizmosSelected()
     {
         //Gizmos.DrawLine(transform.position, transform.position - Vector3.up * 2f);
@@ -157,6 +160,19 @@ public class Deserter : EnemyBase
         foreach (Rigidbody r in rigsChildren)
         {
             r.isKinematic = false;
+        }
+    }
+
+    private void CheckPlayer()
+    {
+        Vector3 playerCenter = GameManager.Instance.playerObject.GetComponent<MovementControl>().worldCharacterCenter;
+        float dist = Vector3.Distance(transform.position, playerCenter);
+        Debug.Log(dist);
+        if(dist < 1.4f)
+        {
+            //Push Player Back
+            Vector3 direction = playerCenter - transform.position;
+            GameManager.Instance.playerRigidbody.AddForce(direction.normalized * pushBackForce, ForceMode.Impulse);
         }
     }
 }
