@@ -21,8 +21,8 @@ public class MovementControl : MonoBehaviour
     public float maxMoveSpeed;
     public float acceleration = 0f;
     public float deceleration = 0f;
-    public float xSpeed = 0f;
-    public float zSpeed = 0f;
+    private float xSpeed = 0f;
+    private float zSpeed = 0f;
     private bool snapPressed = false;
 
     //Jump
@@ -212,8 +212,8 @@ public class MovementControl : MonoBehaviour
         InputFeatureUsage<Vector2> primary2DVector = CommonUsages.primary2DAxis;
         if (playerController.leftHand.TryGetFeatureValue(primary2DVector, out primary2dValue) && primary2dValue != Vector2.zero)
         {
-            var xAxis = primary2dValue.x;
-            var zAxis = primary2dValue.y;
+            var xAxis = primary2dValue.x * maxMoveSpeed * Time.deltaTime;
+            var zAxis = primary2dValue.y * maxMoveSpeed * Time.deltaTime;
 
             xSpeed = Mathf.Clamp(xSpeed + xAxis * acceleration * Time.deltaTime, -maxMoveSpeed, maxMoveSpeed);
             zSpeed = Mathf.Clamp(zSpeed + zAxis * acceleration * Time.deltaTime, -maxMoveSpeed, maxMoveSpeed);
@@ -241,17 +241,19 @@ public class MovementControl : MonoBehaviour
             }
         }
 
-        //public static bool Raycast(Vector3 origin, Vector3 direction, float maxDistance, int layerMask);
-        bool wallRight = Physics.Raycast(new Vector3(worldCharacterCenter.x, worldCharacterCenter.y, worldCharacterCenter.z), cameraTransform.right, 1f, LayerMask.NameToLayer("WallNoRun"));
-        bool wallLeft = Physics.Raycast(new Vector3(worldCharacterCenter.x, worldCharacterCenter.y, worldCharacterCenter.z), -cameraTransform.right, 1f, LayerMask.NameToLayer("WallNoRun"));
+        //Check everything
+        bool wallRight = Physics.Raycast(new Vector3(worldCharacterCenter.x, worldCharacterCenter.y, worldCharacterCenter.z)
+        , cameraTransform.right, 1f);
+        bool wallLeft = Physics.Raycast(new Vector3(worldCharacterCenter.x, worldCharacterCenter.y, worldCharacterCenter.z)
+        , -cameraTransform.right, 1f);
 
         //Left/Right movement
         if ((!wallRight && xSpeed > 0) || (!wallLeft && xSpeed < 0))
         {
-            transform.position += cameraTransform.transform.TransformDirection(Vector3.right) * xSpeed * Time.deltaTime;
+            transform.position += cameraTransform.transform.TransformDirection(Vector3.right) * xSpeed;
         }
 
-        Vector3 forwardVector = cameraTransform.transform.TransformDirection(Vector3.forward) * zSpeed * Time.deltaTime;
+        Vector3 forwardVector = cameraTransform.transform.TransformDirection(Vector3.forward) * zSpeed;
         forwardVector = new Vector3(forwardVector.x, 0f, forwardVector.z);
         transform.position += forwardVector;
     }

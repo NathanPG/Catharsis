@@ -2907,8 +2907,8 @@ MonoBehaviour:
   startingPosition: {x: 0, y: 0, z: 0}
   shouldAttack: 0
   shouldRespawn: 1
-  ragdollObject: {fileID: 4108468309946344101}
-  state: 3
+  groundDetector: {fileID: 0}
+  state: 0
 --- !u!1 &5817981483900041716
 GameObject:
   m_ObjectHideFlags: 0

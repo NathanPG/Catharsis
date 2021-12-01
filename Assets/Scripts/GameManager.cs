@@ -66,6 +66,10 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         spawnPoint = playerTransform.position;
+        playerController.canJump = false;
+        playerController.canMove = false;
+        playerController.canUseBulletTime = false;
+        playerRigidbody.useGravity = false;
     }
 
     public void Level1Start()

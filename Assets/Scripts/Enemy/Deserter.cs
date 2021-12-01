@@ -6,28 +6,24 @@ using UnityEngine.AI;
 public class Deserter : EnemyBase
 {
     public bool shouldAttack = false, shouldRespawn = true;
-    public GameObject ragdollObject;
+
     public State state;
 
     private Animator deserterAnimator;
 
-    private void Awake()
-    {
-        DisableRagdoll();
-    }
     private void Start()
     {
-        
         deserterAnimator = GetComponent<Animator>();
         startingPosition = transform.position;
         state = State.Idle;
         player = Camera.main.transform;
-
+        deserterAnimator.SetBool("Idle", true);
     }
-    
+    /*
     void Update()
     {
-        if (isDead) return;
+        
+        if (dead) return;
         
         canAttackPalyer = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
@@ -41,32 +37,30 @@ public class Deserter : EnemyBase
         //Aggressive
         else if (canAttackPalyer)
         {
-            
+            //meleeAnimator.SetBool("Attacking", true);
             state = State.Attacking;
         }
         else
         {
-            
+            //meleeAnimator.SetBool("Attacking", false);
             state = State.Idle;
+            //CONTINUE TO MOVE
         }
 
         switch (state)
         {
             case State.Attacking:
-                deserterAnimator.SetBool("Attacking", true);
-                Vector3 lookVector = player.position - transform.position;
-                lookVector.y = transform.position.y;
-                Quaternion rot = Quaternion.LookRotation(lookVector);
-                rot.x = 0;
-                rot.z = 0;
-                transform.rotation = Quaternion.Slerp(transform.rotation, rot, 1);
+                //agent.isStopped = true;
+                //Attack();
                 break;
             case State.Idle:
-                deserterAnimator.SetBool("Attacking", false);
+                //meleeAnimator.SetBool("Idle", true);
+                //agent.isStopped = true;
                 break;
         }
         
     }
+    */
 
     /*
     private void FixedUpdate()
@@ -113,6 +107,16 @@ public class Deserter : EnemyBase
         isDead = false;
     }
 
+    /*
+    public void Death()
+    {
+        //Touch Lava
+        isDead = true;
+        //Respawn
+        //Invoke("Respawn", 1f);
+    }
+    */
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Weapon") && !isDead)
@@ -129,34 +133,5 @@ public class Deserter : EnemyBase
     private void DisableAnimator()
     {
         deserterAnimator.enabled = false;
-        EnableRagdoll();
-    }
-
-    private void DisableRagdoll()
-    {
-        var colsChildren = ragdollObject.GetComponentsInChildren<Collider>();
-        var rigsChildren = ragdollObject.GetComponentsInChildren<Rigidbody>();
-        foreach (Collider c in colsChildren)
-        {
-            c.enabled = false;
-        }
-        foreach (Rigidbody r in rigsChildren)
-        {
-            r.isKinematic = true;
-        }
-    }
-
-    private void EnableRagdoll()
-    {
-        var colsChildren = ragdollObject.GetComponentsInChildren<Collider>();
-        var rigsChildren = ragdollObject.GetComponentsInChildren<Rigidbody>();
-        foreach (Collider c in colsChildren)
-        {
-            c.enabled = true;
-        }
-        foreach (Rigidbody r in rigsChildren)
-        {
-            r.isKinematic = false;
-        }
     }
 }
