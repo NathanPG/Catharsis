@@ -298,6 +298,7 @@ MonoBehaviour:
   isGrounded: 1
   jumpForce: 300
   jumpCD: 1
+  worldCharacterCenter: {x: 0, y: 0, z: 0}
   grappleController: {fileID: 3576063925459520628}
   whatIsWall:
     serializedVersion: 2

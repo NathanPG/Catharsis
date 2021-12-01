@@ -7,86 +7,72 @@ public class Examinee : EnemyBase
 {
     public bool shouldMove = true, shouldRespawn = true;
     public GroundDetector groundDetector = null;
-    public Transform destBox, hipTransform;
-    
+    public Transform destBox;
+    public GameObject ragdollObject;
     public State state;
 
     private Animator examineeAnimator;
     private Vector3 destPosition;
     private bool lostTrack = false;
 
-    private void Start()
+    private void Awake()
     {
         examineeAnimator = GetComponent<Animator>();
+        DisableRagdoll();
+    }
+
+    private void Start()
+    {
         startingPosition = transform.position;
         agent = GetComponent<NavMeshAgent>();
-        state = State.Idle;
         player = Camera.main.transform;
-
-        //examineeAnimator.SetBool("Idle", true);
-
         canMove = true;
         destPosition = destBox.position;
         StartCoroutine(SetDest(destPosition, 3f));
     }
-    // Update is called once per frame
-    void Update()
-    {
-        /*
-        if (dead) return;
-        
-        canAttackPalyer = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!shouldMove)
+    private void Update()
+    {
+        float dist = Vector3.Distance(transform.position, destPosition);
+
+        if(dist < 2f)
         {
-            //STAY
             state = State.Idle;
-        }
-        else if (canAttackPalyer)
-        {
-            //meleeAnimator.SetBool("Attacking", true);
-            state = State.Attacking;
+            examineeAnimator.SetBool("isApproaching", false);
         }
         else
         {
-            //meleeAnimator.SetBool("Attacking", false);
             state = State.Approaching;
-            //CONTINUE TO MOVE
+            examineeAnimator.SetBool("isApproaching", true);
         }
+    }
 
-        switch (state)
+    public void ResetDestOrDie()
+    {
+        state = State.Approaching;
+
+        if (agent.isOnNavMesh)
         {
-            case State.Approaching:
-                //agent.isStopped = false;
-                //meleeAnimator.SetBool("Idle", false);
-                //meleeAnimator.Play("Forward");
-                //Approach();
-                break;
-            case State.Attacking:
-                //agent.isStopped = true;
-                //Attack();
-                break;
-            case State.Idle:
-                //meleeAnimator.SetBool("Idle", true);
-                //agent.isStopped = true;
-                break;
+            StartCoroutine(SetDest(destPosition, 0.5f));
         }
-        */
+        else
+        {
+            DisableRagdoll();
+            Invoke("Respawn", 2f);
+        }
     }
 
     private void FixedUpdate()
     {
         if (isDead) return;
 
-        if (!groundDetector.isGrounded) Debug.Log("NOT GROUNDED");
-
         if (!groundDetector.isGrounded && !lostTrack)
         {
-            Debug.Log("Lost Track!");
             lostTrack = true;
             agent.enabled = false;
-            examineeAnimator.enabled = false;
-            //GetComponent<Rigidbody>().isKinematic = false;
+            
+            GetComponent<Rigidbody>().isKinematic = false;
+            EnableRagdoll();
         }
 
         RaycastHit r;
@@ -102,18 +88,14 @@ public class Examinee : EnemyBase
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        //Gizmos.DrawLine(transform.position, transform.position - Vector3.up * 2f);
-    }
-
     private void Respawn()
     {
+        GetComponent<Rigidbody>().isKinematic = true;
+        DisableRagdoll();
         agent.enabled = true;
-        transform.position = startingPosition;
-        examineeAnimator.enabled = true;
+        agent.Warp(startingPosition);
         lostTrack = false;
-        //GetComponent<Rigidbody>().isKinematic = true;
+        
         StartCoroutine(SetDest(destPosition, 3f));
         isDead = false;
     }
@@ -126,5 +108,35 @@ public class Examinee : EnemyBase
         Invoke("Respawn", 1f);
     }
 
-    
+    public void DisableRagdoll()
+    {
+        var colsChildren = ragdollObject.GetComponentsInChildren<Collider>();
+        var rigsChildren = ragdollObject.GetComponentsInChildren<Rigidbody>();
+        foreach(Collider c in colsChildren)
+        {
+            c.enabled = false;
+        }
+        foreach (Rigidbody r in rigsChildren)
+        {
+            r.isKinematic = true;
+        }
+        GetComponent<CapsuleCollider>().isTrigger = false;
+        examineeAnimator.enabled = true;
+    }
+
+    public void EnableRagdoll()
+    {
+        examineeAnimator.enabled = false;
+        GetComponent<CapsuleCollider>().isTrigger = true;
+        var colsChildren = ragdollObject.GetComponentsInChildren<Collider>();
+        var rigsChildren = ragdollObject.GetComponentsInChildren<Rigidbody>();
+        foreach (Collider c in colsChildren)
+        {
+            c.enabled = true;
+        }
+        foreach (Rigidbody r in rigsChildren)
+        {
+            r.isKinematic = false;
+        }
+    }
 }
