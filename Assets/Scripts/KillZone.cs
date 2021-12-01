@@ -6,6 +6,11 @@ public class KillZone : MonoBehaviour
 {
     private Transform playerTransform;
     private GameManager gameManager;
+    private void Awake()
+    {
+        
+        
+    }
 
     private void Start()
     {

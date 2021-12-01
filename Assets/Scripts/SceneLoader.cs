@@ -40,11 +40,12 @@ public class SceneLoader : Singleton<SceneLoader>
         OnLoadBegin?.Invoke();
         persistentCamera.enabled = true;
         //yield return screenFader.StartFadeIn();
-        //yield return new WaitForSecondsRealtime(screenFade.FadeIn());
+        yield return new WaitForSecondsRealtime(screenFade.FadeIn());
         yield return StartCoroutine(UnloadCurrent());
 
         yield return new WaitForSecondsRealtime(3.0f);
 
+        
         yield return StartCoroutine(LoadNew(sceneName));
         //yield return screenFader.StartFadeOut();
         //yield return new WaitForSecondsRealtime(screenFade.FadeOut());
@@ -57,20 +58,9 @@ public class SceneLoader : Singleton<SceneLoader>
 
     private IEnumerator UnloadCurrent()
     {
-        Scene[] openedScenes = SceneManager.GetAllScenes();
-        Scene sceneToUnload = new Scene();
-        foreach (Scene s in openedScenes)
-        {
-            if(s.name != "Persistent")
-            {
-                sceneToUnload = s;
-            }
-        }
-        AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(sceneToUnload);
-        while (!unloadOperation.isDone)
-        {
-            yield return null;
-        }
+        AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+        while(!unloadOperation.isDone)
+		    yield return null;
     }
 
     private IEnumerator LoadNew(string sceneName)
