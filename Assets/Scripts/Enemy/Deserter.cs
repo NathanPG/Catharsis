@@ -24,7 +24,6 @@ public class Deserter : EnemyBase
         startingPosition = transform.position;
         state = State.Idle;
         player = Camera.main.transform;
-        deserterAnimator.SetBool("Idle", true);
     }
     
     void Update()
@@ -60,10 +59,10 @@ public class Deserter : EnemyBase
         {
                 isDead = true;
                 GameManager.Instance.TimeStopEffect();
-                //TODO: RANDOM DEATH ANIM
+
                 deserterAnimator.Play("Death0");
 
-            //GetComponent<AudioSource>().PlayOneShot(hitList[Random.Range(0, hitList.Count)]);
+                //GetComponent<AudioSource>().PlayOneShot(hitList[Random.Range(0, hitList.Count)]);
         }
     }
 

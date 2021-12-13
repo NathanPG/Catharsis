@@ -14,6 +14,18 @@ public class Examinee : EnemyBase
     private Animator examineeAnimator;
     private Vector3 destPosition;
     private bool lostTrack = false;
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Weapon") && !isDead)
+        {
+            isDead = true;
+            GameManager.Instance.TimeStopEffect();
+
+            examineeAnimator.Play("Death0");
+
+            //GetComponent<AudioSource>().PlayOneShot(hitList[Random.Range(0, hitList.Count)]);
+        }
+    }
 
     private void Awake()
     {
@@ -90,6 +102,7 @@ public class Examinee : EnemyBase
 
     private void Respawn()
     {
+        //GetComponent<CapsuleCollider>().enabled = true;
         GetComponent<Rigidbody>().isKinematic = true;
         DisableRagdoll();
         agent.enabled = true;
@@ -105,6 +118,7 @@ public class Examinee : EnemyBase
         if (!isDead)
         {
             isDead = true;
+            //GetComponent<CapsuleCollider>().enabled = false;
             Invoke("Respawn", Random.Range(1,10));
         }
     }

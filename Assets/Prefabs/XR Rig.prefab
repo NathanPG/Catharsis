@@ -295,6 +295,8 @@ MonoBehaviour:
   maxMoveSpeed: 3
   acceleration: 2
   deceleration: 2
+  xSpeed: 0
+  zSpeed: 0
   isGrounded: 1
   jumpForce: 300
   jumpCD: 1

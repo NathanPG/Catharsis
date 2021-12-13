@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Level2End : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private bool canLoad = true;
+    public Material loadMaterial;
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (other.gameObject.tag == "Hand" && canLoad)
+        {
+            SceneLoader.Instance.LoadNewScene("Level3");
+            RenderSettings.skybox = loadMaterial;
+        }
     }
 }
