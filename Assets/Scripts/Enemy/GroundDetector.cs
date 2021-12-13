@@ -10,12 +10,12 @@ public class GroundDetector : MonoBehaviour
 
     private void FixedUpdate()
     {
-        isGrounded = Physics.CheckSphere(transform.position, 0.5f, WhatIsGround);
+        isGrounded = Physics.CheckSphere(transform.position, 0.3f, WhatIsGround);
     }
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawSphere(transform.position, 0.5f);
+        Gizmos.DrawSphere(transform.position, 0.3f);
     }
 
    

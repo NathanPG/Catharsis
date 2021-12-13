@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator TimeStopCR()
     {
-        Debug.Log("TIME STOP");
+        //Debug.Log("TIME STOP");
         playerController.canUseBulletTime = false;
         //SLOW DOWN FOR 0.2S
         Time.timeScale = 0.1f;
@@ -66,10 +66,10 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         spawnPoint = playerTransform.position;
-        playerController.canJump = false;
-        playerController.canMove = false;
-        playerController.canUseBulletTime = false;
-        playerRigidbody.useGravity = false;
+        //playerController.canJump = false;
+        //playerController.canMove = false;
+        //playerController.canUseBulletTime = false;
+        //playerRigidbody.useGravity = false;
     }
 
     public void Level1Start()
@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
         playerController.canUseBulletTime = true;
     }
 
-    public void ExamSceneStart()
+    public void Level3Start()
     {
         spawnPoint = new Vector3();
         playerObject.transform.position = spawnPoint;

@@ -2899,7 +2899,7 @@ MonoBehaviour:
     m_Bits: 8
   timeBetweenAttacks: 0
   sightRange: 0
-  attackRange: 0
+  attackRange: 2
   maxChaseRange: 0
   damage: 0
   hitList: []
@@ -2907,8 +2907,9 @@ MonoBehaviour:
   startingPosition: {x: 0, y: 0, z: 0}
   shouldAttack: 0
   shouldRespawn: 1
-  groundDetector: {fileID: 0}
+  ragdollObject: {fileID: 4108468309946344101}
   state: 0
+  pushBackForce: 4
 --- !u!1 &5817981483900041716
 GameObject:
   m_ObjectHideFlags: 0

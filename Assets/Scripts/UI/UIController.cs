@@ -17,6 +17,7 @@ public class UIController : MonoBehaviour
     {
         narrativeText.enabled = false;
         tipText.enabled = false;
+        goalText.enabled = false;
     }
 
     IEnumerator TipInorOut(bool shouldFadeIn)

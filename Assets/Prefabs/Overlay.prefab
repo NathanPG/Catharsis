@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.5
-  m_Text: "NARRATIVE: \u55B5\u55B5\u55B5"
+  m_Text: 'NARRATIVE: <Text Text Text>'
 --- !u!1 &3779393883932801038
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Goal: Recall'
+  m_Text: 'Goal: ............'
 --- !u!1 &3779393884398520288
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,4 +360,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'TIP: Movement'
+  m_Text: 'TIP: .............'

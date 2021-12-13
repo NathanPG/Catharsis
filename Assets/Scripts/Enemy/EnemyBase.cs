@@ -33,7 +33,10 @@ public class EnemyBase : MonoBehaviour
     protected IEnumerator SetDest(Vector3 globalPosition, float delay)
     {
         yield return new WaitForSeconds(delay);
-        agent.SetDestination(globalPosition);
+        if (agent.isOnNavMesh)
+        {
+            agent.SetDestination(globalPosition);
+        }
     }
 
     protected IEnumerator Death(float duration)

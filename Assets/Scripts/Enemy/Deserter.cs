@@ -6,119 +6,53 @@ using UnityEngine.AI;
 public class Deserter : EnemyBase
 {
     public bool shouldAttack = false, shouldRespawn = true;
-
+    public GameObject ragdollObject;
     public State state;
     public float pushBackForce;
 
     private Animator deserterAnimator;
 
-    private void Start()
+    private void Awake()
     {
         deserterAnimator = GetComponent<Animator>();
+        DisableRagdoll();
+    }
+
+    private void Start()
+    {
+        
         startingPosition = transform.position;
         state = State.Idle;
         player = Camera.main.transform;
         deserterAnimator.SetBool("Idle", true);
     }
-    /*
+    
     void Update()
     {
-        
-        if (dead) return;
+        if (isDead) return;
         
         canAttackPalyer = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
 
         if (!shouldAttack)
         {
-            //STAY
+            deserterAnimator.SetBool("Attacking", false);
             state = State.Idle;
         }
 
         //Aggressive
         else if (canAttackPalyer)
         {
-            //meleeAnimator.SetBool("Attacking", true);
+            deserterAnimator.SetBool("Attacking", true);
             state = State.Attacking;
         }
         else
         {
-            //meleeAnimator.SetBool("Attacking", false);
+            deserterAnimator.SetBool("Attacking", false);
             state = State.Idle;
-            //CONTINUE TO MOVE
-        }
-
-        switch (state)
-        {
-            case State.Attacking:
-                //agent.isStopped = true;
-                //Attack();
-                break;
-            case State.Idle:
-                //meleeAnimator.SetBool("Idle", true);
-                //agent.isStopped = true;
-                break;
         }
         
     }
-    */
-
-    /*
-    private void FixedUpdate()
-    {
-        if (isDead) return;
-
-        if (!groundDetector.isGrounded) Debug.Log("NOT GROUNDED");
-
-        if (!groundDetector.isGrounded && !lostTrack)
-        {
-            Debug.Log("Lost Track!");
-            lostTrack = true;
-            agent.enabled = false;
-            deserterAnimator.enabled = false;
-            //GetComponent<Rigidbody>().isKinematic = false;
-        }
-
-        RaycastHit r;
-        if (Physics.Raycast(transform.position, Vector3.down, out r, 2f))
-        {
-
-            if (r.transform.tag == "Lava" && !isDead)
-            {
-                Debug.Log("Touched Lava");
-                isDead = true;
-                Death();
-            }
-        }
-    }
-    */
-
-
-
-    private void OnDrawGizmosSelected()
-    {
-        //Gizmos.DrawLine(transform.position, transform.position - Vector3.up * 2f);
-    }
-
-    private void Respawn()
-    {
-        transform.position = startingPosition;
-        deserterAnimator.enabled = true;
-
-        //GetComponent<Rigidbody>().isKinematic = true;
-
-        isDead = false;
-    }
-
-    /*
-    public void Death()
-    {
-        //Touch Lava
-        isDead = true;
-        //Respawn
-        //Invoke("Respawn", 1f);
-    }
-    */
 
     private void OnTriggerEnter(Collider other)
     {
@@ -136,18 +70,50 @@ public class Deserter : EnemyBase
     private void DisableAnimator()
     {
         deserterAnimator.enabled = false;
+        EnableRagdoll();
     }
 
     private void CheckPlayer()
     {
         Vector3 playerCenter = GameManager.Instance.playerObject.GetComponent<MovementControl>().worldCharacterCenter;
         float dist = Vector3.Distance(transform.position, playerCenter);
-        Debug.Log(dist);
+        //Debug.Log(dist);
         if(dist < 1.4f)
         {
             //Push Player Back
             Vector3 direction = playerCenter - transform.position;
             GameManager.Instance.playerRigidbody.AddForce(direction.normalized * pushBackForce, ForceMode.Impulse);
+        }
+    }
+    public void DisableRagdoll()
+    {
+        var colsChildren = ragdollObject.GetComponentsInChildren<Collider>();
+        var rigsChildren = ragdollObject.GetComponentsInChildren<Rigidbody>();
+        foreach (Collider c in colsChildren)
+        {
+            c.enabled = false;
+        }
+        foreach (Rigidbody r in rigsChildren)
+        {
+            r.isKinematic = true;
+        }
+        GetComponent<CapsuleCollider>().isTrigger = false;
+        deserterAnimator.enabled = true;
+    }
+
+    public void EnableRagdoll()
+    {
+        deserterAnimator.enabled = false;
+        GetComponent<CapsuleCollider>().isTrigger = true;
+        var colsChildren = ragdollObject.GetComponentsInChildren<Collider>();
+        var rigsChildren = ragdollObject.GetComponentsInChildren<Rigidbody>();
+        foreach (Collider c in colsChildren)
+        {
+            c.enabled = true;
+        }
+        foreach (Rigidbody r in rigsChildren)
+        {
+            r.isKinematic = false;
         }
     }
 }

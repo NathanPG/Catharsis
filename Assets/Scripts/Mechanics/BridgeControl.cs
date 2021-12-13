@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class BridgeControl : MonoBehaviour
 {
+    public string animName;
+    bool played = false;
     private void OnTriggerEnter(Collider other)
     {
-        GetComponent<Animator>().Play("Bridge1Test");
+        if (!played)
+        {
+            played = true;
+            GetComponent<Animator>().Play(animName);
+        }
     }
+
+
 }

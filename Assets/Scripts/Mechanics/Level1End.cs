@@ -8,7 +8,7 @@ public class Level1End : MonoBehaviour
     public Material loadMaterial;
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player" && canLoad)
+        if(other.gameObject.tag == "Hand" && canLoad)
         {
             SceneLoader.Instance.LoadNewScene("Level2");
             RenderSettings.skybox = loadMaterial;

@@ -358,7 +358,7 @@ public class MovementControl : MonoBehaviour
                 if (!grapplling)
                 {
                     //Debug.Log("Grapple");
-                    audioController.GrappleSound();
+                    //audioController.GrappleSound();
                     grapplling = true;
                     characterController.enabled = false;
                     grappleController.StartGrapple();

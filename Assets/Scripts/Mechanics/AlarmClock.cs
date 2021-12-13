@@ -8,7 +8,7 @@ public class AlarmClock : MonoBehaviour
     public AudioClip turnOff;
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player" && isOn)
+        if(other.gameObject.tag == "Hand" && isOn)
         {
             isOn = false;
             GetComponent<AudioSource>().Stop();

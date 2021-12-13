@@ -28,7 +28,7 @@ public class Examinee : EnemyBase
         player = Camera.main.transform;
         canMove = true;
         destPosition = destBox.position;
-        StartCoroutine(SetDest(destPosition, 3f));
+        StartCoroutine(SetDest(destPosition, Random.Range(3,10)));
     }
 
     private void Update()
@@ -81,7 +81,7 @@ public class Examinee : EnemyBase
             
             if (r.transform.tag == "Lava" && !isDead)
             {
-                Debug.Log("Touched Lava");
+                //Debug.Log("Touched Lava");
                 isDead = true;
                 Death();
             }
@@ -102,10 +102,11 @@ public class Examinee : EnemyBase
 
     public void Death()
     {
-        //Touch Lava
-        isDead = true;
-        //Respawn
-        Invoke("Respawn", 1f);
+        if (!isDead)
+        {
+            isDead = true;
+            Invoke("Respawn", Random.Range(1,10));
+        }
     }
 
     public void DisableRagdoll()
