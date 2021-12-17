@@ -121,15 +121,15 @@ MonoBehaviour:
   m_AdvancedMode: 0
   threshold:
     m_OverrideState: 1
-    m_Value: 0.86
+    m_Value: 0.44
     min: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.57
+    m_Value: 0.07
     min: 0
   scatter:
     m_OverrideState: 1
-    m_Value: 0.386
+    m_Value: 0.495
     min: 0
     max: 1
   clamp:
@@ -173,13 +173,13 @@ MonoBehaviour:
   m_AdvancedMode: 0
   lift:
     m_OverrideState: 1
-    m_Value: {x: 0.6508758, y: 0.78655905, z: 1, w: 0}
+    m_Value: {x: 0.65905154, y: 0.66692936, z: 1, w: 0}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.76797515, z: 0.73466897, w: 0}
+    m_Value: {x: 1, y: 0.80477965, z: 0.7241311, w: 0}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.76104516, z: 0.9932311, w: 0}
+    m_Value: {x: 1, y: 0.7651316, z: 0.98443913, w: 0}
 --- !u!114 &-904115656017036998
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf1aba9553839d41ae37dd52e9ebcce, type: 3}
   m_Name: MotionBlur
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   m_AdvancedMode: 0
   mode:
     m_OverrideState: 1
@@ -241,7 +241,7 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.075
+    m_Value: 0.055
     min: 0
     max: 1
   clamp:
@@ -268,7 +268,7 @@ MonoBehaviour:
     m_Value: 0
   contrast:
     m_OverrideState: 1
-    m_Value: 13.2
+    m_Value: -0.5
     min: -100
     max: 100
   colorFilter:
