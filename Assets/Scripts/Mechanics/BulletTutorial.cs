@@ -27,6 +27,7 @@ public class BulletTutorial : MonoBehaviour
             {
                 if (triggerPressed)
                 {
+                    Debug.Log("Finish tutorial");
                     GameManager.Instance.playerController.canMove = true;
                     GameManager.Instance.playerController.canJump = true;
                     finished = true;

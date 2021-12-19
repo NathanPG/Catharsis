@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class Level3 : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Transform startPosTransform;
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GameManager.Instance.Level3Start(startPosTransform.position);
+        RenderSettings.fog = false;
     }
 }

@@ -35,6 +35,7 @@ public class SceneLoader : Singleton<SceneLoader>
 
     private IEnumerator LoadScene(string sceneName)
     {
+        GameManager.Instance.TransitionStart();
         isLoading = true;
 
         OnLoadBegin?.Invoke();
@@ -54,11 +55,22 @@ public class SceneLoader : Singleton<SceneLoader>
         OnLoadEnd?.Invoke();
 
         isLoading = false;
+        GameManager.Instance.TransitionEnd();
     }
 
     private IEnumerator UnloadCurrent()
     {
-        AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+        Scene[] openedScenes = SceneManager.GetAllScenes();
+        Scene sceneToUnload = new Scene();
+        foreach(Scene s in openedScenes)
+        {
+            if(s.name != "Persistent")
+            {
+                sceneToUnload = s;
+            }
+        }
+
+        AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(sceneToUnload);
         while(!unloadOperation.isDone)
 		    yield return null;
     }

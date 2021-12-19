@@ -13,6 +13,7 @@ public class Level2 : MonoBehaviour
         GameManager.Instance.Level2Start(startPosTransform.position);
         RenderSettings.skybox = Level2SkyBox;
         RenderSettings.fog = true;
+        RenderSettings.fogDensity = 0.01f;
     }
 
 }

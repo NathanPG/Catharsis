@@ -66,37 +66,44 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         spawnPoint = playerTransform.position;
-        //playerController.canJump = false;
-        //playerController.canMove = false;
-        //playerController.canUseBulletTime = false;
-        //playerRigidbody.useGravity = false;
     }
 
-    public void Level1Start()
-    {
-        spawnPoint = new Vector3(-22.7600002f, 0.430000007f, -100.601997f);
-        playerObject.transform.position = spawnPoint;
-        playerController.canJump = true;
-        playerController.canMove = true;
-        playerRigidbody.useGravity = true;
-    }
-
-    public void Level2Start(Vector3 startPos)
+    public void Level1Start(Vector3 startPos)
     {
         spawnPoint = startPos;
         playerObject.transform.position = spawnPoint;
         playerController.canJump = true;
         playerController.canMove = true;
         playerRigidbody.useGravity = true;
-        playerController.canUseBulletTime = true;
+        playerController.canUseBulletTime = false;
     }
 
-    public void Level3Start()
+    public void Level2Start(Vector3 startPos)
     {
-        spawnPoint = new Vector3();
+        spawnPoint = startPos;
         playerObject.transform.position = spawnPoint;
+        //TransitionEnd();
+    }
+
+    public void Level3Start(Vector3 startPos)
+    {
+        spawnPoint = startPos;
+        playerObject.transform.position = spawnPoint;
+        //TransitionEnd();
+    }
+
+    public void TransitionStart()
+    {
+        playerController.canJump = false;
+        playerController.canMove = false;
+        playerRigidbody.useGravity = false;
+        playerController.canUseBulletTime = false;
+    }
+    public void TransitionEnd()
+    {
         playerController.canJump = true;
         playerController.canMove = true;
         playerRigidbody.useGravity = true;
+        playerController.canUseBulletTime = true;
     }
 }

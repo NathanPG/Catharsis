@@ -16,11 +16,14 @@ public class Collectible : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Hand" && shouldShowNarrative && !isCollected)
+        if(other.gameObject.tag == "Hand" && !isCollected)
         {
             isCollected = true;
-            GameManager.Instance.uiController.ShowNarrative(narrativeMsg);
-
+            if (shouldShowNarrative)
+            {
+                GameManager.Instance.uiController.ShowNarrative(narrativeMsg);
+            }
+            
             GetComponent<Animation>().Play();
             GetComponent<AudioSource>().Play();
             if (collectibleName == "Trophy")

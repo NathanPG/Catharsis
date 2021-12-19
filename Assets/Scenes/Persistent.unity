@@ -276,12 +276,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1212504782}
     - target: {fileID: 3576063926035980911, guid: 2d876c67c503e274a963270b73873655, type: 3}
+      propertyPath: acceleration
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576063926035980911, guid: 2d876c67c503e274a963270b73873655, type: 3}
       propertyPath: deceleration
       value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 3576063926035980911, guid: 2d876c67c503e274a963270b73873655, type: 3}
       propertyPath: maxMoveSpeed
-      value: 3
+      value: 3.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576063926035980911, guid: 2d876c67c503e274a963270b73873655, type: 3}
+      propertyPath: maxWallSpeed
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3576063926035980912, guid: 2d876c67c503e274a963270b73873655, type: 3}
       propertyPath: m_RootOrder
@@ -409,11 +417,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4974218480580830402, guid: 2d876c67c503e274a963270b73873655, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5316095338918369620, guid: 2d876c67c503e274a963270b73873655, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 398978486, guid: 2d876c67c503e274a963270b73873655, type: 3}
@@ -529,7 +537,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1264766174}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
